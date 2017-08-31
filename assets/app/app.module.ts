@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent }   from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { NavMenuComponent } from './components/navmenu/navmenu.component';
 
 //import 'materialize-css';
 import { MaterializeModule } from "angular2-materialize";
@@ -11,7 +12,8 @@ import { MaterializeModule } from "angular2-materialize";
 @NgModule({
     declarations: [
       AppComponent,
-      HomeComponent
+      HomeComponent,
+      NavMenuComponent
     ],
     imports:      [
       BrowserModule,
