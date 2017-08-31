@@ -8,7 +8,8 @@
     'app': 'app', // 'dist',
     '@angular': 'node_modules/@angular',
     'angular-in-memory-web-api': 'node_modules/angular-in-memory-web-api',
-    'rxjs': 'node_modules/rxjs'
+    'rxjs': 'node_modules/rxjs',
+    'angular2-materialize': 'node_modules/angular2-materialize'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -28,6 +29,10 @@
       main: 'index.js',
       defaultExtension: 'js'
     },
+    'angular2-materialize': {
+      main: 'dist/index',
+      defaultExtension: 'js'
+    }
   };
   var ngPackageNames = [
     'common',
