@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent }   from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
-// import 'materialize-css';
+import 'jquery';
+import 'materialize-css';
 import { MaterializeModule } from "angular2-materialize";
 
 @NgModule({
