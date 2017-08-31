@@ -12,7 +12,6 @@
     'angular2-materialize': 'node_modules/angular2-materialize',
     'plugin-babel': 'plugin-babel.js',
     'systemjs-babel-build': 'systemjs-babel-browser.js',
-    'jquery': 'node_modules/jquery',
     'materialize-css': 'node_modules/materialize-css'
   };
   // packages tells the System loader how to load when no filename and/or no extension
@@ -37,11 +36,8 @@
       main: 'dist/index',
       defaultExtension: 'js'
     },
-    'jquery': {
-      main: 'dist/jquery',
-      defaultExtension: 'js'
-    },
     "materialize-css": {
+      format: "global",
       main: "dist/js/materialize",
       defaultExtension: 'js'
     }
