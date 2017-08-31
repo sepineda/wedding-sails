@@ -1,25 +1,25 @@
 {
-  "name": "wedding-sails",
+  "name": "sails-angular2",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.3.0",
+  "description": "a Sails + Angular 4 sample application",
   "keywords": [],
   "dependencies": {
-    "@angular/common": "^4.3.6",
-    "@angular/compiler": "^4.3.6",
-    "@angular/core": "4.3.6",
-    "@angular/forms": "4.3.6",
-    "@angular/http": "4.3.6",
-    "@angular/platform-browser": "4.3.6",
-    "@angular/platform-browser-dynamic": "4.3.6",
-    "@angular/router": "4.3.6",
-    "@angular/upgrade": "4.3.6",
-    "angular-in-memory-web-api": "^0.3.2",
-    "core-js": "^2.5.0",
+    "@angular/common": "4.2.2",
+    "@angular/compiler": "4.2.2",
+    "@angular/core": "4.2.2",
+    "@angular/forms": "4.2.2",
+    "@angular/http": "4.2.2",
+    "@angular/platform-browser": "4.2.2",
+    "@angular/platform-browser-dynamic": "4.2.2",
+    "@angular/router": "4.2.2",
+    "@angular/upgrade": "4.2.2",
+    "angular-in-memory-web-api": "~0.3.0",
+    "core-js": "^2.4.1",
     "ejs": "2.3.4",
-    "es6-promise": "^4.1.1",
-    "es6-shim": "^0.35.3",
-    "express": "^4.15.4",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "express": "^4.14.0",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
@@ -32,14 +32,14 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
-    "include-all": "^1.0.0",
+    "include-all": "~0.1.6",
     "rc": "1.0.1",
-    "reflect-metadata": "^0.1.10",
-    "rxjs": "^5.4.3",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "5.4.0",
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
-    "systemjs": "^0.20.18",
-    "zone.js": "^0.8.17"
+    "systemjs": "0.19.40",
+    "zone.js": "0.8.12"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -48,8 +48,12 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/eduardo/wedding-sails.git"
+    "url": "git://github.com/xmaestro/sails-angular2.git"
   },
-  "author": "eduardo",
+  "devDependencies": {
+    "@types/core-js": "^0.9.41",
+    "typescript": "2.3.4"
+  },
+  "author": "xmaestro",
   "license": ""
 }
