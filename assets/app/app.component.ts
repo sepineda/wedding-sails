@@ -4,7 +4,6 @@ import {Component} from '@angular/core';
   template: `
     <div >
         <div class='row'>
-            <nav-menu></nav-menu>
             <router-outlet></router-outlet>
         </div>
     </div>

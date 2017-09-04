@@ -12,12 +12,12 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var navmenu_component_1 = require("./navmenu/navmenu.component");
-//import 'materialize-css';
 var angular2_materialize_1 = require("angular2-materialize");
 var story_card_component_1 = require("./story-card/story-card.component");
 var confirm_component_1 = require("./confirm/confirm.component");
 var admin_component_1 = require("./admin/admin.component");
 var when_where_component_1 = require("./when-where/when-where.component");
+var landing_component_1 = require("./landing/landing.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,18 +30,20 @@ var AppModule = (function () {
                 story_card_component_1.StoryCardComponent,
                 confirm_component_1.ConfirmComponent,
                 admin_component_1.AdminComponent,
-                when_where_component_1.WhenWhereComponent
+                when_where_component_1.WhenWhereComponent,
+                landing_component_1.LandingComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 angular2_materialize_1.MaterializeModule,
                 router_1.RouterModule.forRoot([
-                    { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
-                    { path: 'nuestra-historia', component: home_component_1.HomeComponent },
-                    { path: 'donde-y-cuando', component: when_where_component_1.WhenWhereComponent },
-                    { path: 'confirmar', component: confirm_component_1.ConfirmComponent },
+                    { path: '', component: landing_component_1.LandingComponent, children: [
+                            { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
+                            { path: 'nuestra-historia', component: home_component_1.HomeComponent },
+                            { path: 'donde-y-cuando', component: when_where_component_1.WhenWhereComponent },
+                            { path: 'confirmar', component: confirm_component_1.ConfirmComponent },
+                        ] },
                     { path: 'boda', component: admin_component_1.AdminComponent },
-                    { path: '**', redirectTo: 'home' }
                 ])
             ],
             bootstrap: [app_component_1.AppComponent],

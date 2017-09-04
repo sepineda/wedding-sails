@@ -6,12 +6,12 @@ import { AppComponent }   from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
 
-//import 'materialize-css';
 import { MaterializeModule } from "angular2-materialize";
 import { StoryCardComponent } from './story-card/story-card.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { AdminComponent } from './admin/admin.component';
 import { WhenWhereComponent } from './when-where/when-where.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
     declarations: [
@@ -21,18 +21,21 @@ import { WhenWhereComponent } from './when-where/when-where.component';
       StoryCardComponent,
       ConfirmComponent,
       AdminComponent,
-      WhenWhereComponent
+      WhenWhereComponent,
+      LandingComponent
     ],
     imports:      [
       BrowserModule,
       MaterializeModule,
       RouterModule.forRoot([
-            { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
-            { path: 'nuestra-historia', component: HomeComponent },
-            { path: 'donde-y-cuando', component: WhenWhereComponent },
-            { path: 'confirmar', component: ConfirmComponent },
+            { path: '', component: LandingComponent, children: [
+              { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
+              { path: 'nuestra-historia', component: HomeComponent },
+              { path: 'donde-y-cuando', component: WhenWhereComponent },
+              { path: 'confirmar', component: ConfirmComponent },
+            ]},
             { path: 'boda', component: AdminComponent },
-            { path: '**', redirectTo: 'home' }
+            // { path: '**', redirectTo: 'home' }
           ])
     ],
     bootstrap:    [AppComponent],
