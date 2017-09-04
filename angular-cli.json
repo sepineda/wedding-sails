@@ -5,7 +5,7 @@
   },
   "apps": [
     {
-      "root": "assets",
+      "root": "assets/components",
       "assets": [
         "assets",
         "favicon.ico"

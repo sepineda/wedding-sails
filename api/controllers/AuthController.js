@@ -6,16 +6,34 @@
  */
 
 module.exports = {
-	
+
 
 
   /**
    * `AuthController.login()`
    */
   login: function (req, res) {
-    return res.json({
-      todo: 'login() is not implemented yet!'
-    });
+
+		let email = req.param('email'),
+				password = req.param('password');
+
+		if(!email){
+				return res.badRequest({err: 'invalid email'})
+		}
+
+		if(!password){
+				return res.badRequest({err: 'invalid password'})
+		}
+
+		const loginReq = async () => {
+
+			const user = await User.findOne({ email	});
+
+			return user;
+		}
+
+		loginReq().then( res => res.ok(user))
+			.cath(err => err.serverError(err));
   },
 
 
@@ -28,4 +46,3 @@ module.exports = {
     });
   }
 };
-

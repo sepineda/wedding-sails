@@ -10,10 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var AdminComponent = (function () {
-    function AdminComponent() {
+    function AdminComponent(http) {
+        this.http = http;
     }
     AdminComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.http.get('Wedding')
+            .subscribe(function (result) {
+            //For now just pick the first
+            _this.wedding = result.json()[0];
+            console.log(_this.wedding);
+        });
     };
     AdminComponent = __decorate([
         core_1.Component({
@@ -21,7 +30,7 @@ var AdminComponent = (function () {
             templateUrl: './admin.component.html',
             styleUrls: ['./admin.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.Http])
     ], AdminComponent);
     return AdminComponent;
 }());

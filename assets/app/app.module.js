@@ -9,15 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
-var home_component_1 = require("./home/home.component");
-var navmenu_component_1 = require("./navmenu/navmenu.component");
+var home_component_1 = require("./components/home/home.component");
+var navmenu_component_1 = require("./components/navmenu/navmenu.component");
 var angular2_materialize_1 = require("angular2-materialize");
-var story_card_component_1 = require("./story-card/story-card.component");
-var confirm_component_1 = require("./confirm/confirm.component");
-var admin_component_1 = require("./admin/admin.component");
-var when_where_component_1 = require("./when-where/when-where.component");
-var landing_component_1 = require("./landing/landing.component");
+var story_card_component_1 = require("./components/story-card/story-card.component");
+var confirm_component_1 = require("./components/confirm/confirm.component");
+var admin_component_1 = require("./components/admin/admin.component");
+var when_where_component_1 = require("./components/when-where/when-where.component");
+var landing_component_1 = require("./components/landing/landing.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,14 +37,17 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 angular2_materialize_1.MaterializeModule,
+                http_1.HttpModule,
                 router_1.RouterModule.forRoot([
-                    { path: '', component: landing_component_1.LandingComponent, children: [
+                    {
+                        path: 'boda', component: landing_component_1.LandingComponent, children: [
                             { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
                             { path: 'nuestra-historia', component: home_component_1.HomeComponent },
                             { path: 'donde-y-cuando', component: when_where_component_1.WhenWhereComponent },
                             { path: 'confirmar', component: confirm_component_1.ConfirmComponent },
-                        ] },
-                    { path: 'boda', component: admin_component_1.AdminComponent },
+                        ]
+                    },
+                    { path: 'admin', component: admin_component_1.AdminComponent },
                 ])
             ],
             bootstrap: [app_component_1.AppComponent],
