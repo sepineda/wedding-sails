@@ -19,8 +19,18 @@ module.exports = {
 
       date: { type: 'date' },
 
-      posts: {
+      sections: {
         collection: 'section',
+        via: '_wedding'
+      },
+
+      users: {
+        collection: 'user',
+        via: 'weddings'
+      },
+
+      guests: {
+        collection: 'guest',
         via: '_wedding'
       }
   }

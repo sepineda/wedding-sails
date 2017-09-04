@@ -15,7 +15,12 @@ module.exports = {
 
     email : { type: 'string' },
 
-    password : { type: 'string' }
+    password : { type: 'string' },
+
+    weddings: {
+      model: 'wedding',
+      via: 'users',
+      dominant: true
+    }
   }
 };
-

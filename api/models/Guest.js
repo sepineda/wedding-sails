@@ -18,5 +18,13 @@ module.exports = {
       phone: { type: 'string' },
 
       confirmed: { type: 'boolean' },
+
+      active: { type: 'boolean' },
+
+      _wedding: {
+        model: 'wedding',
+        columnName: 'wedding_id',
+        required: true
+      }
   }
 };

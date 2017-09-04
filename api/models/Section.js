@@ -14,7 +14,7 @@ module.exports = {
 
     _wedding: {
       model: 'wedding',
-      columnName: 'section_id',
+      columnName: 'wedding_id',
       required: true
     }
   }
