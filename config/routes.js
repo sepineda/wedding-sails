@@ -49,7 +49,12 @@ module.exports.routes = {
 
   '/boda/*': '/boda',
 
-  '/admin/*': '/admin'
+  '/admin/*': '/admin',
+
+  '/login': {
+    view: 'homepage',
+    skipAssets: true
+  }
 
   /***************************************************************************
   *                                                                          *

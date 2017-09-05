@@ -16,6 +16,10 @@ import { WhenWhereComponent } from './components/when-where/when-where.component
 import { LandingComponent } from './components/landing/landing.component';
 import { NewGuestComponent } from './components/new-guest/new-guest.component';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,12 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
     WhenWhereComponent,
     LandingComponent,
     NewGuestComponent,
-    GuestListComponent
+    GuestListComponent,
+    LoginComponent
+  ],
+  providers: [
+    AuthGuard,
+    AuthService
   ],
   imports: [
     BrowserModule,
@@ -46,11 +55,12 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
         ]
       },
       {
-        path: 'admin', component: AdminComponent, children: [
+        path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: 'lista', component: GuestListComponent },
           { path: 'invitar', component: NewGuestComponent }
         ]
       },
+      { path: 'login', component: LoginComponent }
       // { path: '**', redirectTo: 'home' }
     ])
   ],

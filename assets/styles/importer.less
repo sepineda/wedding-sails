@@ -13,9 +13,6 @@
  * always omit, customize, or replace this behavior with SASS, SCSS,
  * or any other Grunt tasks you like.)
  */
-
-
-
 // For example:
 //
 // @import 'variables/colors.less';
@@ -28,3 +25,12 @@
 // @import 'pages/signup.less';
 //
 // etc.
+
+body{
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}

@@ -22,6 +22,9 @@ var when_where_component_1 = require("./components/when-where/when-where.compone
 var landing_component_1 = require("./components/landing/landing.component");
 var new_guest_component_1 = require("./components/new-guest/new-guest.component");
 var guest_list_component_1 = require("./components/guest-list/guest-list.component");
+var login_component_1 = require("./components/login/login.component");
+var auth_service_1 = require("./services/auth.service");
+var auth_guard_1 = require("./services/auth.guard");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,7 +40,12 @@ var AppModule = (function () {
                 when_where_component_1.WhenWhereComponent,
                 landing_component_1.LandingComponent,
                 new_guest_component_1.NewGuestComponent,
-                guest_list_component_1.GuestListComponent
+                guest_list_component_1.GuestListComponent,
+                login_component_1.LoginComponent
+            ],
+            providers: [
+                auth_guard_1.AuthGuard,
+                auth_service_1.AuthService
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -55,11 +63,13 @@ var AppModule = (function () {
                         ]
                     },
                     {
-                        path: 'admin', component: admin_component_1.AdminComponent, children: [
+                        path: 'admin', component: admin_component_1.AdminComponent, canActivate: [auth_guard_1.AuthGuard], children: [
                             { path: 'lista', component: guest_list_component_1.GuestListComponent },
                             { path: 'invitar', component: new_guest_component_1.NewGuestComponent }
                         ]
                     },
+                    { path: 'login', component: login_component_1.LoginComponent }
+                    // { path: '**', redirectTo: 'home' }
                 ])
             ],
             bootstrap: [app_component_1.AppComponent],
