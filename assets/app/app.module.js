@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
 var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./components/home/home.component");
 var navmenu_component_1 = require("./components/navmenu/navmenu.component");
@@ -42,6 +43,7 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 angular2_materialize_1.MaterializeModule,
                 http_1.HttpModule,
+                forms_1.ReactiveFormsModule,
                 router_1.RouterModule.forRoot([
                     { path: '', redirectTo: 'boda', pathMatch: 'full' },
                     {
@@ -52,9 +54,12 @@ var AppModule = (function () {
                             { path: 'confirmar', component: confirm_component_1.ConfirmComponent },
                         ]
                     },
-                    { path: 'admin', component: admin_component_1.AdminComponent, children: [
-                            { path: 'lista', component: guest_list_component_1.GuestListComponent }
-                        ] },
+                    {
+                        path: 'admin', component: admin_component_1.AdminComponent, children: [
+                            { path: 'lista', component: guest_list_component_1.GuestListComponent },
+                            { path: 'invitar', component: new_guest_component_1.NewGuestComponent }
+                        ]
+                    },
                 ])
             ],
             bootstrap: [app_component_1.AppComponent],

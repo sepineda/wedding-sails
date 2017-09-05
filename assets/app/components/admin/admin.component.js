@@ -21,7 +21,6 @@ var AdminComponent = (function () {
             .subscribe(function (result) {
             //For now just pick the first
             _this.wedding = result.json()[0];
-            console.log(_this.wedding);
         });
     };
     AdminComponent = __decorate([

@@ -16,6 +16,11 @@ var GuestListComponent = (function () {
         this.http = http;
     }
     GuestListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.http.get('Guest')
+            .subscribe(function (result) {
+            _this.guests = result.json();
+        });
     };
     GuestListComponent = __decorate([
         core_1.Component({

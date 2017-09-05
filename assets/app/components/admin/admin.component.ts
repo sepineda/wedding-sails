@@ -20,7 +20,6 @@ export class AdminComponent implements OnInit {
         //For now just pick the first
         this.wedding = result.json()[0];
 
-        console.log(this.wedding)
       });
   }
 

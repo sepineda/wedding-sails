@@ -14,6 +14,10 @@ export class GuestListComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit() {
+    this.http.get('Guest')
+      .subscribe(result => {
+        this.guests = result.json();
+      });
   }
 
 }

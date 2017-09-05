@@ -5,9 +5,11 @@ export interface Guest{
 
   email: string,
 
-  phone: string,
+  phone?: string,
 
-  confirmed: boolean,
+  confirmed?: boolean,
 
-  active: boolean
+  active: boolean,
+
+  _wedding: string
 }

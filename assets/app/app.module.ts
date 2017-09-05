@@ -2,6 +2,7 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import {ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent }   from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -33,8 +34,9 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
     BrowserModule,
     MaterializeModule,
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'boda', pathMatch: 'full'},
+      { path: '', redirectTo: 'boda', pathMatch: 'full' },
       {
         path: 'boda', component: LandingComponent, children: [
           { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
@@ -43,9 +45,12 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
           { path: 'confirmar', component: ConfirmComponent },
         ]
       },
-      { path: 'admin', component: AdminComponent, children: [
-        { path: 'lista', component: GuestListComponent }
-      ] },
+      {
+        path: 'admin', component: AdminComponent, children: [
+          { path: 'lista', component: GuestListComponent },
+          { path: 'invitar', component: NewGuestComponent }
+        ]
+      },
       // { path: '**', redirectTo: 'home' }
     ])
   ],
