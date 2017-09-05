@@ -15,15 +15,16 @@ require("rxjs/add/operator/map");
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isLoggedIn = false;
     }
     AuthService.prototype.login = function (name, password) {
-        return this.http.post('auth', { email: name, password: password })
+        return this.http.post('auth/login', { email: name, password: password })
             .map(function (result) {
+            console.log('yes');
             var user = result.json();
-            if (user && user.token) {
+            if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
             }
+            return user;
         });
     };
     AuthService.prototype.logout = function () {

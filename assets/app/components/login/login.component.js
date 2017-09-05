@@ -10,10 +10,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
+var auth_service_1 = require("../../services/auth.service");
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(http, fb, authService, router, route) {
+        this.http = http;
+        this.fb = fb;
+        this.authService = authService;
+        this.router = router;
+        this.route = route;
+        this.loading = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this.form = this.fb.group({
+            password: ['', forms_1.Validators.required],
+            email: ['', forms_1.Validators.required]
+        });
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    };
+    LoginComponent.prototype.onSubmit = function () {
+        var _this = this;
+        if (this.form.valid) {
+            var model = this.form.value;
+            var user = { email: model.email, password: model.password };
+            this.authService.login(user.email, model.password)
+                .subscribe(function (data) {
+                _this.router.navigate([_this.returnUrl]);
+            }, function (error) {
+                _this.status.color = 'red';
+                _this.status.message = error;
+            });
+        }
+        else {
+        }
     };
     LoginComponent = __decorate([
         core_1.Component({
@@ -21,7 +53,11 @@ var LoginComponent = (function () {
             templateUrl: './login.component.html',
             styleUrls: ['./login.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.Http,
+            forms_1.FormBuilder,
+            auth_service_1.AuthService,
+            router_1.Router,
+            router_1.ActivatedRoute])
     ], LoginComponent);
     return LoginComponent;
 }());

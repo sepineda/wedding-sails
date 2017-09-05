@@ -10,19 +10,19 @@ export class AuthService {
 
   constructor(private http: Http) { }
 
-  isLoggedIn = false;
-
   redirectUrl: string;
 
   login(name: string, password: string) {
 
-    return this.http.post('auth', { email: name, password: password })
+    return this.http.post('auth/login', { email: name, password: password })
       .map((result: Response) => {
         let user = result.json();
 
-        if (user && user.token) {
+        if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
+
+        return user;
       });
   }
 
