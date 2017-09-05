@@ -19,6 +19,8 @@ var confirm_component_1 = require("./components/confirm/confirm.component");
 var admin_component_1 = require("./components/admin/admin.component");
 var when_where_component_1 = require("./components/when-where/when-where.component");
 var landing_component_1 = require("./components/landing/landing.component");
+var new_guest_component_1 = require("./components/new-guest/new-guest.component");
+var guest_list_component_1 = require("./components/guest-list/guest-list.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,13 +34,16 @@ var AppModule = (function () {
                 confirm_component_1.ConfirmComponent,
                 admin_component_1.AdminComponent,
                 when_where_component_1.WhenWhereComponent,
-                landing_component_1.LandingComponent
+                landing_component_1.LandingComponent,
+                new_guest_component_1.NewGuestComponent,
+                guest_list_component_1.GuestListComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 angular2_materialize_1.MaterializeModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
+                    { path: '', redirectTo: 'boda', pathMatch: 'full' },
                     {
                         path: 'boda', component: landing_component_1.LandingComponent, children: [
                             { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
@@ -47,7 +52,9 @@ var AppModule = (function () {
                             { path: 'confirmar', component: confirm_component_1.ConfirmComponent },
                         ]
                     },
-                    { path: 'admin', component: admin_component_1.AdminComponent },
+                    { path: 'admin', component: admin_component_1.AdminComponent, children: [
+                            { path: 'lista', component: guest_list_component_1.GuestListComponent }
+                        ] },
                 ])
             ],
             bootstrap: [app_component_1.AppComponent],

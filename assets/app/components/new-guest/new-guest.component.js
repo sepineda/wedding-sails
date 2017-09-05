@@ -10,25 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var StoryCardComponent = (function () {
-    function StoryCardComponent() {
+var http_1 = require("@angular/http");
+var NewGuestComponent = (function () {
+    function NewGuestComponent(http) {
+        this.http = http;
     }
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], StoryCardComponent.prototype, "header", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], StoryCardComponent.prototype, "story", void 0);
-    StoryCardComponent = __decorate([
+    NewGuestComponent.prototype.ngOnInit = function () {
+    };
+    NewGuestComponent = __decorate([
         core_1.Component({
-            selector: 'story-card',
-            templateUrl: './story-card.component.html',
-            styleUrls: ['./story-card.component.css']
-        })
-    ], StoryCardComponent);
-    return StoryCardComponent;
+            selector: 'app-new-guest',
+            templateUrl: './new-guest.component.html',
+            styleUrls: ['./new-guest.component.css']
+        }),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], NewGuestComponent);
+    return NewGuestComponent;
 }());
-exports.StoryCardComponent = StoryCardComponent;
-//# sourceMappingURL=story-card.component.js.map
+exports.NewGuestComponent = NewGuestComponent;
+//# sourceMappingURL=new-guest.component.js.map

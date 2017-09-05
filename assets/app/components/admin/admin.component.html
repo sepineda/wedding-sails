@@ -1,27 +1,26 @@
 <ul id="slide-out" class="side-nav fixed">
-  <!-- <li>
+  <li>
     <div class="user-view">
-      <div class="background">
-        <img src="images/office.jpg">
+      <div class="background card-panel teal lighten-2">
+        <!-- <img src="images/office.jpg"> -->
       </div>
-      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!name"><span class="white-text name">Eduardo Pineda</span></a>
       <a href="#!email"><span class="white-text email">sepineda@gmail.com</span></a>
     </div>
-  </li> -->
+  </li>
 
-  <li><a href="#!"> <i class="material-icons">add</i>Nueva seccion</a></li>
-  <li><a href="#!"> <i class="material-icons">settings</i> Configuracion</a></li>
+  <li><a href="#!"> <i class="material-icons">add</i>Nueva Seccion</a></li>
+  <li><a href="#!"> <i class="material-icons">person</i>Nuevo Invitado</a></li>
+  <li routerLinkActive='active'><a routerLink='lista' > <i class="material-icons">list</i>Invitados</a></li>
 
   <li>
     <div class="divider"></div>
   </li>
-  <li><a class="subheader">Invitados</a></li>
+  <li><a class="subheader">Configuracion</a></li>
 
-  <li><a href="#!"> <i class="material-icons">list</i>Lista</a></li>
+
 
 </ul>
 <main>
-  <div *ngIf="wedding">
-    {{wedding.name}}
-  </div>
+  <router-outlet></router-outlet>
 </main>

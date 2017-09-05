@@ -32,6 +32,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  '/': {
+    view: 'homepage',
+    skipAssets: true
+  },
+
   '/boda': {
     view: 'homepage',
     skipAssets: true
@@ -41,6 +46,10 @@ module.exports.routes = {
     view: 'homepage',
     skipAssets: true
   },
+
+  '/boda/*': '/boda',
+
+  '/admin/*': '/admin'
 
   /***************************************************************************
   *                                                                          *

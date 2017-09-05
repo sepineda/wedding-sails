@@ -5,14 +5,15 @@
   },
   "apps": [
     {
-      "root": "assets/components",
+      "root": "assets",
+      "outDir": "components",
       "assets": [
         "assets",
         "favicon.ico"
       ],
       "main": "main.ts",
       "tsconfig": "../tsconfig.app.json",
-      "prefix": "app",
+      "prefix": "wedding",
       "scripts": []
     }
   ],

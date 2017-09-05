@@ -13,6 +13,8 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { WhenWhereComponent } from './components/when-where/when-where.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { NewGuestComponent } from './components/new-guest/new-guest.component';
+import { GuestListComponent } from './components/guest-list/guest-list.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,16 @@ import { LandingComponent } from './components/landing/landing.component';
     ConfirmComponent,
     AdminComponent,
     WhenWhereComponent,
-    LandingComponent
+    LandingComponent,
+    NewGuestComponent,
+    GuestListComponent
   ],
   imports: [
     BrowserModule,
     MaterializeModule,
     HttpModule,
     RouterModule.forRoot([
+      { path: '', redirectTo: 'boda', pathMatch: 'full'},
       {
         path: 'boda', component: LandingComponent, children: [
           { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
@@ -38,7 +43,9 @@ import { LandingComponent } from './components/landing/landing.component';
           { path: 'confirmar', component: ConfirmComponent },
         ]
       },
-      { path: 'admin', component: AdminComponent },
+      { path: 'admin', component: AdminComponent, children: [
+        { path: 'lista', component: GuestListComponent }
+      ] },
       // { path: '**', redirectTo: 'home' }
     ])
   ],
