@@ -1,12 +1,22 @@
 <header>
-  <ul id="slide-out" class="side-nav fixed">
+
+  <nav class="top-nav light-blue lighten-2">
+
+    <div>
+      <a materialize="sideNav" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+      <i class="material-icons">menu</i>
+    </a>
+    </div>
+
+    <div class="container">
+      <div class="nav-wrapper">
+        <a class="page-title">{{category}}</a>
+      </div>
+    </div>
+  </nav>
+
+  <ul id="nav-mobile" class="side-nav fixed">
     <li>
-
-      <!-- <li class="logo">
-      <a class="brand-logo"><span class="name">{{user.first_name + ' ' + user.last_name}}</span></a>
-      <a ><span class="email">{{user.email}}</span></a>
-    </li> -->
-
       <div class="user-view">
         <div class="background">
           <img class="responsive-img" src="images/wedding-sample.jpg">
@@ -23,9 +33,7 @@
 
     </li>
 
-    <li><a href="#!"> <i class="material-icons">add</i>Nueva Seccion</a></li>
-    <li routerLinkActive='active light-blue lighten-3'><a routerLink="invitar"> <i class="material-icons">person</i>Nuevo Invitado</a></li>
-    <li routerLinkActive='active light-blue lighten-3'><a routerLink='lista'> <i class="material-icons">list</i>Invitados</a></li>
+    <li *ngFor="let cat of categories" routerLinkActive="active light-blue lighten-4"><a (click)="changeCategory(cat)" routerLink="{{cat.route}}"> <i class="material-icons">{{cat.icon}}</i>{{cat.name}}</a></li>
 
     <li>
       <div class="divider"></div>

@@ -1,10 +1,10 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule  } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
-import { AppComponent }   from './app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 
@@ -21,6 +21,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 
+import 'materialize-css';
+import { NewSectionComponent } from './components/new-section/new-section.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,8 @@ import { AuthGuard } from './services/auth.guard';
     LandingComponent,
     NewGuestComponent,
     GuestListComponent,
-    LoginComponent
+    LoginComponent,
+    NewSectionComponent
   ],
   providers: [
     AuthGuard,
@@ -47,7 +51,7 @@ import { AuthGuard } from './services/auth.guard';
     RouterModule.forRoot([
       { path: '', redirectTo: 'boda', pathMatch: 'full' },
       {
-        path: 'boda', component: LandingComponent, children: [
+        path: 'boda', component: LandingComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
           { path: 'nuestra-historia', component: HomeComponent },
           { path: 'donde-y-cuando', component: WhenWhereComponent },
@@ -56,6 +60,8 @@ import { AuthGuard } from './services/auth.guard';
       },
       {
         path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+          { path: '', redirectTo: 'lista', pathMatch: 'full' },
+          { path: 'nueva-seccion', component: NewSectionComponent },
           { path: 'lista', component: GuestListComponent },
           { path: 'invitar', component: NewGuestComponent }
         ]

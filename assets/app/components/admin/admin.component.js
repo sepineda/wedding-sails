@@ -11,25 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+require("rxjs/add/operator/switchMap");
 var AdminComponent = (function () {
     function AdminComponent(http) {
         this.http = http;
+        this.category = 'Invitados';
+        this.categories = [];
+        this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
+        this.categories.push({ name: 'Nuevo Invitado', route: '/admin/invitar', icon: 'person_add' });
+        this.categories.push({ name: 'Invitados', route: '/admin//lista', icon: 'list' });
     }
     AdminComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.user = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.user);
         this.http.get('Wedding')
             .subscribe(function (result) {
             //For now just pick the first
             _this.wedding = result.json()[0];
         });
     };
+    AdminComponent.prototype.changeCategory = function (cat) {
+        this.category = cat.name;
+    };
     AdminComponent = __decorate([
         core_1.Component({
             selector: 'admin',
             templateUrl: './admin.component.html',
-            styleUrls: ['./admin.component.css']
+            styleUrls: ['./admin.component.scss']
         }),
         __metadata("design:paramtypes", [http_1.Http])
     ], AdminComponent);

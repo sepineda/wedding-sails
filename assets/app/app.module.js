@@ -25,6 +25,8 @@ var guest_list_component_1 = require("./components/guest-list/guest-list.compone
 var login_component_1 = require("./components/login/login.component");
 var auth_service_1 = require("./services/auth.service");
 var auth_guard_1 = require("./services/auth.guard");
+require("materialize-css");
+var new_section_component_1 = require("./components/new-section/new-section.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,7 +43,8 @@ var AppModule = (function () {
                 landing_component_1.LandingComponent,
                 new_guest_component_1.NewGuestComponent,
                 guest_list_component_1.GuestListComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                new_section_component_1.NewSectionComponent
             ],
             providers: [
                 auth_guard_1.AuthGuard,
@@ -55,7 +58,7 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([
                     { path: '', redirectTo: 'boda', pathMatch: 'full' },
                     {
-                        path: 'boda', component: landing_component_1.LandingComponent, children: [
+                        path: 'boda', component: landing_component_1.LandingComponent, canActivate: [auth_guard_1.AuthGuard], children: [
                             { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
                             { path: 'nuestra-historia', component: home_component_1.HomeComponent },
                             { path: 'donde-y-cuando', component: when_where_component_1.WhenWhereComponent },
@@ -64,6 +67,8 @@ var AppModule = (function () {
                     },
                     {
                         path: 'admin', component: admin_component_1.AdminComponent, canActivate: [auth_guard_1.AuthGuard], children: [
+                            { path: '', redirectTo: 'lista', pathMatch: 'full' },
+                            { path: 'nueva-seccion', component: new_section_component_1.NewSectionComponent },
                             { path: 'lista', component: guest_list_component_1.GuestListComponent },
                             { path: 'invitar', component: new_guest_component_1.NewGuestComponent }
                         ]
