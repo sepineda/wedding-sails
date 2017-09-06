@@ -9,18 +9,44 @@ module.exports = {
 
   attributes: {
 
-    first_name : { type: 'string' },
+    first_name: {
+      type: 'string'
+    },
 
-    last_name : { type: 'string' },
+    last_name: {
+      type: 'string'
+    },
 
-    email : { type: 'string' },
+    email: {
+      type: 'string'
+    },
 
-    password : { type: 'string' },
+    password: {
+      type: 'string'
+    },
 
     weddings: {
       model: 'wedding',
       via: 'users',
       dominant: true
     }
+  },
+
+  checkPassword(password, encPassword) {
+    const mPack = require('machinepack-passwords');
+
+    return new Promise((resolve, reject) => {
+
+        mPack.checkPassword({
+          passwordAttempt: password,
+          encryptedPassword: encPassword
+        })
+        .exec({
+            error: err => reject(err),
+            incorrect: () => resolve(false),
+            success: () => resolve(true)
+
+        });
+    });
   }
 };

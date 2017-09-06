@@ -19,9 +19,8 @@ var AuthService = (function () {
     AuthService.prototype.login = function (name, password) {
         return this.http.post('auth/login', { email: name, password: password })
             .map(function (result) {
-            console.log('yes');
             var user = result.json();
-            if (user) {
+            if (user && user.token) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
             }
             return user;

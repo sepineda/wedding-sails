@@ -35,14 +35,30 @@ module.exports = {
       const user = await User.findOne({
         email
       });
-      return user;
+
+      const isMatched = await User.checkPassword(password, user.password);
+
+      if(!isMatched){
+        throw new Error('Su password no es correcto');
+      }
+
+      let resp = {
+        user
+      };
+
+      let token = JwtService.issue({
+        user,
+        expiresIn: '1d'
+      });
+
+      resp.token = token;
+
+      return resp;
     }
 
 
     loginReq().then(user => res.ok(user))
-      .catch(err => {
-        res.serverError(err)
-      });
+      .catch(err => res.forbidden(err));
   },
 
 

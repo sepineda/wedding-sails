@@ -18,7 +18,7 @@ export class AuthService {
       .map((result: Response) => {
         let user = result.json();
 
-        if (user) {
+        if (user && user.token) {
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
 
