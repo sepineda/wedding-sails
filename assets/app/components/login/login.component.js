@@ -21,6 +21,7 @@ var LoginComponent = (function () {
         this.authService = authService;
         this.router = router;
         this.route = route;
+        this.status = { color: 'green', message: '' };
         this.loading = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -28,8 +29,10 @@ var LoginComponent = (function () {
             password: ['', forms_1.Validators.required],
             email: ['', forms_1.Validators.required]
         });
+        // reset login status
+        this.authService.logout();
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
     };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;

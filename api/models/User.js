@@ -32,7 +32,15 @@ module.exports = {
     }
   },
 
+  /**
+   *
+   * @param password
+   * @param encPassword
+   * @return {Promise}
+   */
+
   checkPassword(password, encPassword) {
+
     const mPack = require('machinepack-passwords');
 
     return new Promise((resolve, reject) => {

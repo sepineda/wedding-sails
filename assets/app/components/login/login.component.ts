@@ -14,15 +14,15 @@ import { Status } from '../../models/status';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  status: Status;
+  status: Status = { color: 'green', message: ''};
   loading = false;
   returnUrl: string;
 
   constructor(private http: Http,
-      private fb: FormBuilder,
-      private authService: AuthService,
-      private router: Router,
-      private route: ActivatedRoute) { }
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -30,9 +30,10 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', Validators.required]
     });
-
+    // reset login status
+    this.authService.logout();
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
   }
 
   onSubmit() {
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.status.color = 'red';
           this.status.message = error;
         }
-      );
+        );
 
     } else {
     }

@@ -1,26 +1,39 @@
-<ul id="slide-out" class="side-nav fixed">
-  <li>
-    <div class="user-view">
-      <div class="background card-panel teal lighten-2">
-        <!-- <img src="images/office.jpg"> -->
+<header>
+  <ul id="slide-out" class="side-nav fixed">
+    <li>
+
+      <!-- <li class="logo">
+      <a class="brand-logo"><span class="name">{{user.first_name + ' ' + user.last_name}}</span></a>
+      <a ><span class="email">{{user.email}}</span></a>
+    </li> -->
+
+      <div class="user-view">
+        <div class="background">
+          <img class="responsive-img" src="images/wedding-sample.jpg">
+        </div>
+        <!-- <a><span class="white-text name">{{user.first_name + ' ' + user.last_name}}</span></a> -->
+        <a materialize="dropdown" class='dropdown-button btn transparent name' href='#' data-activates='dropdown1'>{{user.first_name + ' ' + user.last_name}}<i class="material-icons right">arrow_drop_down</i> </a>
+        <a><span class="white-text email">{{user.email}}</span></a>
+
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a [routerLink]="['/login']"><i class="material-icons tiny">cancel</i> salir</a></li>
+        </ul>
       </div>
-      <a href="#!name"><span class="white-text name">Eduardo Pineda</span></a>
-      <a href="#!email"><span class="white-text email">sepineda@gmail.com</span></a>
-    </div>
-  </li>
 
-  <li><a href="#!"> <i class="material-icons">add</i>Nueva Seccion</a></li>
-  <li routerLinkActive='active'><a routerLink="invitar"> <i class="material-icons">person</i>Nuevo Invitado</a></li>
-  <li routerLinkActive='active'><a routerLink='lista' > <i class="material-icons">list</i>Invitados</a></li>
+    </li>
 
-  <li>
-    <div class="divider"></div>
-  </li>
-  <li><a class="subheader">Configuracion</a></li>
+    <li><a href="#!"> <i class="material-icons">add</i>Nueva Seccion</a></li>
+    <li routerLinkActive='active light-blue lighten-3'><a routerLink="invitar"> <i class="material-icons">person</i>Nuevo Invitado</a></li>
+    <li routerLinkActive='active light-blue lighten-3'><a routerLink='lista'> <i class="material-icons">list</i>Invitados</a></li>
 
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Configuracion</a></li>
+  </ul>
+</header>
 
-
-</ul>
 <main>
   <router-outlet></router-outlet>
 </main>
