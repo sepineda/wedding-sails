@@ -68,7 +68,7 @@ import { NewSectionComponent } from './components/new-section/new-section.compon
       },
       { path: 'login', component: LoginComponent }
       // { path: '**', redirectTo: 'home' }
-    ])
+    ], {useHash: true})
   ],
   bootstrap: [AppComponent],
 })

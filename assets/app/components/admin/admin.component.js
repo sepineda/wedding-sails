@@ -11,10 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-require("rxjs/add/operator/switchMap");
+var router_1 = require("@angular/router");
 var AdminComponent = (function () {
-    function AdminComponent(http) {
+    function AdminComponent(http, router) {
         this.http = http;
+        this.router = router;
         this.category = 'Invitados';
         this.categories = [];
         this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
@@ -29,6 +30,13 @@ var AdminComponent = (function () {
             //For now just pick the first
             _this.wedding = result.json()[0];
         });
+        //Get route info
+        var tree = this.router.parseUrl(this.router.url);
+        var g = tree.root.children[router_1.PRIMARY_OUTLET];
+        var cat = this.categories.filter(function (c) { return c.name === g.segments[0].toString(); })[0];
+        if (cat) {
+            this.category = cat.name;
+        }
     };
     AdminComponent.prototype.changeCategory = function (cat) {
         this.category = cat.name;
@@ -39,7 +47,7 @@ var AdminComponent = (function () {
             templateUrl: './admin.component.html',
             styleUrls: ['./admin.component.scss']
         }),
-        __metadata("design:paramtypes", [http_1.Http])
+        __metadata("design:paramtypes", [http_1.Http, router_1.Router])
     ], AdminComponent);
     return AdminComponent;
 }());

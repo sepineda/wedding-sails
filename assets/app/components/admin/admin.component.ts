@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { MaterializeDirective } from "angular2-materialize";
 import { Subscription } from 'rxjs/Subscription';
+import { Router, ActivatedRoute, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup } from '@angular/router';
 
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
 import { Category } from '../../models/category';
-
-import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'admin',
@@ -22,7 +21,7 @@ export class AdminComponent implements OnInit {
   private category: string = 'Invitados';
   private categories: Category[] = [];
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
     this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
     this.categories.push({ name: 'Nuevo Invitado', route: '/admin/invitar', icon: 'person_add' });
     this.categories.push({ name: 'Invitados', route: '/admin//lista', icon: 'list' });
@@ -37,6 +36,14 @@ export class AdminComponent implements OnInit {
         this.wedding = result.json()[0];
 
       });
+
+      //Get route info
+      var tree: UrlTree = this.router.parseUrl(this.router.url);
+      const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+      var cat: Category = this.categories.filter(c => c.name === g.segments[0].toString() )[0];
+      if (cat) {
+          this.category = cat.name;
+      }
   }
 
   changeCategory(cat: Category){

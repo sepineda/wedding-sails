@@ -75,7 +75,7 @@ var AppModule = (function () {
                     },
                     { path: 'login', component: login_component_1.LoginComponent }
                     // { path: '**', redirectTo: 'home' }
-                ])
+                ], { useHash: true })
             ],
             bootstrap: [app_component_1.AppComponent],
         })
