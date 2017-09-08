@@ -21,6 +21,8 @@ var AdminComponent = (function () {
         this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
         this.categories.push({ name: 'Nuevo Invitado', route: '/admin/invitar', icon: 'person_add' });
         this.categories.push({ name: 'Invitados', route: '/admin//lista', icon: 'list' });
+        this.sidenavActions = new core_1.EventEmitter();
+        this.sidenavParams = [];
     }
     AdminComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -40,6 +42,8 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.changeCategory = function (cat) {
         this.category = cat.name;
+        this.sidenavParams = ['hide'];
+        this.sidenavActions.emit('sideNav');
     };
     AdminComponent = __decorate([
         core_1.Component({

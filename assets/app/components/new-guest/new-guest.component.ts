@@ -30,6 +30,7 @@ export class NewGuestComponent implements OnInit {
   onSubmit() {
 
     if (this.form.valid) {
+          console.log('yes')
       const formModel = this.form.value;
 
       let newGuest: Guest = {

@@ -29,6 +29,7 @@ var NewGuestComponent = (function () {
     NewGuestComponent.prototype.onSubmit = function () {
         var _this = this;
         if (this.form.valid) {
+            console.log('yes');
             var formModel = this.form.value;
             var newGuest = {
                 first_name: formModel.first_name,
