@@ -21,6 +21,10 @@ module.exports = {
 
       active: { type: 'boolean' },
 
+      spaces: { type: 'integer' },
+
+      status: { type: 'string' },
+
       _wedding: {
         model: 'wedding',
         columnName: 'wedding_id',

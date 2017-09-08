@@ -22,6 +22,11 @@ var GuestListComponent = (function () {
             _this.guests = result.json();
         });
     };
+    GuestListComponent.prototype.getGuestSpaces = function () {
+        return this.guests.map(function (guest) { return guest.spaces; }).reduce(function (total, num) {
+            return total + num;
+        });
+    };
     GuestListComponent = __decorate([
         core_1.Component({
             selector: 'app-guest-list',

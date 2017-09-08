@@ -9,6 +9,10 @@ export interface Guest {
 
   confirmed?: boolean,
 
+  spaces?: number,
+
+  status?: string;
+
   active: boolean,
 
   _wedding: string

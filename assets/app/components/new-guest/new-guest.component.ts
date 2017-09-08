@@ -21,6 +21,7 @@ export class NewGuestComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      spaces: [1, [Validators.required, Validators.min(1)]],
       phone: ''
     });
 
@@ -30,7 +31,6 @@ export class NewGuestComponent implements OnInit {
   onSubmit() {
 
     if (this.form.valid) {
-          console.log('yes')
       const formModel = this.form.value;
 
       let newGuest: Guest = {
@@ -38,6 +38,7 @@ export class NewGuestComponent implements OnInit {
         last_name: formModel.last_name as string,
         phone: formModel.phone as string,
         email: formModel.email as string,
+        spaces: formModel.spaces as number,
         active: true,
         _wedding: '59ad8bd0a48dace266f1935d'
       }
@@ -51,5 +52,23 @@ export class NewGuestComponent implements OnInit {
       this.status.color = 'red-text';
       this.status.message = 'Por favor complete los campos requeridos';
     }
+  }
+
+  isAttributeInvalid( name: string){
+
+    let model = this.form.get(name);
+    return model.invalid && (model.dirty || model.touched);
+  }
+
+  isEmailValid(){
+    return !!this.form.get('email').errors.email;
+  }
+
+  isRequiredValid(name: string){
+    return !!this.form.get(name).errors.required;
+  }
+
+  isMinimumSpaceValid(){
+    return !!this.form.get('spaces').errors.min;
   }
 }

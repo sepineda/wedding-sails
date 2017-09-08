@@ -22,6 +22,7 @@ var NewGuestComponent = (function () {
             first_name: ['', forms_1.Validators.required],
             last_name: ['', forms_1.Validators.required],
             email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
+            spaces: [1, [forms_1.Validators.required, forms_1.Validators.min(1)]],
             phone: ''
         });
         this.status = { color: 'white-text', message: '' };
@@ -29,13 +30,13 @@ var NewGuestComponent = (function () {
     NewGuestComponent.prototype.onSubmit = function () {
         var _this = this;
         if (this.form.valid) {
-            console.log('yes');
             var formModel = this.form.value;
             var newGuest = {
                 first_name: formModel.first_name,
                 last_name: formModel.last_name,
                 phone: formModel.phone,
                 email: formModel.email,
+                spaces: formModel.spaces,
                 active: true,
                 _wedding: '59ad8bd0a48dace266f1935d'
             };
@@ -49,6 +50,19 @@ var NewGuestComponent = (function () {
             this.status.color = 'red-text';
             this.status.message = 'Por favor complete los campos requeridos';
         }
+    };
+    NewGuestComponent.prototype.isAttributeInvalid = function (name) {
+        var model = this.form.get(name);
+        return model.invalid && (model.dirty || model.touched);
+    };
+    NewGuestComponent.prototype.isEmailValid = function () {
+        return !!this.form.get('email').errors.email;
+    };
+    NewGuestComponent.prototype.isRequiredValid = function (name) {
+        return !!this.form.get(name).errors.required;
+    };
+    NewGuestComponent.prototype.isMinimumSpaceValid = function () {
+        return !!this.form.get('spaces').errors.min;
     };
     NewGuestComponent = __decorate([
         core_1.Component({

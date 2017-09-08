@@ -19,6 +19,8 @@ module.exports = {
 
       date: { type: 'date' },
 
+      maxGuestNumber: { type: 'integer' },
+
       sections: {
         collection: 'section',
         via: '_wedding'

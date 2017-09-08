@@ -20,4 +20,9 @@ export class GuestListComponent implements OnInit {
       });
   }
 
+  getGuestSpaces(){
+    return this.guests.map( guest => guest.spaces ).reduce( (total, num) =>{
+        return total + num;
+    });
+  }
 }
