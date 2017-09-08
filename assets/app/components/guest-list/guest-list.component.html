@@ -13,12 +13,12 @@
   </div>
 
   <div class="row">
-    <ul class="collection">
-      <li class="collection-item" *ngFor="let guest of guests">
+    <div class="collection">
+      <a class="collection-item" *ngFor="let guest of guests" [routerLink]="['/admin/editar-invitado', guest.id]">
         {{guest.first_name + ' ' + guest.last_name}}
         <span *ngIf="guest.spaces === 1" class="badge light-blue-text" data-badge-caption="espacio">{{guest.spaces}}</span>
-        <span *ngIf="guest.spaces > 1" class="badge light-blue-text" data-badge-caption="espacio">{{guest.spaces}}</span>
-      </li>
-    </ul>
+        <span *ngIf="guest.spaces > 1" class="badge light-blue-text" data-badge-caption="espacios">{{guest.spaces}}</span>
+      </a>
+    </div>
   </div>
 </div>

@@ -63,11 +63,11 @@ import { NewSectionComponent } from './components/new-section/new-section.compon
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
           { path: 'nueva-seccion', component: NewSectionComponent },
           { path: 'lista', component: GuestListComponent },
-          { path: 'invitar', component: NewGuestComponent }
+          { path: 'invitar', component: NewGuestComponent },
+          { path: 'editar-invitado/:guest_id', component: NewGuestComponent }
         ]
       },
       { path: 'login', component: LoginComponent }
-      // { path: '**', redirectTo: 'home' }
     ], {useHash: true})
   ],
   bootstrap: [AppComponent],

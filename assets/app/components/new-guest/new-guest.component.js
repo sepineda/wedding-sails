@@ -12,12 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/map");
 var NewGuestComponent = (function () {
-    function NewGuestComponent(http, fb) {
+    function NewGuestComponent(http, fb, route) {
         this.http = http;
         this.fb = fb;
+        this.route = route;
     }
     NewGuestComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.form = this.fb.group({
             first_name: ['', forms_1.Validators.required],
             last_name: ['', forms_1.Validators.required],
@@ -26,6 +30,29 @@ var NewGuestComponent = (function () {
             phone: ''
         });
         this.status = { color: 'white-text', message: '' };
+        this.editMode = false;
+        this.paramsSub = this.route.params
+            .map(function (params) { return params['guest_id']; })
+            .subscribe(function (guest_id) {
+            console.log(guest_id);
+            if (guest_id) {
+                _this.editMode = true;
+                _this.http.get('Guest/' + guest_id)
+                    .subscribe(function (result) {
+                    _this.guest = result.json();
+                    _this.fillFormWithGuest();
+                });
+            }
+        });
+    };
+    NewGuestComponent.prototype.fillFormWithGuest = function () {
+        this.form.setValue({
+            first_name: this.guest.first_name,
+            last_name: this.guest.last_name,
+            email: this.guest.email,
+            phone: this.guest.phone,
+            spaces: this.guest.spaces
+        });
     };
     NewGuestComponent.prototype.onSubmit = function () {
         var _this = this;
@@ -40,11 +67,27 @@ var NewGuestComponent = (function () {
                 active: true,
                 _wedding: '59ad8bd0a48dace266f1935d'
             };
-            this.http.post('Guest', newGuest)
-                .subscribe(function (result) {
-                _this.status.color = 'green-text';
-                _this.status.message = 'Nuevo invitado agregado exitosamente';
-            });
+            if (this.editMode) {
+                var bodyString = JSON.stringify(newGuest); // Stringify payload
+                var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+                var options = new http_1.RequestOptions({ headers: headers });
+                this.http.put('guest/' + this.guest.id, bodyString, options)
+                    .map(function (res) { return res.json(); })
+                    .subscribe(function (data) {
+                    _this.status.color = 'green-text';
+                    _this.status.message = 'Actualizado correctamente';
+                }, function (error) {
+                    _this.status.color = 'red-text';
+                    _this.status.message = error;
+                });
+            }
+            else {
+                this.http.post('Guest', newGuest)
+                    .subscribe(function (result) {
+                    _this.status.color = 'green-text';
+                    _this.status.message = 'Nuevo invitado agregado exitosamente';
+                });
+            }
         }
         else {
             this.status.color = 'red-text';
@@ -64,13 +107,16 @@ var NewGuestComponent = (function () {
     NewGuestComponent.prototype.isMinimumSpaceValid = function () {
         return !!this.form.get('spaces').errors.min;
     };
+    NewGuestComponent.prototype.ngOnDestroy = function () {
+        this.paramsSub.unsubscribe();
+    };
     NewGuestComponent = __decorate([
         core_1.Component({
             selector: 'app-new-guest',
             templateUrl: './new-guest.component.html',
             styleUrls: ['./new-guest.component.css']
         }),
-        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder])
+        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.ActivatedRoute])
     ], NewGuestComponent);
     return NewGuestComponent;
 }());

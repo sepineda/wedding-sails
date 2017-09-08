@@ -70,11 +70,11 @@ var AppModule = (function () {
                             { path: '', redirectTo: 'lista', pathMatch: 'full' },
                             { path: 'nueva-seccion', component: new_section_component_1.NewSectionComponent },
                             { path: 'lista', component: guest_list_component_1.GuestListComponent },
-                            { path: 'invitar', component: new_guest_component_1.NewGuestComponent }
+                            { path: 'invitar', component: new_guest_component_1.NewGuestComponent },
+                            { path: 'editar-invitado/:guest_id', component: new_guest_component_1.NewGuestComponent }
                         ]
                     },
                     { path: 'login', component: login_component_1.LoginComponent }
-                    // { path: '**', redirectTo: 'home' }
                 ], { useHash: true })
             ],
             bootstrap: [app_component_1.AppComponent],

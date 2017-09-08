@@ -20,7 +20,7 @@ var AdminComponent = (function () {
         this.categories = [];
         this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
         this.categories.push({ name: 'Nuevo Invitado', route: '/admin/invitar', icon: 'person_add' });
-        this.categories.push({ name: 'Invitados', route: '/admin//lista', icon: 'list' });
+        this.categories.push({ name: 'Invitados', route: '/admin/lista', icon: 'list' });
         this.sidenavActions = new core_1.EventEmitter();
         this.sidenavParams = [];
     }

@@ -1,4 +1,6 @@
 export interface Guest {
+  id?: string,
+
   first_name: string,
 
   last_name: string,
