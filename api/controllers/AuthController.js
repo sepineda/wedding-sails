@@ -48,7 +48,6 @@ module.exports = {
 
       user.token = token;
 
-
       return user;
     };
 

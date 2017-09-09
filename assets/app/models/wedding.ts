@@ -1,5 +1,7 @@
 export interface Wedding{
 
+  id: string,
+
   name: string,
 
   place: string,
@@ -9,6 +11,8 @@ export interface Wedding{
   bridegroom: string,
 
   date: Date,
+
+  maxGuestNumber: number,
 
   sections: any[],
 

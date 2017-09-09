@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { Guest } from '../../models/guest';
 import { Status } from '../../models/status';
+import { Wedding } from '../../models/wedding';
 
 @Component({
   selector: 'app-new-guest',
@@ -19,6 +20,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
   editMode: boolean;
   paramsSub: Subscription;
   guest: Guest;
+  wedding: Wedding;
 
   constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute) { }
 
@@ -31,13 +33,19 @@ export class NewGuestComponent implements OnInit, OnDestroy {
       phone: ''
     });
 
+    this.http.get('Wedding')
+      .subscribe(result => {
+        //For now just pick the first
+        this.wedding = result.json()[0];
+
+      });
+
     this.status = { color: 'white-text', message: '' }
     this.editMode = false;
 
     this.paramsSub = this.route.params
       .map(params => params['guest_id'])
       .subscribe(guest_id => {
-        console.log(guest_id)
         if (guest_id) {
           this.editMode = true;
 
@@ -75,7 +83,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
         email: formModel.email as string,
         spaces: formModel.spaces as number,
         active: true,
-        _wedding: '59ad8bd0a48dace266f1935d'
+        _wedding: this.wedding.id
       }
 
       if (this.editMode) {

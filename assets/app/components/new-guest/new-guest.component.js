@@ -29,12 +29,16 @@ var NewGuestComponent = (function () {
             spaces: [1, [forms_1.Validators.required, forms_1.Validators.min(1)]],
             phone: ''
         });
+        this.http.get('Wedding')
+            .subscribe(function (result) {
+            //For now just pick the first
+            _this.wedding = result.json()[0];
+        });
         this.status = { color: 'white-text', message: '' };
         this.editMode = false;
         this.paramsSub = this.route.params
             .map(function (params) { return params['guest_id']; })
             .subscribe(function (guest_id) {
-            console.log(guest_id);
             if (guest_id) {
                 _this.editMode = true;
                 _this.http.get('Guest/' + guest_id)
@@ -65,7 +69,7 @@ var NewGuestComponent = (function () {
                 email: formModel.email,
                 spaces: formModel.spaces,
                 active: true,
-                _wedding: '59ad8bd0a48dace266f1935d'
+                _wedding: this.wedding.id
             };
             if (this.editMode) {
                 var bodyString = JSON.stringify(newGuest); // Stringify payload

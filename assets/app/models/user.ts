@@ -1,3 +1,5 @@
+import { Wedding } from './wedding';
+
 export interface User{
   first_name? : string,
 
@@ -6,4 +8,6 @@ export interface User{
   email : string,
 
   password : string,
+
+  weddings: Wedding[];
 }
