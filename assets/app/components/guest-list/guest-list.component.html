@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="card-panel" *ngIf="guests">
-      <div class="row">
+      <div *ngIf="guests.length" class="row">
         <div class="col s12 m6">
           <span>Numero de invitados: {{guests.length}}</span>
         </div>

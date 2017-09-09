@@ -25,6 +25,7 @@ export class AdminComponent implements OnInit {
   private sidenavParams: any[];
 
   constructor(private http: Http, private router: Router) {
+    this.categories.push({ name: 'Boda', route: '/admin/boda', icon: 'wc' });
     this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
     this.categories.push({ name: 'Nuevo Invitado', route: '/admin/invitar', icon: 'person_add' });
     this.categories.push({ name: 'Invitados', route: '/admin/lista', icon: 'list' });
@@ -54,7 +55,12 @@ export class AdminComponent implements OnInit {
 
   changeCategory(cat: Category) {
 
-    this.category = cat.name;
+    if (cat) {
+      this.category = cat.name;
+    }
+    else {
+      this.category = this.categories[0].name;
+    }
     this.sidenavParams = ['hide'];
     this.sidenavActions.emit('sideNav');
   }

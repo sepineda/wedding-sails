@@ -28,7 +28,8 @@ module.exports = {
 
       users: {
         collection: 'user',
-        via: 'weddings'
+        via: '_wedding',
+        required: true
       },
 
       guests: {

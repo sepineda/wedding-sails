@@ -25,10 +25,9 @@ module.exports = {
       type: 'string'
     },
 
-    weddings: {
+    _wedding: {
       model: 'wedding',
-      via: 'users',
-      dominant: true
+      columnName: 'wedding_id'
     }
   },
 

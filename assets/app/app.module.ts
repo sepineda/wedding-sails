@@ -23,6 +23,7 @@ import { AuthGuard } from './services/auth.guard';
 
 import 'materialize-css';
 import { NewSectionComponent } from './components/new-section/new-section.component';
+import { NewWeddingComponent } from './components/new-wedding/new-wedding.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NewSectionComponent } from './components/new-section/new-section.compon
     NewGuestComponent,
     GuestListComponent,
     LoginComponent,
-    NewSectionComponent
+    NewSectionComponent,
+    NewWeddingComponent
   ],
   providers: [
     AuthGuard,
@@ -61,6 +63,7 @@ import { NewSectionComponent } from './components/new-section/new-section.compon
       {
         path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
+          { path: 'boda', component: NewWeddingComponent },
           { path: 'nueva-seccion', component: NewSectionComponent },
           { path: 'lista', component: GuestListComponent },
           { path: 'invitar', component: NewGuestComponent },

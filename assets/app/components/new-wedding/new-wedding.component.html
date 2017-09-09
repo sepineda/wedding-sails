@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="card-panel">
+    <div class="row">
+      <div class="input-field col s12">
+        <input formControlName="name" name="name" type="text" class="validate" required>
+        <label for="name">Titulo</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="place" name="place" type="text" class="validate" required>
+        <label for="place">Lugar</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="fiance" name="fiance" type="text" class="validate" required>
+        <label for="fiance">Nombre de la Novia</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="bridegroom" name="bridegroom" type="text" class="validate" required>
+        <label for="bridegroom">Nombre del Novio</label>
+      </div>
+      <div class="input-field col s12">
+        <input materialize="pickadate" formControlName="date" name="date" type="date" class="validate" required>
+        <label for="date">Fecha</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="maxGuestNumber" name="maxGuestNumber" type="number" class="validate" required>
+        <label for="maxGuestNumber">Numero de invitados (espacios)</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <label [class]="status.color"> {{status.message}}</label>
+    </div>
+
+    <div class="row">
+      <button class="btn waves-effect" type="submit">Guardar</button>
+    </div>
+  </div>
+</form>

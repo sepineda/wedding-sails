@@ -32,14 +32,14 @@
      <div class="row">
       <div class="input-field col s12">
         <input name="spaces" type="number" class="validate" formControlName="spaces" required>
-         <label for="spaces">Espacios</label> 
+         <label for="spaces">Espacios</label>
       </div>
         <div *ngIf="isAttributeInvalid('spaces')">
         <label class="red-text" *ngIf="isRequiredValid('spaces')">La cantidad de espacios es requerida</label>
         <br>
         <label class="red-text" *ngIf="isMinimumSpaceValid()">El numero de espacios debe ser al menos 1</label>
       </div>
-    </div> 
+    </div>
 
     <div class="row">
       <div class="input-field col s12">
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class="div">
+    <div class="row">
       <label [class]="status.color"> {{status.message}}</label>
     </div>
 

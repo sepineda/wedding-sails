@@ -1,13 +1,13 @@
-import { Wedding } from './wedding';
+export interface User {
+  id?: string,
 
-export interface User{
-  first_name? : string,
+  first_name?: string,
 
-  last_name? : string,
+  last_name?: string,
 
-  email : string,
+  email: string,
 
-  password : string,
+  password: string,
 
-  weddings: Wedding[];
+  _wedding: string;
 }

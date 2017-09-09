@@ -31,9 +31,14 @@
         </ul>
       </div>
 
+    <li *ngIf="!wedding" routerLinkActive="active light-blue lighten-4">
+      <a (click)="changeCategory(cat)" routerLink="/admin/boda"> <i class="material-icons">wc</i>Nueva Boda</a>
     </li>
 
-    <li *ngFor="let cat of categories" routerLinkActive="active light-blue lighten-4"><a (click)="changeCategory(cat)" routerLink="{{cat.route}}"> <i class="material-icons">{{cat.icon}}</i>{{cat.name}}</a></li>
+    <div *ngIf="wedding">
+      <li *ngFor="let cat of categories" routerLinkActive="active light-blue lighten-4"><a (click)="changeCategory(cat)" routerLink="{{cat.route}}"> <i class="material-icons">{{cat.icon}}</i>{{cat.name}}</a></li>
+    </div>
+
 
     <li>
       <div class="divider"></div>

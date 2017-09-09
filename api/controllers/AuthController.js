@@ -56,16 +56,6 @@ module.exports = {
       .catch(err => res.forbidden(err));
   },
 
-
-  /**
-   * `AuthController.signup()`
-   */
-  signup: function(req, res) {
-    return res.json({
-      todo: 'signup() is not implemented yet!'
-    });
-  },
-
   /**
    * `AuthController.signup()`
    */
@@ -120,7 +110,7 @@ module.exports = {
         const user = await User.create({
           first_name: firstName,
           last_name: lastName,
-          email,
+          email: email,
           password: encPassword
         });
 
