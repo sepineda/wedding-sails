@@ -6,6 +6,8 @@ import { Status } from '../../models/status';
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
 
+declare var Materialize:any;
+
 @Component({
   selector: 'wedding-new-wedding',
   templateUrl: './new-wedding.component.html',
@@ -17,8 +19,19 @@ export class NewWeddingComponent implements OnInit {
   status: Status;
   wedding: Wedding;
   user: User;
+  dateParams: any[];
 
-  constructor(private http: Http, private fb: FormBuilder) { }
+  constructor(private http: Http, private fb: FormBuilder) {
+    this.dateParams = [{
+      today: 'Hoy',
+      format: 'yyyy/mm/dd',
+      clear: 'Limpiar',
+      monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+      closeOnSelect: true
+    }]
+   }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -39,6 +52,16 @@ export class NewWeddingComponent implements OnInit {
       this.http.get('Wedding/' + this.user._wedding)
         .subscribe(result => {
           this.wedding = result.json();
+
+          this.form.setValue({
+            name: this.wedding.name,
+            place: this.wedding.place,
+            fiance: this.wedding.fiance,
+            bridegroom: this.wedding.bridegroom,
+            date: new Date(this.wedding.date).toDateString(),
+            maxGuestNumber: this.wedding.maxGuestNumber
+          });
+          Materialize.updateTextFields();
         });
     }
   }
@@ -54,11 +77,24 @@ export class NewWeddingComponent implements OnInit {
         bridegroom: formModel.bridegroom as string,
         date: formModel.date as string,
         maxGuestNumber: formModel.maxGuestNumber as string,
-        users: [{ _wedding: this.user.id}]
+        users: [{ _wedding: this.user.id }]
       }
 
       if (this.editMode) {
 
+        let bodyString = JSON.stringify(wedding); // Stringify payload
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers });
+
+        this.http.put('wedding/' + this.wedding.id, bodyString, options)
+            .map( (res:Response) => res.json() )
+            .subscribe( data => {
+                this.status.color = 'green-text';
+                this.status.message = 'Actualizado correctamente';
+            },error => {
+                this.status.color = 'red-text';
+                this.status.message = error;
+            } );
       } else {
         this.http.post('Wedding', wedding)
           .subscribe(result => {

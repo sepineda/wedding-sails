@@ -37,11 +37,9 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
 
-    this.http.get('Wedding')
+    this.http.get('Wedding/'+ this.user._wedding)
       .subscribe(result => {
-        //For now just pick the first
-        this.wedding = result.json()[0];
-
+        this.wedding = result.json();
       });
 
     //Get route info

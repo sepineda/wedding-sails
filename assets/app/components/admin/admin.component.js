@@ -28,10 +28,9 @@ var AdminComponent = (function () {
     AdminComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.user = JSON.parse(localStorage.getItem('currentUser'));
-        this.http.get('Wedding')
+        this.http.get('Wedding/' + this.user._wedding)
             .subscribe(function (result) {
-            //For now just pick the first
-            _this.wedding = result.json()[0];
+            _this.wedding = result.json();
         });
         //Get route info
         var tree = this.router.parseUrl(this.router.url);

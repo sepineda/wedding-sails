@@ -18,7 +18,7 @@
         <label for="bridegroom">Nombre del Novio</label>
       </div>
       <div class="input-field col s12">
-        <input materialize="pickadate" formControlName="date" name="date" type="date" class="validate" required>
+        <input materialize="pickadate" [materializeParams]="dateParams" formControlName="date" name="date" type="date" class="validate" required>
         <label for="date">Fecha</label>
       </div>
       <div class="input-field col s12">

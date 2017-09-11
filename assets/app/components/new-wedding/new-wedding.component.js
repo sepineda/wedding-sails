@@ -16,6 +16,15 @@ var NewWeddingComponent = (function () {
     function NewWeddingComponent(http, fb) {
         this.http = http;
         this.fb = fb;
+        this.dateParams = [{
+                today: 'Hoy',
+                format: 'yyyy/mm/dd',
+                clear: 'Limpiar',
+                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                closeOnSelect: true
+            }];
     }
     NewWeddingComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -34,6 +43,15 @@ var NewWeddingComponent = (function () {
             this.http.get('Wedding/' + this.user._wedding)
                 .subscribe(function (result) {
                 _this.wedding = result.json();
+                _this.form.setValue({
+                    name: _this.wedding.name,
+                    place: _this.wedding.place,
+                    fiance: _this.wedding.fiance,
+                    bridegroom: _this.wedding.bridegroom,
+                    date: new Date(_this.wedding.date).toDateString(),
+                    maxGuestNumber: _this.wedding.maxGuestNumber
+                });
+                Materialize.updateTextFields();
             });
         }
     };
@@ -51,6 +69,18 @@ var NewWeddingComponent = (function () {
                 users: [{ _wedding: this.user.id }]
             };
             if (this.editMode) {
+                var bodyString = JSON.stringify(wedding); // Stringify payload
+                var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+                var options = new http_1.RequestOptions({ headers: headers });
+                this.http.put('wedding/' + this.wedding.id, bodyString, options)
+                    .map(function (res) { return res.json(); })
+                    .subscribe(function (data) {
+                    _this.status.color = 'green-text';
+                    _this.status.message = 'Actualizado correctamente';
+                }, function (error) {
+                    _this.status.color = 'red-text';
+                    _this.status.message = error;
+                });
             }
             else {
                 this.http.post('Wedding', wedding)
