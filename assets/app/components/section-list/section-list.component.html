@@ -4,7 +4,7 @@
     <div class="collection">
       <a class="collection-item" *ngFor="let section of sections" [routerLink]="['/admin/editar-seccion', section.id]">
         {{section.name }}
-        <span class="badge light-blue-text truncate" >{{section.content}}</span>
+        <span class="light-blue-text truncate" >{{section.content}}</span>
       </a>
     </div>
   </div>

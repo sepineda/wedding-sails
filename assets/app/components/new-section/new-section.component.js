@@ -12,10 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/map");
 var NewSectionComponent = (function () {
-    function NewSectionComponent(http, fb) {
+    function NewSectionComponent(http, fb, route) {
         this.http = http;
         this.fb = fb;
+        this.route = route;
     }
     NewSectionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -32,8 +35,28 @@ var NewSectionComponent = (function () {
             .subscribe(function (result) {
             _this.wedding = result.json();
         });
+        this.paramsSub = this.route.params
+            .map(function (params) { return params['section_id']; })
+            .subscribe(function (section_id) {
+            if (section_id) {
+                _this.editMode = true;
+                _this.http.get('Section/' + section_id)
+                    .subscribe(function (result) {
+                    _this.section = result.json();
+                    _this.fillFormWithSection();
+                    Materialize.updateTextFields();
+                });
+            }
+        });
+    };
+    NewSectionComponent.prototype.fillFormWithSection = function () {
+        this.form.setValue({
+            name: this.section.name,
+            content: this.section.content
+        });
     };
     NewSectionComponent.prototype.onSubmit = function () {
+        var _this = this;
         if (this.form.valid) {
             var formModel = this.form.value;
             var section = {
@@ -41,11 +64,31 @@ var NewSectionComponent = (function () {
                 content: formModel.content,
                 _wedding: this.wedding.id
             };
-            this.http.post('Section', section)
-                .subscribe(function (result) {
-                var newSection = result.json();
-                console.log(newSection);
-            });
+            if (this.editMode) {
+                var bodyString = JSON.stringify(section); // Stringify payload
+                var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+                var options = new http_1.RequestOptions({ headers: headers });
+                this.http.put('section/' + this.section.id, bodyString, options)
+                    .map(function (res) { return res.json(); })
+                    .subscribe(function (data) {
+                    _this.status.color = 'green-text';
+                    _this.status.message = 'Actualizado correctamente';
+                }, function (error) {
+                    _this.status.color = 'red-text';
+                    _this.status.message = error;
+                });
+            }
+            else {
+                this.http.post('Section', section)
+                    .subscribe(function (result) {
+                    _this.status.color = 'green-text';
+                    _this.status.message = 'Nueva seccion agregada exitosamente';
+                });
+            }
+        }
+        else {
+            this.status.color = 'red-text';
+            this.status.message = 'Por favor complete los campos requeridos';
         }
     };
     NewSectionComponent = __decorate([
@@ -54,7 +97,7 @@ var NewSectionComponent = (function () {
             templateUrl: './new-section.component.html',
             styleUrls: ['./new-section.component.css']
         }),
-        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder])
+        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.ActivatedRoute])
     ], NewSectionComponent);
     return NewSectionComponent;
 }());
