@@ -10,10 +10,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
 var NewSectionComponent = (function () {
-    function NewSectionComponent() {
+    function NewSectionComponent(http, fb) {
+        this.http = http;
+        this.fb = fb;
     }
     NewSectionComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.form = this.fb.group({
+            name: ['', forms_1.Validators.required],
+            content: ['', forms_1.Validators.required]
+        });
+        this.status = { color: 'white-text', message: '' };
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
+        //this.editMode = !!this.user._wedding;
+        Materialize.updateTextFields();
+        //Get current wedding
+        this.http.get('wedding/' + this.user._wedding)
+            .subscribe(function (result) {
+            _this.wedding = result.json();
+        });
+    };
+    NewSectionComponent.prototype.onSubmit = function () {
+        if (this.form.valid) {
+            var formModel = this.form.value;
+            var section = {
+                name: formModel.name,
+                content: formModel.content,
+                _wedding: this.wedding.id
+            };
+            this.http.post('Section', section)
+                .subscribe(function (result) {
+                var newSection = result.json();
+                console.log(newSection);
+            });
+        }
     };
     NewSectionComponent = __decorate([
         core_1.Component({
@@ -21,7 +54,7 @@ var NewSectionComponent = (function () {
             templateUrl: './new-section.component.html',
             styleUrls: ['./new-section.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder])
     ], NewSectionComponent);
     return NewSectionComponent;
 }());

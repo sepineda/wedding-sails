@@ -76,8 +76,7 @@ export class NewWeddingComponent implements OnInit {
         fiance: formModel.fiance as string,
         bridegroom: formModel.bridegroom as string,
         date: formModel.date as string,
-        maxGuestNumber: formModel.maxGuestNumber as string,
-        users: [{ _wedding: this.user.id }]
+        maxGuestNumber: formModel.maxGuestNumber as string
       }
 
       if (this.editMode) {

@@ -65,8 +65,7 @@ var NewWeddingComponent = (function () {
                 fiance: formModel.fiance,
                 bridegroom: formModel.bridegroom,
                 date: formModel.date,
-                maxGuestNumber: formModel.maxGuestNumber,
-                users: [{ _wedding: this.user.id }]
+                maxGuestNumber: formModel.maxGuestNumber
             };
             if (this.editMode) {
                 var bodyString = JSON.stringify(wedding); // Stringify payload

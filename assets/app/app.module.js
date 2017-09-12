@@ -28,6 +28,7 @@ var auth_guard_1 = require("./services/auth.guard");
 require("materialize-css");
 var new_section_component_1 = require("./components/new-section/new-section.component");
 var new_wedding_component_1 = require("./components/new-wedding/new-wedding.component");
+var section_list_component_1 = require("./components/section-list/section-list.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -46,7 +47,8 @@ var AppModule = (function () {
                 guest_list_component_1.GuestListComponent,
                 login_component_1.LoginComponent,
                 new_section_component_1.NewSectionComponent,
-                new_wedding_component_1.NewWeddingComponent
+                new_wedding_component_1.NewWeddingComponent,
+                section_list_component_1.SectionListComponent
             ],
             providers: [
                 auth_guard_1.AuthGuard,
@@ -72,9 +74,11 @@ var AppModule = (function () {
                             { path: '', redirectTo: 'lista', pathMatch: 'full' },
                             { path: 'boda', component: new_wedding_component_1.NewWeddingComponent },
                             { path: 'nueva-seccion', component: new_section_component_1.NewSectionComponent },
+                            { path: 'secciones', component: section_list_component_1.SectionListComponent },
                             { path: 'lista', component: guest_list_component_1.GuestListComponent },
                             { path: 'invitar', component: new_guest_component_1.NewGuestComponent },
-                            { path: 'editar-invitado/:guest_id', component: new_guest_component_1.NewGuestComponent }
+                            { path: 'editar-invitado/:guest_id', component: new_guest_component_1.NewGuestComponent },
+                            { path: 'editar-seccion/:section_id', component: new_section_component_1.NewSectionComponent },
                         ]
                     },
                     { path: 'login', component: login_component_1.LoginComponent }

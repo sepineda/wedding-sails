@@ -1,3 +1,22 @@
-<p>
-  new-section works!
-</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="card-panel">
+    <div class="row">
+      <div class="input-field col s12">
+        <input formControlName="name" name="name" type="text" class="validate" required>
+        <label for="name">Titulo</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="content" name="content" type="text" class="validate" required>
+        <label for="content">Historia</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <label [class]="status.color"> {{status.message}}</label>
+    </div>
+
+    <div class="row">
+      <button class="btn waves-effect" type="submit">Guardar</button>
+    </div>
+  </div>
+</form>

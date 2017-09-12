@@ -9,6 +9,8 @@ import { Guest } from '../../models/guest';
 import { Status } from '../../models/status';
 import { Wedding } from '../../models/wedding';
 
+declare var Materialize:any;
+
 @Component({
   selector: 'app-new-guest',
   templateUrl: './new-guest.component.html',

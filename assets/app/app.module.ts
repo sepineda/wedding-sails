@@ -24,6 +24,7 @@ import { AuthGuard } from './services/auth.guard';
 import 'materialize-css';
 import { NewSectionComponent } from './components/new-section/new-section.component';
 import { NewWeddingComponent } from './components/new-wedding/new-wedding.component';
+import { SectionListComponent } from './components/section-list/section-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NewWeddingComponent } from './components/new-wedding/new-wedding.compon
     GuestListComponent,
     LoginComponent,
     NewSectionComponent,
-    NewWeddingComponent
+    NewWeddingComponent,
+    SectionListComponent
   ],
   providers: [
     AuthGuard,
@@ -65,9 +67,11 @@ import { NewWeddingComponent } from './components/new-wedding/new-wedding.compon
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
           { path: 'boda', component: NewWeddingComponent },
           { path: 'nueva-seccion', component: NewSectionComponent },
+          { path: 'secciones', component: SectionListComponent },
           { path: 'lista', component: GuestListComponent },
           { path: 'invitar', component: NewGuestComponent },
-          { path: 'editar-invitado/:guest_id', component: NewGuestComponent }
+          { path: 'editar-invitado/:guest_id', component: NewGuestComponent },
+          { path: 'editar-seccion/:section_id', component: NewSectionComponent },
         ]
       },
       { path: 'login', component: LoginComponent }
