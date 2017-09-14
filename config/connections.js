@@ -61,7 +61,7 @@ module.exports.connections = {
     host: 'ds115214.mlab.com',
     port: 15214,
     user: 'sepineda', //optional
-    password: 'EePp123#', //optional
+    password: 'DRDpnd61', //optional
     database: 'wedding-cr' //optional
   },
 

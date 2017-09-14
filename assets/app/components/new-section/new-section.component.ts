@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { User } from '../../models/user';
 import { Section } from '../../models/section';
 
 declare var Materialize: any;
+const URL = "http://localhost:1337/section/uploadImage";
 
 @Component({
   selector: 'wedding-new-section',
@@ -26,9 +27,12 @@ export class NewSectionComponent implements OnInit {
   paramsSub: Subscription;
   section: Section;
 
-  constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute) { }
+  //public uploader: FileUploader = new FileUploader({ url: URL });
+
+  constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute, private el: ElementRef) { }
 
   ngOnInit() {
+
     this.form = this.fb.group({
       name: ['', Validators.required],
       content: ['', Validators.required]
@@ -71,6 +75,30 @@ export class NewSectionComponent implements OnInit {
     });
   }
 
+  uploadImage(newSection: Section) {
+    //locate the file element meant for the file upload.
+    let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#image');
+    //get the total amount of files attached to the file input.
+    let fileCount: number = inputEl.files.length;
+    //create a new fromdata instance
+    let formData = new FormData();
+    //check if the filecount is greater than zero, to be sure a file was selected.
+    if (fileCount > 0) { // a file was selected
+      //append the key name 'photo' with the first file in the element
+      console.log(inputEl.files.item(0))
+      formData.append('image', inputEl.files.item(0));
+      //call the angular http method
+      this.http
+        //post the form data to the url defined above and map the response. Then subscribe //to initiate the post. if you don't subscribe, angular wont post.
+        .post('section/uploadImage/' + newSection.id, formData).map((res: Response) => res.json()).subscribe(
+        //map the success function and alert the response
+        (success) => {
+          alert(success._body);
+        },
+        (error) => alert(error))
+    }
+  }
+
   onSubmit() {
     if (this.form.valid) {
       const formModel = this.form.value;
@@ -89,7 +117,8 @@ export class NewSectionComponent implements OnInit {
           .map((res: Response) => res.json())
           .subscribe(data => {
             this.status.color = 'green-text';
-            this.status.message = 'Actualizado correctamente'
+            this.status.message = 'Actualizado correctamente';
+
           }, error => {
             this.status.color = 'red-text';
             this.status.message = error;
@@ -99,6 +128,9 @@ export class NewSectionComponent implements OnInit {
           .subscribe(result => {
             this.status.color = 'green-text';
             this.status.message = 'Nueva seccion agregada exitosamente';
+            let newSection = result.json();
+
+            this.uploadImage(newSection);
           });
       }
     } else {

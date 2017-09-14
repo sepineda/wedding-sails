@@ -14,11 +14,14 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 require("rxjs/add/operator/map");
+var URL = "http://localhost:1337/section/uploadImage";
 var NewSectionComponent = (function () {
-    function NewSectionComponent(http, fb, route) {
+    //public uploader: FileUploader = new FileUploader({ url: URL });
+    function NewSectionComponent(http, fb, route, el) {
         this.http = http;
         this.fb = fb;
         this.route = route;
+        this.el = el;
     }
     NewSectionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -55,6 +58,27 @@ var NewSectionComponent = (function () {
             content: this.section.content
         });
     };
+    NewSectionComponent.prototype.uploadImage = function (newSection) {
+        //locate the file element meant for the file upload.
+        var inputEl = this.el.nativeElement.querySelector('#image');
+        //get the total amount of files attached to the file input.
+        var fileCount = inputEl.files.length;
+        //create a new fromdata instance
+        var formData = new FormData();
+        //check if the filecount is greater than zero, to be sure a file was selected.
+        if (fileCount > 0) {
+            //append the key name 'photo' with the first file in the element
+            console.log(inputEl.files.item(0));
+            formData.append('image', inputEl.files.item(0));
+            //call the angular http method
+            this.http
+                .post('section/uploadImage/' + newSection.id, formData).map(function (res) { return res.json(); }).subscribe(
+            //map the success function and alert the response
+            function (success) {
+                alert(success._body);
+            }, function (error) { return alert(error); });
+        }
+    };
     NewSectionComponent.prototype.onSubmit = function () {
         var _this = this;
         if (this.form.valid) {
@@ -83,6 +107,8 @@ var NewSectionComponent = (function () {
                     .subscribe(function (result) {
                     _this.status.color = 'green-text';
                     _this.status.message = 'Nueva seccion agregada exitosamente';
+                    var newSection = result.json();
+                    _this.uploadImage(newSection);
                 });
             }
         }
@@ -97,7 +123,7 @@ var NewSectionComponent = (function () {
             templateUrl: './new-section.component.html',
             styleUrls: ['./new-section.component.css']
         }),
-        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.ActivatedRoute])
+        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.ActivatedRoute, core_1.ElementRef])
     ], NewSectionComponent);
     return NewSectionComponent;
 }());
