@@ -68,15 +68,14 @@ var NewSectionComponent = (function () {
         //check if the filecount is greater than zero, to be sure a file was selected.
         if (fileCount > 0) {
             //append the key name 'photo' with the first file in the element
-            console.log(inputEl.files.item(0));
             formData.append('image', inputEl.files.item(0));
             //call the angular http method
             this.http
                 .post('section/uploadImage/' + newSection.id, formData).map(function (res) { return res.json(); }).subscribe(
             //map the success function and alert the response
             function (success) {
-                alert(success._body);
-            }, function (error) { return alert(error); });
+                console.log(success._body);
+            }, function (error) { return console.log(error); });
         }
     };
     NewSectionComponent.prototype.onSubmit = function () {

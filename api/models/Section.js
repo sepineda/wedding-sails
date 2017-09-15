@@ -12,6 +12,10 @@ module.exports = {
 
     content: { type: 'text' },
 
+    imageUrl: { type: 'string' },
+
+    imageFd: { type: 'string' },
+
     _wedding: {
       model: 'wedding',
       columnName: 'wedding_id',

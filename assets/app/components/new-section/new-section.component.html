@@ -9,11 +9,20 @@
         <textarea class="materialize-textarea validate" formControlName="content" name="content" required></textarea>
         <label for="content">Historia</label>
       </div>
-
-      <div class="input-field col s12">
-        <input type="file" id="image" />
-        <!-- <label for="image">Imagen</label> -->
+    </div>
+    <div class="row">
+      <div class="file-field input-field col s12">
+        <div class="btn">
+          <span>Imagen</span>
+          <input type="file" id="image" />
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
       </div>
+    </div>
+    <div class="row">
+      <img *ngIf="section" materialize="materialbox" class="materialboxed" width="300" [src]="section.imageUrl" />
     </div>
 
     <div class="row">

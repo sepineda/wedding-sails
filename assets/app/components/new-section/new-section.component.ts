@@ -85,7 +85,6 @@ export class NewSectionComponent implements OnInit {
     //check if the filecount is greater than zero, to be sure a file was selected.
     if (fileCount > 0) { // a file was selected
       //append the key name 'photo' with the first file in the element
-      console.log(inputEl.files.item(0))
       formData.append('image', inputEl.files.item(0));
       //call the angular http method
       this.http
@@ -93,9 +92,9 @@ export class NewSectionComponent implements OnInit {
         .post('section/uploadImage/' + newSection.id, formData).map((res: Response) => res.json()).subscribe(
         //map the success function and alert the response
         (success) => {
-          alert(success._body);
+          console.log(success._body);
         },
-        (error) => alert(error))
+        (error) => console.log(error))
     }
   }
 
