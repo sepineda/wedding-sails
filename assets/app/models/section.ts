@@ -4,5 +4,6 @@ export interface Section{
   content: string;
   imageUrl?: string;
   imageFd?: string;
+  active: boolean;
   _wedding: string;
 }

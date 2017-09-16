@@ -16,6 +16,8 @@ module.exports = {
 
     imageFd: { type: 'string' },
 
+    active: { type: 'boolean' },
+
     _wedding: {
       model: 'wedding',
       columnName: 'wedding_id',

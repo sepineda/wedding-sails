@@ -20,6 +20,7 @@ var SectionListComponent = (function () {
         this.http.get('Section')
             .subscribe(function (result) {
             _this.sections = result.json();
+            _this.sections = _this.sections.filter(function (s) { return s.active; });
         });
     };
     SectionListComponent = __decorate([

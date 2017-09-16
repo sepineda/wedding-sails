@@ -18,6 +18,7 @@ export class SectionListComponent implements OnInit {
     this.http.get('Section')
       .subscribe(result => {
         this.sections = result.json();
+        this.sections = this.sections.filter(s => s.active);
       });
   }
 

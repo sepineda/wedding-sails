@@ -13,15 +13,17 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
 require("rxjs/add/operator/map");
 var URL = "http://localhost:1337/section/uploadImage";
 var NewSectionComponent = (function () {
     //public uploader: FileUploader = new FileUploader({ url: URL });
-    function NewSectionComponent(http, fb, route, el) {
+    function NewSectionComponent(http, fb, route, el, router) {
         this.http = http;
         this.fb = fb;
         this.route = route;
         this.el = el;
+        this.router = router;
     }
     NewSectionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -53,10 +55,35 @@ var NewSectionComponent = (function () {
         });
     };
     NewSectionComponent.prototype.fillFormWithSection = function () {
+        console.log(this.form.controls['image']);
         this.form.setValue({
             name: this.section.name,
             content: this.section.content
         });
+    };
+    NewSectionComponent.prototype.fileChange = function (event) {
+        this.filePath = event.target.value;
+    };
+    NewSectionComponent.prototype.deleteSection = function () {
+        var _this = this;
+        if (this.section) {
+            var delSection = {
+                name: this.section.name,
+                content: this.section.content,
+                active: false,
+                _wedding: this.wedding.id
+            };
+            var bodyString = JSON.stringify(delSection); // Stringify payload
+            var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+            var options = new http_1.RequestOptions({ headers: headers });
+            this.http.put('section/' + this.section.id, bodyString, options)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (result) {
+                _this.router.navigate(['/admin/secciones']);
+            }, function (error) {
+                console.log(error);
+            });
+        }
     };
     NewSectionComponent.prototype.uploadImage = function (newSection) {
         //locate the file element meant for the file upload.
@@ -85,6 +112,7 @@ var NewSectionComponent = (function () {
             var section = {
                 name: formModel.name,
                 content: formModel.content,
+                active: false,
                 _wedding: this.wedding.id
             };
             if (this.editMode) {
@@ -122,7 +150,11 @@ var NewSectionComponent = (function () {
             templateUrl: './new-section.component.html',
             styleUrls: ['./new-section.component.css']
         }),
-        __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.ActivatedRoute, core_1.ElementRef])
+        __metadata("design:paramtypes", [http_1.Http,
+            forms_1.FormBuilder,
+            router_2.ActivatedRoute,
+            core_1.ElementRef,
+            router_1.Router])
     ], NewSectionComponent);
     return NewSectionComponent;
 }());

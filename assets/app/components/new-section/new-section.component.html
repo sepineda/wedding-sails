@@ -14,7 +14,7 @@
       <div class="file-field input-field col s12">
         <div class="btn">
           <span>Imagen</span>
-          <input type="file" id="image" />
+          <input type="file" id="image" (change)="fileChange($event)"/>
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row">
-      <img *ngIf="section" materialize="materialbox" class="materialboxed" width="300" [src]="section.imageUrl" />
+      <img *ngIf="section && !filePath" materialize="materialbox" class="materialboxed" width="300" [src]="section.imageUrl" />
     </div>
 
     <div class="row">
@@ -31,6 +31,7 @@
 
     <div class="row">
       <button class="btn waves-effect" type="submit">Guardar</button>
+      <button *ngIf="section" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
     </div>
   </div>
 </form>

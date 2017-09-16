@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
@@ -26,10 +27,15 @@ export class NewSectionComponent implements OnInit {
   user: User;
   paramsSub: Subscription;
   section: Section;
+  filePath: string;
 
   //public uploader: FileUploader = new FileUploader({ url: URL });
 
-  constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute, private el: ElementRef) { }
+  constructor(private http: Http,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private el: ElementRef,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -68,11 +74,39 @@ export class NewSectionComponent implements OnInit {
   }
 
   fillFormWithSection() {
-
+    console.log(this.form.controls['image'])
     this.form.setValue({
       name: this.section.name,
       content: this.section.content
     });
+  }
+
+  fileChange(event: any) {
+    this.filePath = event.target.value;
+  }
+
+  deleteSection() {
+    if (this.section) {
+
+
+      let delSection: Section = {
+        name: this.section.name,
+        content: this.section.content,
+        active: false,
+        _wedding: this.wedding.id
+      };
+
+      let bodyString = JSON.stringify(delSection); // Stringify payload
+      let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+      let options = new RequestOptions({ headers: headers });
+      this.http.put('section/' + this.section.id, bodyString, options)
+        .map((res: Response) => res.json())
+        .subscribe(result => {
+          this.router.navigate(['/admin/secciones']);
+        }, error => {
+          console.log(error);
+        })
+    }
   }
 
   uploadImage(newSection: Section) {
@@ -105,6 +139,7 @@ export class NewSectionComponent implements OnInit {
       let section: Section = {
         name: formModel.name as string,
         content: formModel.content as string,
+        active: false,
         _wedding: this.wedding.id
       }
 
