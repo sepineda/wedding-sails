@@ -1,10 +1,17 @@
 <nav class="white">
-    <div class="nav-wrapper">
-        <div class="col s12">
-            <a href="#" class="brand-logo black-text">DILANA & EDUARDO</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route"  >{{ menuItem.name | uppercase }}</a></li>
-            </ul>
-        </div>
-    </div>
+  <div class="nav-wrapper">
+    <a href="#" class="page-title black-text">DILANA & EDUARDO</a>
+
+    <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions" data-activates="nav-mobile" class="button-collapse hide-on-large-only">
+      <i class="material-icons black-text">menu</i>
+    </a>
+
+    <ul class="right hide-on-med-and-down">
+      <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route">{{ menuItem.name | uppercase }}</a></li>
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route">{{ menuItem.name | uppercase }}</a></li>
+    </ul>
+  </div>
 </nav>

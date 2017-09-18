@@ -1,5 +1,10 @@
-.nav-wrapper
-{
+ @media (min-width: 993px ) {
+  .nav-wrapper {
     padding-left: 6em;
     padding-right: 6em;
+  }
+}
+
+.page-title{
+  font-size: 20px;
 }

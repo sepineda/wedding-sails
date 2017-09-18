@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+
+import { Wedding } from '../../models/wedding';
 
 @Component({
     selector: 'nav-menu',
@@ -8,6 +10,10 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
 
     private menuItems: MenuItem[];
+    private wedding: Wedding;
+
+    private sidenavActions: EventEmitter<any>;
+    private sidenavParams: any[];
 
     constructor() {
         this.menuItems = [
@@ -15,6 +21,9 @@ export class NavMenuComponent {
             { name: "Donde y cuando", route: "donde-y-cuando" },
             { name: "Confirmar", route: "confirmar" }
         ];
+
+        this.sidenavActions = new EventEmitter<any>();
+        this.sidenavParams = [];
     }
 }
 

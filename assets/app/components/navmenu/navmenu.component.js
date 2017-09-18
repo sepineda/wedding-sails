@@ -17,6 +17,8 @@ var NavMenuComponent = (function () {
             { name: "Donde y cuando", route: "donde-y-cuando" },
             { name: "Confirmar", route: "confirmar" }
         ];
+        this.sidenavActions = new core_1.EventEmitter();
+        this.sidenavParams = [];
     }
     NavMenuComponent = __decorate([
         core_1.Component({
