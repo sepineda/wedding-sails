@@ -139,7 +139,7 @@ export class NewSectionComponent implements OnInit {
       let section: Section = {
         name: formModel.name as string,
         content: formModel.content as string,
-        active: false,
+        active: true,
         _wedding: this.wedding.id
       }
 
@@ -152,6 +152,8 @@ export class NewSectionComponent implements OnInit {
           .subscribe(data => {
             this.status.color = 'green-text';
             this.status.message = 'Actualizado correctamente';
+
+            this.uploadImage(this.section);
 
           }, error => {
             this.status.color = 'red-text';

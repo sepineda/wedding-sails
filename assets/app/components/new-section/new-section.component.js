@@ -112,7 +112,7 @@ var NewSectionComponent = (function () {
             var section = {
                 name: formModel.name,
                 content: formModel.content,
-                active: false,
+                active: true,
                 _wedding: this.wedding.id
             };
             if (this.editMode) {
@@ -124,6 +124,7 @@ var NewSectionComponent = (function () {
                     .subscribe(function (data) {
                     _this.status.color = 'green-text';
                     _this.status.message = 'Actualizado correctamente';
+                    _this.uploadImage(_this.section);
                 }, function (error) {
                     _this.status.color = 'red-text';
                     _this.status.message = error;

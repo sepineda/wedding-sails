@@ -1,6 +1,6 @@
 <nav class="white">
   <div class="nav-wrapper">
-    <a href="#" class="page-title black-text">DILANA & EDUARDO</a>
+    <a *ngIf="wedding" href="#" class="page-title black-text">{{wedding.name | uppercase}}</a>
 
     <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions" data-activates="nav-mobile" class="button-collapse hide-on-large-only">
       <i class="material-icons black-text">menu</i>

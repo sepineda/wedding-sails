@@ -1,4 +1,5 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 import { Wedding } from '../../models/wedding';
 
@@ -7,7 +8,7 @@ import { Wedding } from '../../models/wedding';
     templateUrl: './navmenu.component.html',
     styleUrls: ['./navmenu.component.css']
 })
-export class NavMenuComponent {
+export class NavMenuComponent implements OnInit {
 
     private menuItems: MenuItem[];
     private wedding: Wedding;
@@ -15,7 +16,7 @@ export class NavMenuComponent {
     private sidenavActions: EventEmitter<any>;
     private sidenavParams: any[];
 
-    constructor() {
+    constructor(private http: Http) {
         this.menuItems = [
             { name: "Nuestra historia", route: "/nuestra-historia" },
             { name: "Donde y cuando", route: "/donde-y-cuando" },
@@ -24,6 +25,16 @@ export class NavMenuComponent {
 
         this.sidenavActions = new EventEmitter<any>();
         this.sidenavParams = [];
+    }
+
+    ngOnInit() {
+
+      this.http.get('wedding')
+        .subscribe(result => {
+          console.log(result.json())
+          //For now just take the first
+          this.wedding = result.json()[0];
+        });
     }
 }
 

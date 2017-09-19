@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var NavMenuComponent = (function () {
-    function NavMenuComponent() {
+    function NavMenuComponent(http) {
+        this.http = http;
         this.menuItems = [
             { name: "Nuestra historia", route: "/nuestra-historia" },
             { name: "Donde y cuando", route: "/donde-y-cuando" },
@@ -20,13 +22,22 @@ var NavMenuComponent = (function () {
         this.sidenavActions = new core_1.EventEmitter();
         this.sidenavParams = [];
     }
+    NavMenuComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.http.get('wedding')
+            .subscribe(function (result) {
+            console.log(result.json());
+            //For now just take the first
+            _this.wedding = result.json()[0];
+        });
+    };
     NavMenuComponent = __decorate([
         core_1.Component({
             selector: 'nav-menu',
             templateUrl: './navmenu.component.html',
             styleUrls: ['./navmenu.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.Http])
     ], NavMenuComponent);
     return NavMenuComponent;
 }());
