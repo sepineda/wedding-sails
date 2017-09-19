@@ -17,9 +17,9 @@ export class NavMenuComponent {
 
     constructor() {
         this.menuItems = [
-            { name: "Nuestra historia", route: "nuestra-historia" },
-            { name: "Donde y cuando", route: "donde-y-cuando" },
-            { name: "Confirmar", route: "confirmar" }
+            { name: "Nuestra historia", route: "/nuestra-historia" },
+            { name: "Donde y cuando", route: "/donde-y-cuando" },
+            { name: "RSVP", route: "/confirmar" }
         ];
 
         this.sidenavActions = new EventEmitter<any>();

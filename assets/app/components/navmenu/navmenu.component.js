@@ -13,9 +13,9 @@ var core_1 = require("@angular/core");
 var NavMenuComponent = (function () {
     function NavMenuComponent() {
         this.menuItems = [
-            { name: "Nuestra historia", route: "nuestra-historia" },
-            { name: "Donde y cuando", route: "donde-y-cuando" },
-            { name: "Confirmar", route: "confirmar" }
+            { name: "Nuestra historia", route: "/nuestra-historia" },
+            { name: "Donde y cuando", route: "/donde-y-cuando" },
+            { name: "RSVP", route: "/confirmar" }
         ];
         this.sidenavActions = new core_1.EventEmitter();
         this.sidenavParams = [];
