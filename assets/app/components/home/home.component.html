@@ -1,5 +1,3 @@
-
-
 <!-- <div class="parallax-container valign-wrapper">
     <div class="parallax" materialize="parallax">
         <img src="../../../assets/images/parallax1.jpg">
@@ -20,9 +18,16 @@
     <div class="parallax" materialize="parallax"><img src="../../../assets/images/parallax3.jpg"></div>
 </div> -->
 
-<div *ngFor="let section of sections">
-  <div class="parallax-container">
-      <div class="parallax" materialize="parallax"><img [src]="section.imageUrl"></div>
+<div class="row" *ngFor="let section of sections">
+  <div class="parallax-container valign-wrapper">
+    <h1 class=" white-text overlay center-align">
+        {{section.name | uppercase }}
+      </h1>
+
+    <div class="parallax" materialize="parallax">
+      <img [src]="section.imageUrl">
+
+    </div>
   </div>
-  <story-card [header]="section.name" [story]="section.content"></story-card>
+  <story-card  [story]="section.content"></story-card>
 </div>

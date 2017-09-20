@@ -5,11 +5,11 @@ import { Section } from '../../models/section';
 import { Wedding } from '../../models/wedding';
 
 @Component({
-    selector: 'home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   private sections: Section[];
   private wedding: Wedding;
 
@@ -22,13 +22,10 @@ export class HomeComponent implements OnInit{
         //For now just take the first
         this.wedding = result.json()[0];
 
-        this.http.get('Section')
+        this.http.get('Section/story')
           .subscribe(result => {
             this.sections = result.json();
-            this.sections = this.sections.filter(s => s.active);
           });
       });
-
-
   }
 }

@@ -15,6 +15,7 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 require("rxjs/add/operator/map");
+var section_1 = require("../../models/section");
 var URL = "http://localhost:1337/section/uploadImage";
 var NewSectionComponent = (function () {
     function NewSectionComponent(http, fb, route, el, router) {
@@ -24,9 +25,9 @@ var NewSectionComponent = (function () {
         this.el = el;
         this.router = router;
         this.categories = [];
-        this.categories.push('Historia');
-        this.categories.push('Lugar');
-        this.categories.push('Confirmar');
+        this.categories.push({ value: section_1.SectionCategories.Historia, content: 'Historia' });
+        this.categories.push({ value: section_1.SectionCategories.Historia, content: 'Lugar' });
+        this.categories.push({ value: section_1.SectionCategories.Historia, content: 'Confirmar' });
     }
     NewSectionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -59,7 +60,6 @@ var NewSectionComponent = (function () {
         });
     };
     NewSectionComponent.prototype.fillFormWithSection = function () {
-        console.log(this.form.controls['image']);
         this.form.setValue({
             name: this.section.name,
             content: this.section.content,

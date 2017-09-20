@@ -31,7 +31,6 @@ export class NavMenuComponent implements OnInit {
 
       this.http.get('wedding')
         .subscribe(result => {
-          console.log(result.json())
           //For now just take the first
           this.wedding = result.json()[0];
         });

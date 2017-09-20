@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 import { Status } from '../../models/status';
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
-import { Section } from '../../models/section';
+import { Section, SectionCategories } from '../../models/section';
+import { Option } from '../../models/option';
 
 declare var Materialize: any;
 const URL = "http://localhost:1337/section/uploadImage";
@@ -29,17 +30,17 @@ export class NewSectionComponent implements OnInit {
   section: Section;
   filePath: string;
 
-  categories: string[] = [];
+  categories: Option[] = [];
 
   constructor(private http: Http,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private el: ElementRef,
     private router: Router) {
-      this.categories.push('Historia');
-      this.categories.push('Lugar');
-      this.categories.push('Confirmar');
-    }
+    this.categories.push({ value: SectionCategories.Historia, content: 'Historia' });
+    this.categories.push({ value: SectionCategories.Historia, content: 'Lugar' });
+    this.categories.push({ value: SectionCategories.Historia, content: 'Confirmar' });
+  }
 
   ngOnInit() {
 
@@ -79,7 +80,6 @@ export class NewSectionComponent implements OnInit {
   }
 
   fillFormWithSection() {
-    console.log(this.form.controls['image'])
     this.form.setValue({
       name: this.section.name,
       content: this.section.content,

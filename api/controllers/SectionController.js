@@ -7,6 +7,43 @@
 
 module.exports = {
 
+  confirm: (req, res) => {
+    Section.find({category: 1, active: true})
+      .exec(function(err, sections) {
+          if(err){
+            return res.serverError(err);
+          }
+
+          return res.json(sections);
+
+      });
+  },
+
+  place: (req, res) => {
+    Section.find({category: 2, active: true})
+      .exec(function(err, sections) {
+          if(err){
+            return res.serverError(err);
+          }
+
+          return res.json(sections);
+
+      });
+  },
+
+  story: function(req, res) {
+
+    Section.find({category: 0, active: true})
+      .exec(function(err, sections) {
+          if(err){
+            return res.serverError(err);
+          }
+
+          return res.json(sections);
+
+      });
+  },
+
   uploadImage: function(req, res) {
     let section_id = req.param('id')
 

@@ -18,7 +18,7 @@ module.exports = {
 
     active: { type: 'boolean' },
 
-    category: { type: 'string' },
+    category: { type: 'integer' },
 
     _wedding: {
       model: 'wedding',

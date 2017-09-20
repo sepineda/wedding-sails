@@ -26,7 +26,6 @@ var NavMenuComponent = (function () {
         var _this = this;
         this.http.get('wedding')
             .subscribe(function (result) {
-            console.log(result.json());
             //For now just take the first
             _this.wedding = result.json()[0];
         });

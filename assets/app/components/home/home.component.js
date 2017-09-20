@@ -21,10 +21,9 @@ var HomeComponent = (function () {
             .subscribe(function (result) {
             //For now just take the first
             _this.wedding = result.json()[0];
-            _this.http.get('Section')
+            _this.http.get('Section/story')
                 .subscribe(function (result) {
                 _this.sections = result.json();
-                _this.sections = _this.sections.filter(function (s) { return s.active; });
             });
         });
     };

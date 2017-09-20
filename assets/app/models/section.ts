@@ -5,6 +5,12 @@ export interface Section{
   imageUrl?: string;
   imageFd?: string;
   active: boolean;
-  category: string;
+  category: number;
   _wedding: string;
+}
+
+export enum SectionCategories {
+  Historia,
+  Confirmar,
+  Lugar
 }
