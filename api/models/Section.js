@@ -18,6 +18,8 @@ module.exports = {
 
     active: { type: 'boolean' },
 
+    category: { type: 'string' },
+
     _wedding: {
       model: 'wedding',
       columnName: 'wedding_id',

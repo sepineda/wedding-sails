@@ -29,6 +29,7 @@ var AdminComponent = (function () {
     AdminComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.user = JSON.parse(localStorage.getItem('currentUser'));
+        console.log(this.user);
         this.http.get('Wedding/' + this.user._wedding)
             .subscribe(function (result) {
             _this.wedding = result.json();

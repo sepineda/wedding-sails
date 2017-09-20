@@ -29,19 +29,24 @@ export class NewSectionComponent implements OnInit {
   section: Section;
   filePath: string;
 
-  //public uploader: FileUploader = new FileUploader({ url: URL });
+  categories: string[] = [];
 
   constructor(private http: Http,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private el: ElementRef,
-    private router: Router) { }
+    private router: Router) {
+      this.categories.push('Historia');
+      this.categories.push('Lugar');
+      this.categories.push('Confirmar');
+    }
 
   ngOnInit() {
 
     this.form = this.fb.group({
       name: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
+      category: ['', Validators.required]
     });
 
     this.status = { color: 'white-text', message: '' }
@@ -77,7 +82,8 @@ export class NewSectionComponent implements OnInit {
     console.log(this.form.controls['image'])
     this.form.setValue({
       name: this.section.name,
-      content: this.section.content
+      content: this.section.content,
+      category: this.section.category
     });
   }
 
@@ -92,6 +98,7 @@ export class NewSectionComponent implements OnInit {
       let delSection: Section = {
         name: this.section.name,
         content: this.section.content,
+        category: this.section.category,
         active: false,
         _wedding: this.wedding.id
       };
@@ -139,6 +146,7 @@ export class NewSectionComponent implements OnInit {
       let section: Section = {
         name: formModel.name as string,
         content: formModel.content as string,
+        category: formModel.category as string,
         active: true,
         _wedding: this.wedding.id
       }

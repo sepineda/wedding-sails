@@ -10,7 +10,20 @@
         <label for="content">Historia</label>
       </div>
     </div>
+
     <div class="row">
+      <div class="input-field col s12">
+        <select materialize="material_select" formControlName="category" name="category" [materializeSelectOptions]="categories" required>
+          <option value="" disabled selected>Escoge una opcion</option>
+          <option *ngFor="let category of categories" [value]="category">
+            {{category}}
+          </option>
+        </select>
+        <label for="category">Categoria</label>
+      </div>
+    </div>
+
+    <div class="row hide-on-med-and-down">
       <div class="file-field input-field col s12">
         <div class="btn">
           <span>Imagen</span>

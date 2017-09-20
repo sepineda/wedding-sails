@@ -38,6 +38,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
 
+    console.log(this.user)
+
     this.http.get('Wedding/'+ this.user._wedding)
       .subscribe(result => {
         this.wedding = result.json();

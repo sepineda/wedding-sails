@@ -17,19 +17,23 @@ var router_2 = require("@angular/router");
 require("rxjs/add/operator/map");
 var URL = "http://localhost:1337/section/uploadImage";
 var NewSectionComponent = (function () {
-    //public uploader: FileUploader = new FileUploader({ url: URL });
     function NewSectionComponent(http, fb, route, el, router) {
         this.http = http;
         this.fb = fb;
         this.route = route;
         this.el = el;
         this.router = router;
+        this.categories = [];
+        this.categories.push('Historia');
+        this.categories.push('Lugar');
+        this.categories.push('Confirmar');
     }
     NewSectionComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.form = this.fb.group({
             name: ['', forms_1.Validators.required],
-            content: ['', forms_1.Validators.required]
+            content: ['', forms_1.Validators.required],
+            category: ['', forms_1.Validators.required]
         });
         this.status = { color: 'white-text', message: '' };
         this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -58,7 +62,8 @@ var NewSectionComponent = (function () {
         console.log(this.form.controls['image']);
         this.form.setValue({
             name: this.section.name,
-            content: this.section.content
+            content: this.section.content,
+            category: this.section.category
         });
     };
     NewSectionComponent.prototype.fileChange = function (event) {
@@ -70,6 +75,7 @@ var NewSectionComponent = (function () {
             var delSection = {
                 name: this.section.name,
                 content: this.section.content,
+                category: this.section.category,
                 active: false,
                 _wedding: this.wedding.id
             };
@@ -112,6 +118,7 @@ var NewSectionComponent = (function () {
             var section = {
                 name: formModel.name,
                 content: formModel.content,
+                category: formModel.category,
                 active: true,
                 _wedding: this.wedding.id
             };

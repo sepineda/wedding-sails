@@ -41,10 +41,7 @@ module.exports = {
         throw new Error('Su password no es correcto');
       }
 
-      let token = JwtService.issue({
-        user,
-        expiresIn: '1d'
-      });
+      let token = JwtService.issue(user,'1d');
 
       user.token = token;
 
