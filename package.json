@@ -34,6 +34,7 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~1.0.4",
     "grunt-sync": "0.6.2",
+    "grunt-ts": "^6.0.0-beta.16",
     "hammerjs": "^2.0.8",
     "include-all": "~4.0.3",
     "jquery": "^3.2.1",
@@ -52,7 +53,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "tsc -w | sails lift"
+    "start": "sails lift"
   },
   "main": "app.js",
   "repository": {
