@@ -10,6 +10,8 @@ module.exports = {
   attributes: {
     name: {  type: 'string' },
 
+    title: { type: 'string' }, 
+
     content: { type: 'text' },
 
     imageUrl: { type: 'string' },
