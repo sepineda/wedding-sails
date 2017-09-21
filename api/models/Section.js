@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     name: {  type: 'string' },
 
-    title: { type: 'string' }, 
+    header: { type: 'string' }, 
 
     content: { type: 'text' },
 

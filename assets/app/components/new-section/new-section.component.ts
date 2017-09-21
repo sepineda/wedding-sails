@@ -46,7 +46,7 @@ export class NewSectionComponent implements OnInit {
 
     this.form = this.fb.group({
       name: ['', Validators.required],
-      title: ['', Validators.required],
+      header: [''],
       content: ['', Validators.required],
       category: [0, Validators.required]
     });
@@ -83,7 +83,7 @@ export class NewSectionComponent implements OnInit {
   fillFormWithSection() {
     this.form.setValue({
       name: this.section.name,
-      title: this.section.title,
+      header: this.section.header,
       content: this.section.content,
       category: this.section.category
     });
@@ -99,7 +99,7 @@ export class NewSectionComponent implements OnInit {
 
       let delSection: Section = {
         name: this.section.name,
-        title: this.section.title,
+        header: this.section.header,
         content: this.section.content,
         category: this.section.category,
         active: false,
@@ -148,7 +148,7 @@ export class NewSectionComponent implements OnInit {
 
       let section: Section = {
         name: formModel.name as string,
-        title: formModel.title as string,
+        header: formModel.header as string,
         content: formModel.content as string,
         category: formModel.category as number,
         active: true,
