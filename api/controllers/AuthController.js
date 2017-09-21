@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var Q = require('q');
+
 module.exports = {
 
 
@@ -31,23 +33,29 @@ module.exports = {
 
 
     const loginReq = () => {
+      var deferred = Q.defer();
 
-      const user = User.findOne({
-        email
+      User.findOne({
+        email: email
+      }, function(err, user) {
+
+        const isMatched = User.checkPassword(password, user.password);
+
+        if (!isMatched) {
+          throw new Error('Su password no es correcto');
+        }
+
+        let token = JwtService.issue(user, '1d');
+
+        user.token = token;
+
+        deferred.resolve(user);
+
+
       });
-      const isMatched = User.checkPassword(password, user.password);
 
-      if (!isMatched) {
-        throw new Error('Su password no es correcto');
-      }
-
-      let token = JwtService.issue(user,'1d');
-
-      user.token = token;
-
-      return user;
+      return deferred.promise;
     };
-
 
     loginReq().then(user => res.ok(user))
       .catch(err => res.forbidden(err));
