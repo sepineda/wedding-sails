@@ -4,7 +4,8 @@
   "version": "0.3.0",
   "engines": {
     "node": "~6.11.3",
-    "npm": "~3.10.10"
+    "npm": "~3.10.10",
+    "tsc": "~2.5.2"
   },
   "description": "a Sails + Angular 4 sample application",
   "keywords": [],
