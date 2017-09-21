@@ -55,7 +55,7 @@ import { SectionListComponent } from './components/section-list/section-list.com
     RouterModule.forRoot([
       // { path: '', redirectTo: 'boda', pathMatch: 'full' },
       {
-        
+
         path: '', component: LandingComponent, children: [
           { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
           { path: 'nuestra-historia', component: HomeComponent },
@@ -64,7 +64,7 @@ import { SectionListComponent } from './components/section-list/section-list.com
         ]
       },
       {
-        path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+        path: 'admin', component: AdminComponent, children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
           { path: 'boda', component: NewWeddingComponent },
           { path: 'nueva-seccion', component: NewSectionComponent },
