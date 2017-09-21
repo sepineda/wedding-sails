@@ -14,5 +14,6 @@
       ".tmp",
       "node_modules",
       "typings"
-  ]
+  ],
+  "compileOnSave": false
 }
