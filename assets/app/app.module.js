@@ -70,7 +70,7 @@ var AppModule = (function () {
                         ]
                     },
                     {
-                        path: 'admin', component: admin_component_1.AdminComponent, children: [
+                        path: 'admin', component: admin_component_1.AdminComponent, canActivate: [auth_guard_1.AuthGuard], children: [
                             { path: '', redirectTo: 'lista', pathMatch: 'full' },
                             { path: 'boda', component: new_wedding_component_1.NewWeddingComponent },
                             { path: 'nueva-seccion', component: new_section_component_1.NewSectionComponent },
