@@ -30,12 +30,12 @@ module.exports = {
     }
 
 
-    const loginReq = async() => {
+    const loginReq = () => {
 
-      const user = await User.findOne({
+      const user = User.findOne({
         email
       });
-      const isMatched = await User.checkPassword(password, user.password);
+      const isMatched = User.checkPassword(password, user.password);
 
       if (!isMatched) {
         throw new Error('Su password no es correcto');
@@ -95,16 +95,16 @@ module.exports = {
     }
 
 
-    //create async method signupRequest
-    const signupRequest = async() => {
+    //create method signupRequest
+    const signupRequest = () => {
 
       //add code into try catch
       try {
 
         //call the UtilService encryptpassword
-        const encPassword = await UtilService.encryptPassword(password);
+        const encPassword = UtilService.encryptPassword(password);
         // create User
-        const user = await User.create({
+        const user = User.create({
           first_name: firstName,
           last_name: lastName,
           email: email,

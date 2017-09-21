@@ -52,7 +52,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "tsc | sails lift"
+    "start": "sails lift"
   },
   "main": "app.js",
   "repository": {
