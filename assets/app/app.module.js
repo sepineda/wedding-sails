@@ -62,7 +62,7 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([
                     // { path: '', redirectTo: 'boda', pathMatch: 'full' },
                     {
-                        path: '', component: landing_component_1.LandingComponent, canActivate: [auth_guard_1.AuthGuard], children: [
+                        path: '', component: landing_component_1.LandingComponent, children: [
                             { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
                             { path: 'nuestra-historia', component: home_component_1.HomeComponent },
                             { path: 'donde-y-cuando', component: when_where_component_1.WhenWhereComponent },

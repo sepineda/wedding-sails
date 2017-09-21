@@ -55,7 +55,7 @@ import { SectionListComponent } from './components/section-list/section-list.com
     RouterModule.forRoot([
       // { path: '', redirectTo: 'boda', pathMatch: 'full' },
       {
-        path: '', component: LandingComponent, canActivate: [AuthGuard], children: [
+        path: '', component: LandingComponent, children: [
           { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
           { path: 'nuestra-historia', component: HomeComponent },
           { path: 'donde-y-cuando', component: WhenWhereComponent },
