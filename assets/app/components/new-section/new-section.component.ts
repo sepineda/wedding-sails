@@ -47,7 +47,7 @@ export class NewSectionComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       content: ['', Validators.required],
-      category: ['', Validators.required]
+      category: [0, Validators.required]
     });
 
     this.status = { color: 'white-text', message: '' }
@@ -146,7 +146,7 @@ export class NewSectionComponent implements OnInit {
       let section: Section = {
         name: formModel.name as string,
         content: formModel.content as string,
-        category: formModel.category as string,
+        category: formModel.category as number,
         active: true,
         _wedding: this.wedding.id
       }

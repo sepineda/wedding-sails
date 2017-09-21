@@ -34,7 +34,7 @@ var NewSectionComponent = /** @class */ (function () {
         this.form = this.fb.group({
             name: ['', forms_1.Validators.required],
             content: ['', forms_1.Validators.required],
-            category: ['', forms_1.Validators.required]
+            category: [0, forms_1.Validators.required]
         });
         this.status = { color: 'white-text', message: '' };
         this.user = JSON.parse(localStorage.getItem('currentUser'));

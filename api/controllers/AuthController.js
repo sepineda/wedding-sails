@@ -7,8 +7,6 @@
 
 module.exports = {
 
-
-
   /**
    * `AuthController.login()`
    */
@@ -29,28 +27,27 @@ module.exports = {
       })
     }
 
+    User.findOne({
+      email: email
+    }).exec(function(err, user) {
 
-    const loginReq = async() => {
+      if(err){
+        res.forbidden(err);
+      }
 
-      const user = await User.findOne({
-        email
-      });
-      const isMatched = await User.checkPassword(password, user.password);
+      const isMatched = User.checkPassword(password, user.password);
 
       if (!isMatched) {
         throw new Error('Su password no es correcto');
       }
 
-      let token = JwtService.issue(user,'1d');
+      let token = JwtService.issue(user, '1d');
 
       user.token = token;
 
-      return user;
-    };
+      res.ok(user);
 
-
-    loginReq().then(user => res.ok(user))
-      .catch(err => res.forbidden(err));
+    });
   },
 
   /**
@@ -95,16 +92,16 @@ module.exports = {
     }
 
 
-    //create async method signupRequest
-    const signupRequest = async() => {
+    //create method signupRequest
+    const signupRequest = () => {
 
       //add code into try catch
       try {
 
         //call the UtilService encryptpassword
-        const encPassword = await UtilService.encryptPassword(password);
+        const encPassword = UtilService.encryptPassword(password);
         // create User
-        const user = await User.create({
+        const user = User.create({
           first_name: firstName,
           last_name: lastName,
           email: email,

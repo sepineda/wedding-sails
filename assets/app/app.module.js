@@ -62,7 +62,7 @@ var AppModule = /** @class */ (function () {
                 router_1.RouterModule.forRoot([
                     // { path: '', redirectTo: 'boda', pathMatch: 'full' },
                     {
-                        path: '', component: landing_component_1.LandingComponent, canActivate: [auth_guard_1.AuthGuard], children: [
+                        path: '', component: landing_component_1.LandingComponent, children: [
                             { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
                             { path: 'nuestra-historia', component: home_component_1.HomeComponent },
                             { path: 'donde-y-cuando', component: when_where_component_1.WhenWhereComponent },
@@ -72,13 +72,13 @@ var AppModule = /** @class */ (function () {
                     {
                         path: 'admin', component: admin_component_1.AdminComponent, canActivate: [auth_guard_1.AuthGuard], children: [
                             { path: '', redirectTo: 'lista', pathMatch: 'full' },
-                            { path: 'boda', component: new_wedding_component_1.NewWeddingComponent },
-                            { path: 'nueva-seccion', component: new_section_component_1.NewSectionComponent },
-                            { path: 'secciones', component: section_list_component_1.SectionListComponent },
-                            { path: 'lista', component: guest_list_component_1.GuestListComponent },
+                            { path: 'boda', component: new_wedding_component_1.NewWeddingComponent, canActivate: [auth_guard_1.AuthGuard] },
+                            { path: 'nueva-seccion', component: new_section_component_1.NewSectionComponent, canActivate: [auth_guard_1.AuthGuard] },
+                            { path: 'secciones', component: section_list_component_1.SectionListComponent, canActivate: [auth_guard_1.AuthGuard] },
+                            { path: 'lista', component: guest_list_component_1.GuestListComponent, canActivate: [auth_guard_1.AuthGuard] },
                             { path: 'invitar', component: new_guest_component_1.NewGuestComponent },
-                            { path: 'editar-invitado/:guest_id', component: new_guest_component_1.NewGuestComponent },
-                            { path: 'editar-seccion/:section_id', component: new_section_component_1.NewSectionComponent },
+                            { path: 'editar-invitado/:guest_id', component: new_guest_component_1.NewGuestComponent, canActivate: [auth_guard_1.AuthGuard] },
+                            { path: 'editar-seccion/:section_id', component: new_section_component_1.NewSectionComponent, canActivate: [auth_guard_1.AuthGuard] },
                         ]
                     },
                     { path: 'login', component: login_component_1.LoginComponent }
