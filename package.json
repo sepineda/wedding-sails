@@ -52,7 +52,6 @@
     "sails-hook-autoreload": "^1.0.0",
     "sails-mongo": "^0.12.2",
     "systemjs": "0.20.18",
-    "ts-node": "^3.3.0",
     "typescript": "^2.5.2",
     "zone.js": "0.8.17"
   },
