@@ -29,7 +29,7 @@ require("materialize-css");
 var new_section_component_1 = require("./components/new-section/new-section.component");
 var new_wedding_component_1 = require("./components/new-wedding/new-wedding.component");
 var section_list_component_1 = require("./components/section-list/section-list.component");
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([

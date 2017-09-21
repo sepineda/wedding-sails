@@ -14,7 +14,7 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 var auth_service_1 = require("../../services/auth.service");
-var LoginComponent = (function () {
+var LoginComponent = /** @class */ (function () {
     function LoginComponent(http, fb, authService, router, route) {
         this.http = http;
         this.fb = fb;

@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var AuthService = (function () {
+var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
     }

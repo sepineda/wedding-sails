@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
-var NewWeddingComponent = (function () {
+var NewWeddingComponent = /** @class */ (function () {
     function NewWeddingComponent(http, fb) {
         this.http = http;
         this.fb = fb;

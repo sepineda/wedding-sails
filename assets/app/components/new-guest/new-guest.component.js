@@ -14,7 +14,7 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 require("rxjs/add/operator/map");
-var NewGuestComponent = (function () {
+var NewGuestComponent = /** @class */ (function () {
     function NewGuestComponent(http, fb, route) {
         this.http = http;
         this.fb = fb;

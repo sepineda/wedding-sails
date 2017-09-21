@@ -17,7 +17,7 @@ var router_2 = require("@angular/router");
 require("rxjs/add/operator/map");
 var section_1 = require("../../models/section");
 var URL = "http://localhost:1337/section/uploadImage";
-var NewSectionComponent = (function () {
+var NewSectionComponent = /** @class */ (function () {
     function NewSectionComponent(http, fb, route, el, router) {
         this.http = http;
         this.fb = fb;
