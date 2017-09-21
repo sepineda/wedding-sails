@@ -64,7 +64,7 @@ import { SectionListComponent } from './components/section-list/section-list.com
         ]
       },
       {
-        path: 'admin', component: AdminComponent, children: [
+        path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
           { path: 'boda', component: NewWeddingComponent },
           { path: 'nueva-seccion', component: NewSectionComponent },
