@@ -125,4 +125,5 @@ typings
 # ES5/6 auto generated files
 ################################################
 
-assets/app/**.js*
+assets/app/**/*.js
+assets/app/**/*.map
