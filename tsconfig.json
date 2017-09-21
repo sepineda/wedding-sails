@@ -13,8 +13,7 @@
   "exclude": [
       ".tmp",
       "node_modules",
-      "typings",
-      "app"
+      "typings"
   ],
   "compileOnSave": false
 }
