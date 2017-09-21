@@ -66,13 +66,13 @@ import { SectionListComponent } from './components/section-list/section-list.com
       {
         path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
-          { path: 'boda', component: NewWeddingComponent },
-          { path: 'nueva-seccion', component: NewSectionComponent },
-          { path: 'secciones', component: SectionListComponent },
-          { path: 'lista', component: GuestListComponent },
+          { path: 'boda', component: NewWeddingComponent, canActivate: [AuthGuard] },
+          { path: 'nueva-seccion', component: NewSectionComponent, canActivate: [AuthGuard] },
+          { path: 'secciones', component: SectionListComponent, canActivate: [AuthGuard] },
+          { path: 'lista', component: GuestListComponent, canActivate: [AuthGuard] },
           { path: 'invitar', component: NewGuestComponent },
-          { path: 'editar-invitado/:guest_id', component: NewGuestComponent },
-          { path: 'editar-seccion/:section_id', component: NewSectionComponent },
+          { path: 'editar-invitado/:guest_id', component: NewGuestComponent, canActivate: [AuthGuard] },
+          { path: 'editar-seccion/:section_id', component: NewSectionComponent, canActivate: [AuthGuard] },
         ]
       },
       { path: 'login', component: LoginComponent }
