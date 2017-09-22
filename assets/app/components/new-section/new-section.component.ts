@@ -15,8 +15,6 @@ import { Option } from '../../models/option';
 
 declare var Materialize: any;
 
-const URL = "https://los-ilusos.herokuapp.com/section/uploadImage";
-
 @Component({
   selector: 'wedding-new-section',
   templateUrl: './new-section.component.html',
@@ -113,7 +111,7 @@ export class NewSectionComponent implements OnInit {
       this.http.put('Section/' + this.section.id, bodyString, options)
         .map((res: Response) => res.json())
         .subscribe(result => {
-          if(result.id)
+          if (result.id)
             this.globalActions.emit({ action: 'toast', params: ['Seccion eliminada.', 3000, 'green'] });
 
           this.router.navigate(['/admin/secciones']);
@@ -154,6 +152,10 @@ export class NewSectionComponent implements OnInit {
     this.form.reset();
   }
 
+  diplayToast(message: string, color: string) {
+    this.globalActions.emit({ action: 'toast', params: [message, 3000, color] });
+  }
+
   onSubmit() {
     if (this.form.valid) {
       const formModel = this.form.value;
@@ -175,10 +177,8 @@ export class NewSectionComponent implements OnInit {
           .map((res: Response) => res.json())
           .subscribe(data => {
 
-            console.log(data);
-            this.globalActions.emit({ action: 'toast', params: ['Actualizado correctamente', 3000, 'green'] });
-
             this.uploadImage(this.section);
+            this.diplayToast('Actualizado correctamente', 'green');
 
           }, error => {
             this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
@@ -190,7 +190,7 @@ export class NewSectionComponent implements OnInit {
             let newSection = result;
             this.uploadImage(newSection);
             this.resetForm();
-            this.globalActions.emit({ action: 'toast', params: ['Nueva seccion agregada', 3000, 'green'] });
+
           },
           error => {
             this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });

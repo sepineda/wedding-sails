@@ -5,41 +5,52 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+const URL = "https://los-ilusos.herokuapp.com";
+
 module.exports = {
 
   confirm: (req, res) => {
-    Section.find({category: 1, isActive: true})
+    Section.find({
+        category: 1,
+        isActive: true
+      })
       .exec(function(err, sections) {
-          if(err){
-            return res.serverError(err);
-          }
+        if (err) {
+          return res.serverError(err);
+        }
 
-          return res.json(sections);
+        return res.json(sections);
 
       });
   },
 
   place: (req, res) => {
-    Section.find({category: 2, isActive: true})
+    Section.find({
+        category: 2,
+        isActive: true
+      })
       .exec(function(err, sections) {
-          if(err){
-            return res.serverError(err);
-          }
+        if (err) {
+          return res.serverError(err);
+        }
 
-          return res.json(sections);
+        return res.json(sections);
 
       });
   },
 
   story: function(req, res) {
 
-    Section.find({category: 0, isActive: true})
+    Section.find({
+        category: 0,
+        isActive: true
+      })
       .exec(function(err, sections) {
-          if(err){
-            return res.serverError(err);
-          }
+        if (err) {
+          return res.serverError(err);
+        }
 
-          return res.json(sections);
+        return res.json(sections);
 
       });
   },
@@ -59,7 +70,7 @@ module.exports = {
       }
 
       Section.update(section_id, {
-          imageUrl: require('util').format('%s/section/image/%s', 'http://localhost:1337', section_id),
+          imageUrl: require('util').format('%s/section/image/%s', URL, section_id),
           imageFd: uploadedFiles[0].fd
         })
         .exec(function(err) {
