@@ -47,8 +47,8 @@
     </div>
 
     <div class="row">
-      <button class="btn waves-effect" type="submit">Guardar</button>
-      <button *ngIf="section" materialize [materializeActions]="globalActions" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
+      <button class="btn waves-effect" materialize [materializeActions]="globalActions" type="submit">Guardar</button>
+      <button type="button" *ngIf="section" materialize [materializeActions]="globalActions" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
     </div>
   </div>
 </form>

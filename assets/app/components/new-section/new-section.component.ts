@@ -113,7 +113,11 @@ export class NewSectionComponent implements OnInit {
       this.http.put('Section/' + this.section.id, bodyString, options)
         .map((res: Response) => res.json())
         .subscribe(result => {
+          if(result.id)
+            this.globalActions.emit({ action: 'toast', params: ['Seccion eliminada.', 3000, 'green'] });
+            
           this.router.navigate(['/admin/secciones']);
+
         }, error => {
           this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
         })
@@ -179,12 +183,15 @@ export class NewSectionComponent implements OnInit {
           });
       } else {
         this.http.post('Section', section)
+          .map((res: Response) => res.json())
           .subscribe(result => {
-            let newSection = result.json();
-
+            let newSection = result;
             this.uploadImage(newSection);
             this.resetForm();
             this.globalActions.emit({ action: 'toast', params: ['Nueva seccion agregada', 3000, 'green'] });
+          },
+          error => {
+            this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
           });
       }
     } else {
