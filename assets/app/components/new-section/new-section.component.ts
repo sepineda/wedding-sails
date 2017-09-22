@@ -1,10 +1,11 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, EventEmitter } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
+import { MaterializeDirective, MaterializeAction } from "angular2-materialize";
 
 import { Status } from '../../models/status';
 import { Wedding } from '../../models/wedding';
@@ -13,6 +14,7 @@ import { Section, SectionCategories } from '../../models/section';
 import { Option } from '../../models/option';
 
 declare var Materialize: any;
+
 const URL = "http://localhost:1337/section/uploadImage";
 
 @Component({
@@ -23,7 +25,6 @@ const URL = "http://localhost:1337/section/uploadImage";
 export class NewSectionComponent implements OnInit {
   editMode: boolean;
   form: FormGroup;
-  status: Status;
   wedding: Wedding;
   user: User;
   paramsSub: Subscription;
@@ -31,6 +32,8 @@ export class NewSectionComponent implements OnInit {
   filePath: string;
 
   categories: Option[] = [];
+
+  globalActions = new EventEmitter<string | MaterializeAction>();
 
   constructor(private http: Http,
     private fb: FormBuilder,
@@ -47,11 +50,9 @@ export class NewSectionComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       header: [''],
-      content: ['', Validators.required],
+      content: [''],
       category: [0, Validators.required]
     });
-
-    this.status = { color: 'white-text', message: '' }
 
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     //this.editMode = !!this.user._wedding;
@@ -102,19 +103,19 @@ export class NewSectionComponent implements OnInit {
         header: this.section.header,
         content: this.section.content,
         category: this.section.category,
-        active: false,
+        isActive: false,
         _wedding: this.wedding.id
       };
 
       let bodyString = JSON.stringify(delSection); // Stringify payload
       let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
       let options = new RequestOptions({ headers: headers });
-      this.http.put('section/' + this.section.id, bodyString, options)
+      this.http.put('Section/' + this.section.id, bodyString, options)
         .map((res: Response) => res.json())
         .subscribe(result => {
           this.router.navigate(['/admin/secciones']);
         }, error => {
-          console.log(error);
+          this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
         })
     }
   }
@@ -138,8 +139,14 @@ export class NewSectionComponent implements OnInit {
         (success) => {
           console.log(success._body);
         },
-        (error) => console.log(error))
+        (error) => {
+          this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
+        });
     }
+  }
+
+  resetForm() {
+    this.form.reset();
   }
 
   onSubmit() {
@@ -151,7 +158,7 @@ export class NewSectionComponent implements OnInit {
         header: formModel.header as string,
         content: formModel.content as string,
         category: formModel.category as number,
-        active: true,
+        isActive: true,
         _wedding: this.wedding.id
       }
 
@@ -162,28 +169,26 @@ export class NewSectionComponent implements OnInit {
         this.http.put('section/' + this.section.id, bodyString, options)
           .map((res: Response) => res.json())
           .subscribe(data => {
-            this.status.color = 'green-text';
-            this.status.message = 'Actualizado correctamente';
+
+            this.globalActions.emit({ action: 'toast', params: ['Actualizado correctamente', 3000, 'green'] });
 
             this.uploadImage(this.section);
 
           }, error => {
-            this.status.color = 'red-text';
-            this.status.message = error;
+            this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
           });
       } else {
         this.http.post('Section', section)
           .subscribe(result => {
-            this.status.color = 'green-text';
-            this.status.message = 'Nueva seccion agregada exitosamente';
             let newSection = result.json();
 
             this.uploadImage(newSection);
+            this.resetForm();
+            this.globalActions.emit({ action: 'toast', params: ['Nueva seccion agregada', 3000, 'green'] });
           });
       }
     } else {
-      this.status.color = 'red-text';
-      this.status.message = 'Por favor complete los campos requeridos';
+      this.globalActions.emit({ action: 'toast', params: ['Por favor complete los campos requeridos', 3000, 'red'] });
     }
   }
 

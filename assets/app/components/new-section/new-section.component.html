@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <textarea class="materialize-textarea validate" formControlName="content" name="content" required></textarea>
+        <textarea class="materialize-textarea" formControlName="content" name="content"></textarea>
         <label for="content">Historia</label>
       </div>
     </div>
@@ -35,7 +35,7 @@
       <div class="file-field input-field col s12">
         <div class="btn">
           <span>Imagen</span>
-          <input type="file" id="image" (change)="fileChange($event)"/>
+          <input type="file" id="image" (change)="fileChange($event)" />
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text">
@@ -47,12 +47,8 @@
     </div>
 
     <div class="row">
-      <label [class]="status.color"> {{status.message}}</label>
-    </div>
-
-    <div class="row">
       <button class="btn waves-effect" type="submit">Guardar</button>
-      <button *ngIf="section" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
+      <button *ngIf="section" materialize [materializeActions]="globalActions" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
     </div>
   </div>
 </form>

@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     name: {  type: 'string' },
 
-    header: { type: 'string' }, 
+    header: { type: 'string' },
 
     content: { type: 'text' },
 
@@ -18,7 +18,7 @@ module.exports = {
 
     imageFd: { type: 'string' },
 
-    active: { type: 'boolean' },
+    isActive: { type: 'boolean' },
 
     category: { type: 'integer' },
 
