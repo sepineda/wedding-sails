@@ -15,7 +15,7 @@ import { Option } from '../../models/option';
 
 declare var Materialize: any;
 
-const URL = "http://localhost:1337/section/uploadImage";
+const URL = "https://los-ilusos.herokuapp.com/section/uploadImage";
 
 @Component({
   selector: 'wedding-new-section',
