@@ -6,5 +6,10 @@
 }
 
 .page-title{
-  font-size: 20px;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  font-family: 'Lato', sans-serif;
 }
