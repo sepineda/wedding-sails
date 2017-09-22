@@ -27,6 +27,10 @@ export class NavMenuComponent implements OnInit {
         this.sidenavParams = [];
     }
 
+    close(){
+      this.sidenavActions.emit({action:'sideNav', params:['hide']});
+    }
+
     ngOnInit() {
 
       this.http.get('wedding')

@@ -11,7 +11,11 @@
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
+      <li>
+        <a ><i class="material-icons" (click)="close()">close</i></a>
+      </li>
       <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route">{{ menuItem.name | uppercase }}</a></li>
     </ul>
+
   </div>
 </nav>
