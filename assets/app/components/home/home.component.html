@@ -1,4 +1,4 @@
-<div class="row" *ngFor="let section of sections">
+<div  *ngFor="let section of sections">
   <div class="parallax-container valign-wrapper">
     <h1 class=" white-text overlay center-align">
         {{section.name | uppercase }}
@@ -9,5 +9,5 @@
 
     </div>
   </div>
-  <story-card [header]="section.header"  [story]="section.content"></story-card>
+  <story-card *ngIf="section.header || section.content" story-card [header]="section.header"  [story]="section.content"></story-card>
 </div>

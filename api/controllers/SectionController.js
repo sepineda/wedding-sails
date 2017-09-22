@@ -8,7 +8,7 @@
 module.exports = {
 
   confirm: (req, res) => {
-    Section.find({category: 1, active: true})
+    Section.find({category: 1, isActive: true})
       .exec(function(err, sections) {
           if(err){
             return res.serverError(err);
@@ -20,7 +20,7 @@ module.exports = {
   },
 
   place: (req, res) => {
-    Section.find({category: 2, active: true})
+    Section.find({category: 2, isActive: true})
       .exec(function(err, sections) {
           if(err){
             return res.serverError(err);
@@ -33,7 +33,7 @@ module.exports = {
 
   story: function(req, res) {
 
-    Section.find({category: 0, active: true})
+    Section.find({category: 0, isActive: true})
       .exec(function(err, sections) {
           if(err){
             return res.serverError(err);

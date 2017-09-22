@@ -115,7 +115,7 @@ export class NewSectionComponent implements OnInit {
         .subscribe(result => {
           if(result.id)
             this.globalActions.emit({ action: 'toast', params: ['Seccion eliminada.', 3000, 'green'] });
-            
+
           this.router.navigate(['/admin/secciones']);
 
         }, error => {
@@ -144,7 +144,8 @@ export class NewSectionComponent implements OnInit {
           console.log(success._body);
         },
         (error) => {
-          this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
+          console.log(error);
+          //this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
         });
     }
   }
@@ -174,6 +175,7 @@ export class NewSectionComponent implements OnInit {
           .map((res: Response) => res.json())
           .subscribe(data => {
 
+            console.log(data);
             this.globalActions.emit({ action: 'toast', params: ['Actualizado correctamente', 3000, 'green'] });
 
             this.uploadImage(this.section);

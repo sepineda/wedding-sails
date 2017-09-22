@@ -57,7 +57,8 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "sails lift"
+    "start": "sails lift",
+    "dev": "tsc -w | sails lift"
   },
   "main": "app.js",
   "repository": {
