@@ -1,13 +1,13 @@
 <div *ngFor="let section of sections">
   <div class="parallax-container valign-wrapper">
-    <h1 class=" white-text overlay center-align">
+    <!-- <h1 class=" white-text overlay center-align">
         {{section.name | uppercase }}
-      </h1>
+      </h1> -->
 
     <div class="parallax" materialize="parallax">
       <img [src]="section.imageUrl">
 
     </div>
   </div>
-  <story-card *ngIf="section.header || section.content" story-card [header]="section.header"  [story]="section.content"></story-card>
+  <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content"></story-card>
 </div>
