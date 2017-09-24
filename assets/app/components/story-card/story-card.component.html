@@ -1,6 +1,8 @@
 <div class="section white valign-wrapper">
     <div class="row container center-align">
         <h5 class="header">{{header}}</h5>
-        <p class="grey-text text-darken-3 lighten-3">{{story}}</p>
+        <br />
+        <div *ngIf="isHtmlContent" [innerHtml]="story"></div>
+        <p *ngIf="!isHtmlContent" class="grey-text text-darken-3 lighten-3">{{story}}</p>
     </div>
 </div>

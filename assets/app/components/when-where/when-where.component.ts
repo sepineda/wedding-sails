@@ -6,10 +6,8 @@ import { Wedding } from '../../models/wedding';
 
 @Component({
   selector: 'when-where',
-  // templateUrl: './when-where.component.html',
-  templateUrl: '../../home/home.component.html',
-  //styleUrls: ['./when-where.component.css'],
-  styleUrls: ['../../home/home.component.css']
+  templateUrl: './when-where.component.html',
+  styleUrls: ['./when-where.component.css'],
 })
 export class WhenWhereComponent implements OnInit {
   private sections: Section[];

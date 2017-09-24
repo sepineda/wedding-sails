@@ -11,7 +11,7 @@ module.exports = {
     Section.find({
         category: 1,
         isActive: true
-      })
+      }).sort({ index: 1 })
       .exec(function(err, sections) {
         if (err) {
           return res.serverError(err);
@@ -26,7 +26,7 @@ module.exports = {
     Section.find({
         category: 2,
         isActive: true
-      })
+      }).sort({ index: 1 })
       .exec(function(err, sections) {
         if (err) {
           return res.serverError(err);

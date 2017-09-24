@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class StoryCardComponent {
     @Input() header: string;
     @Input() story: string;
+    @Input() isHtmlContent: boolean = false
 }

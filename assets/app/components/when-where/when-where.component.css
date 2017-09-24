@@ -1,0 +1,15 @@
+.parallax-container {
+    height: 650px;
+}
+
+.overlay, .parallax-text {
+    /*font-size: 80px;*/
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .11em;
+    line-height: 1em;
+    text-rendering: optimizeLegibility;
+}
+
+.overlay{
+  width: 100%;
+}
