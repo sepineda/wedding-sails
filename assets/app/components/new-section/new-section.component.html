@@ -31,6 +31,13 @@
       </div>
     </div>
 
+    <div class="row" *ngIf="editMode">
+      <div class="input-field col s12">
+        <input class="validate" type="number" formControlName="index" name="index" required />
+        <label for="index">Indice</label>
+      </div>
+    </div>
+
     <div class="row hide-on-med-and-down">
       <div class="file-field input-field col s12">
         <div class="btn">
@@ -42,8 +49,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <img *ngIf="section && !filePath" materialize="materialbox" class="materialboxed" width="300" [src]="section.imageUrl" />
+    <div class="row" *ngIf="section && !filePath">
+      <img  materialize="materialbox" class="materialboxed" width="300" [src]="section.imageUrl" />
     </div>
 
     <div class="row">

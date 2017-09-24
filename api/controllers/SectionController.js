@@ -42,7 +42,7 @@ module.exports = {
     Section.find({
         category: 0,
         isActive: true
-      })
+      }).sort({ index: 1 })
       .exec(function(err, sections) {
         if (err) {
           return res.serverError(err);
@@ -95,7 +95,9 @@ module.exports = {
       }
 
       var SkipperDisk = require('skipper-disk');
-      var fileAdapter = SkipperDisk( {dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')} );
+      var fileAdapter = SkipperDisk({
+        dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')
+      });
 
       // set the filename to the same file as the user uploaded
       //res.set("Content-disposition", "attachment; filename='" + file.name + "'");

@@ -8,24 +8,52 @@
 module.exports = {
 
   attributes: {
-    name: {  type: 'string' },
+    name: {
+      type: 'string'
+    },
 
-    header: { type: 'string' },
+    header: {
+      type: 'string'
+    },
 
-    content: { type: 'text' },
+    content: {
+      type: 'text'
+    },
 
-    imageUrl: { type: 'string' },
+    imageUrl: {
+      type: 'string'
+    },
 
-    imageFd: { type: 'string' },
+    imageFd: {
+      type: 'string'
+    },
 
-    isActive: { type: 'boolean' },
+    isActive: {
+      type: 'boolean'
+    },
 
-    category: { type: 'integer' },
+    category: {
+      type: 'integer'
+    },
+
+    index: {
+      type: 'integer'
+    },
 
     _wedding: {
       model: 'wedding',
       columnName: 'wedding_id',
       required: true
     }
+  },
+
+  beforeCreate: function(obj, next) {
+    Section.count().exec(function(err, cnt) {
+      if (err) next(err);
+      else {
+        obj['index'] = cnt + 1;
+        next(null);
+      }
+    })
   }
 };

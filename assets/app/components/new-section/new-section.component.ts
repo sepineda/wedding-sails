@@ -49,7 +49,8 @@ export class NewSectionComponent implements OnInit {
       name: ['', Validators.required],
       header: [''],
       content: [''],
-      category: [0, Validators.required]
+      category: [0, Validators.required],
+      index: [0]
     });
 
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -68,9 +69,10 @@ export class NewSectionComponent implements OnInit {
         if (section_id) {
           this.editMode = true;
 
-          this.http.get('Section/' + section_id)
-            .subscribe(result => {
-              this.section = result.json();
+          this.http.get('section/' + section_id)
+          .map( result => result.json() )
+            .subscribe( result => {
+              this.section = result;
 
               this.fillFormWithSection();
               Materialize.updateTextFields();
@@ -84,7 +86,8 @@ export class NewSectionComponent implements OnInit {
       name: this.section.name,
       header: this.section.header,
       content: this.section.content,
-      category: this.section.category
+      category: this.section.category,
+      index: this.section.index
     });
   }
 
@@ -94,13 +97,12 @@ export class NewSectionComponent implements OnInit {
 
   deleteSection() {
     if (this.section) {
-
-
       let delSection: Section = {
         name: this.section.name,
         header: this.section.header,
         content: this.section.content,
         category: this.section.category,
+        index: this.section.index,
         isActive: false,
         _wedding: this.wedding.id
       };
@@ -111,8 +113,8 @@ export class NewSectionComponent implements OnInit {
       this.http.put('Section/' + this.section.id, bodyString, options)
         .map((res: Response) => res.json())
         .subscribe(result => {
-          if (result.id)
-            this.globalActions.emit({ action: 'toast', params: ['Seccion eliminada.', 3000, 'green'] });
+
+          this.globalActions.emit({ action: 'toast', params: ['Seccion eliminada.', 3000, 'green'] });
 
           this.router.navigate(['/admin/secciones']);
 
@@ -150,6 +152,7 @@ export class NewSectionComponent implements OnInit {
 
   resetForm() {
     this.form.reset();
+    this.editMode = false;
   }
 
   diplayToast(message: string, color: string) {
@@ -165,6 +168,7 @@ export class NewSectionComponent implements OnInit {
         header: formModel.header as string,
         content: formModel.content as string,
         category: formModel.category as number,
+        index: formModel.index as number,
         isActive: true,
         _wedding: this.wedding.id
       }
@@ -190,7 +194,7 @@ export class NewSectionComponent implements OnInit {
             let newSection = result;
             this.uploadImage(newSection);
             this.resetForm();
-
+            this.diplayToast('Nueva seccion agregada', 'green');
           },
           error => {
             this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });

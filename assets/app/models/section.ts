@@ -7,6 +7,7 @@ export interface Section{
   imageFd?: string;
   isActive: boolean;
   category: number;
+  index?: number;
   _wedding: string;
 }
 
