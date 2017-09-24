@@ -9,6 +9,9 @@
 
     <ul class="right hide-on-med-and-down">
       <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route">{{ menuItem.name | uppercase }}</a></li>
+      <li>
+        <a href="#/admin" class="black-text"><i class="material-icons">lock</i> </a>
+      </li>
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
@@ -16,6 +19,12 @@
         <a ><i class="material-icons" (click)="close()">close</i></a>
       </li>
       <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route" (click)="close()">{{ menuItem.name | uppercase }}</a></li>
+      <div class="divider">
+
+      </div>
+      <li>
+        <a href="#/admin" class="black-text"><i class="material-icons">lock</i> Admin</a>
+      </li>
     </ul>
 
   </div>

@@ -20,7 +20,8 @@ export class NavMenuComponent implements OnInit {
         this.menuItems = [
             { name: "Nuestra historia", route: "/nuestra-historia" },
             { name: "Donde y cuando", route: "/donde-y-cuando" },
-            { name: "RSVP", route: "/confirmar" }
+            { name: "RSVP", route: "/confirmar" },
+            // { name: "admin", route: "/admin" }
         ];
 
         this.sidenavActions = new EventEmitter<any>();
