@@ -2,9 +2,12 @@
     height: 650px;
 }
 
-.parallax-text {
-    font-size: 80px;
+.overlay, .parallax-text {
+    /*font-size: 80px;*/
     font-family: 'Lato', sans-serif;
+    letter-spacing: .11em;
+    line-height: 1em;
+    text-rendering: optimizeLegibility;
 }
 
 .overlay{

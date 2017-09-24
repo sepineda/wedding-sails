@@ -5,8 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-const URL = "https://los-ilusos.herokuapp.com";
-
 module.exports = {
 
   confirm: (req, res) => {
@@ -59,7 +57,8 @@ module.exports = {
     let section_id = req.param('id')
 
     req.file('image').upload({
-      maxBytes: 10000000
+      maxBytes: 10000000,
+      dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')
     }, function whenDone(err, uploadedFiles) {
       if (err) {
         return res.negociate(err);
@@ -70,7 +69,7 @@ module.exports = {
       }
 
       Section.update(section_id, {
-          imageUrl: require('util').format('%s/section/image/%s', URL, section_id),
+          imageUrl: require('util').format('%s/section/image/%s', sails.config.AppUrl, section_id),
           imageFd: uploadedFiles[0].fd
         })
         .exec(function(err) {
@@ -96,7 +95,7 @@ module.exports = {
       }
 
       var SkipperDisk = require('skipper-disk');
-      var fileAdapter = SkipperDisk( /* optional opts */ );
+      var fileAdapter = SkipperDisk( {dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')} );
 
       // set the filename to the same file as the user uploaded
       //res.set("Content-disposition", "attachment; filename='" + file.name + "'");

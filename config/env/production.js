@@ -32,7 +32,8 @@ module.exports = {
    ***************************************************************************/
 
   // log: {
-  //   level: "silent"
-  // }
+  //   lev
+
+  AppUrl: "https://los-ilusos.herokuapp.com"
 
 };
