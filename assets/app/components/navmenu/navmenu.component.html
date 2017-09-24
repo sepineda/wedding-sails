@@ -2,8 +2,9 @@
   <div class="nav-wrapper">
     <a *ngIf="wedding" href="#" class="page-title black-text">{{wedding.name | uppercase}}</a>
 
-    <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions" data-activates="nav-mobile" class="button-collapse hide-on-large-only">
-      <i class="material-icons black-text">menu</i>
+    <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions"
+    data-activates="nav-mobile" class="button-collapse hide-on-large-only">
+      <i class="material-icons grey-text">menu</i>
     </a>
 
     <ul class="right hide-on-med-and-down">
@@ -14,7 +15,7 @@
       <li>
         <a ><i class="material-icons" (click)="close()">close</i></a>
       </li>
-      <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route">{{ menuItem.name | uppercase }}</a></li>
+      <li *ngFor="let menuItem of menuItems" routerLinkActive="active"><a class="black-text" [routerLink]="menuItem.route" (click)="close()">{{ menuItem.name | uppercase }}</a></li>
     </ul>
 
   </div>

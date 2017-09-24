@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
     //Get route info
     var tree: UrlTree = this.router.parseUrl(this.router.url);
     const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
-    var cat: Category = this.categories.filter(c => c.name === g.segments[0].toString())[0];
+    var cat: Category = this.categories.filter(c => c.route.split('/')[2] === g.segments[1].toString())[0];
     if (cat) {
       this.category = cat.name;
     }
