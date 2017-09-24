@@ -14,5 +14,5 @@ export interface Section{
 export enum SectionCategories {
   Historia,
   Confirmar,
-  Lugar
+  LugarFecha
 }

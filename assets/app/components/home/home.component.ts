@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
         this.http.get('Section/story')
           .subscribe(result => {
             this.sections = result.json();
-            console.log(this.sections)
           });
       });
   }

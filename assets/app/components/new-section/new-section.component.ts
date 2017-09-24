@@ -39,8 +39,8 @@ export class NewSectionComponent implements OnInit {
     private el: ElementRef,
     private router: Router) {
     this.categories.push({ value: SectionCategories.Historia, content: 'Historia' });
-    this.categories.push({ value: SectionCategories.Historia, content: 'Lugar' });
-    this.categories.push({ value: SectionCategories.Historia, content: 'Confirmar' });
+    this.categories.push({ value: SectionCategories.LugarFecha, content: 'Lugar y Fecha' });
+    this.categories.push({ value: SectionCategories.Confirmar, content: 'Confirmar' });
   }
 
   ngOnInit() {
