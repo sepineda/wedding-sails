@@ -35,6 +35,11 @@ module.exports = {
       guests: {
         collection: 'guest',
         via: '_wedding'
+      },
+
+      gallery: {
+        collection: 'photo',
+        via: '_wedding'
       }
   }
 };
