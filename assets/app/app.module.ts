@@ -25,6 +25,7 @@ import 'materialize-css';
 import { NewSectionComponent } from './components/new-section/new-section.component';
 import { NewWeddingComponent } from './components/new-wedding/new-wedding.component';
 import { SectionListComponent } from './components/section-list/section-list.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SectionListComponent } from './components/section-list/section-list.com
     LoginComponent,
     NewSectionComponent,
     NewWeddingComponent,
-    SectionListComponent
+    SectionListComponent,
+    GalleryComponent
   ],
   providers: [
     AuthGuard,
