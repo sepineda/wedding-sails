@@ -19,12 +19,12 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <input formControlName="email" name="email" type="email" class="validate" required>
+        <input formControlName="email" name="email" type="email" class="validate">
         <label for="email">Correo Electronico</label>
       </div>
       <div *ngIf="isAttributeInvalid('email')">
-        <label class="red-text" *ngIf="isRequiredValid('email')">El correo es requerido</label>
-        <br>
+        <!-- <label class="red-text" *ngIf="isRequiredValid('email')">El correo es requerido</label> -->
+        <!-- <br> -->
         <label class="red-text" *ngIf="isEmailValid()">El formato de correo no es valido</label>
       </div>
     </div>
@@ -49,11 +49,7 @@
     </div>
 
     <div class="row">
-      <label [class]="status.color"> {{status.message}}</label>
-    </div>
-
-    <div class="row">
-      <button class="btn waves-effect" type="submit">Guardar</button>
+      <button class="btn waves-effect" type="submit" materialize [materializeActions]="globalActions">Guardar</button>
     </div>
   </div>
 

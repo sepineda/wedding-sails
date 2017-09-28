@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
+import { MaterializeAction } from "angular2-materialize";
 
 import { Guest } from '../../models/guest';
 import { Status } from '../../models/status';
@@ -18,11 +19,12 @@ declare var Materialize:any;
 })
 export class NewGuestComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  status: Status;
   editMode: boolean;
   paramsSub: Subscription;
   guest: Guest;
   wedding: Wedding;
+
+  globalActions = new EventEmitter<string | MaterializeAction>();
 
   constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute) { }
 
@@ -30,7 +32,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: [''],
       spaces: [1, [Validators.required, Validators.min(1)]],
       phone: ''
     });
@@ -42,8 +44,8 @@ export class NewGuestComponent implements OnInit, OnDestroy {
 
       });
 
-    this.status = { color: 'white-text', message: '' }
     this.editMode = false;
+
 
     this.paramsSub = this.route.params
       .map(params => params['guest_id'])
@@ -56,6 +58,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
               this.guest = result.json();
 
               this.fillFormWithGuest();
+              Materialize.updateTextFields();
             })
         }
       });
@@ -96,22 +99,19 @@ export class NewGuestComponent implements OnInit, OnDestroy {
         this.http.put('guest/' + this.guest.id, bodyString, options)
             .map( (res:Response) => res.json() )
             .subscribe( data => {
-                this.status.color = 'green-text';
-                this.status.message = 'Actualizado correctamente';
+              this.globalActions.emit({ action: 'toast', params: ['Actualizado correctamente', 3000, 'green'] });
             },error => {
-                this.status.color = 'red-text';
-                this.status.message = error;
+                this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
             } );
       } else {
         this.http.post('Guest', newGuest)
           .subscribe(result => {
-            this.status.color = 'green-text';
-            this.status.message = 'Nuevo invitado agregado exitosamente';
+            this.globalActions.emit({ action: 'toast', params: ['Nuevo invitado agregado exitosamente', 3000, 'green'] });
+            this.form.reset();
           });
       }
     } else {
-      this.status.color = 'red-text';
-      this.status.message = 'Por favor complete los campos requeridos';
+      this.globalActions.emit({ action: 'toast', params: ['Por favor complete los campos requeridos', 3000, 'red'] });
     }
   }
 
