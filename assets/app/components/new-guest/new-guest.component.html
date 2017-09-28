@@ -3,7 +3,7 @@
     <div class="row">
       <div class="input-field col s12">
         <input formControlName="first_name" name="first_name" type="text" class="validate" required>
-        <label for="first_name">Nombre</label>
+        <label for="first_name">Nombre(s)</label>
       </div>
       <label class="red-text" *ngIf="isAttributeInvalid('first_name')">El nombre es requerido</label>
     </div>
@@ -11,10 +11,10 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <input formControlName="last_name" name="last_name" type="text" class="validate" required>
+        <input formControlName="last_name" name="last_name" type="text" class="validate">
         <label for="last_name">Apellidos</label>
       </div>
-      <label class="red-text" *ngIf="isAttributeInvalid('last_name')">Los Apellidos son requeridos</label>
+      <!-- <label class="red-text" *ngIf="isAttributeInvalid('last_name')">Los Apellidos son requeridos</label> -->
     </div>
 
     <div class="row">
