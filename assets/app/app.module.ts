@@ -26,6 +26,7 @@ import { NewSectionComponent } from './components/new-section/new-section.compon
 import { NewWeddingComponent } from './components/new-wedding/new-wedding.component';
 import { SectionListComponent } from './components/section-list/section-list.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     NewSectionComponent,
     NewWeddingComponent,
     SectionListComponent,
-    GalleryComponent
+    GalleryComponent,
+    AdminGalleryComponent
   ],
   providers: [
     AuthGuard,
@@ -75,6 +77,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
           { path: 'invitar', component: NewGuestComponent },
           { path: 'editar-invitado/:guest_id', component: NewGuestComponent, canActivate: [AuthGuard] },
           { path: 'editar-seccion/:section_id', component: NewSectionComponent, canActivate: [AuthGuard] },
+          { path: 'galeria', component: AdminGalleryComponent, canActivate: [AuthGuard] }
         ]
       },
       { path: 'login', component: LoginComponent }
