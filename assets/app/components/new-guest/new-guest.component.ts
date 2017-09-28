@@ -2,8 +2,10 @@ import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { MaterializeAction } from "angular2-materialize";
 
 import { Guest } from '../../models/guest';
@@ -26,7 +28,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
 
   globalActions = new EventEmitter<string | MaterializeAction>();
 
-  constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute) { }
+  constructor(private http: Http, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -120,6 +122,15 @@ export class NewGuestComponent implements OnInit, OnDestroy {
     } else {
       this.globalActions.emit({ action: 'toast', params: ['Por favor complete los campos requeridos', 3000, 'red'] });
     }
+  }
+
+  deleteGuest(){
+    this.http.delete(`guest/${this.guest.id}`)
+      .map((res:Response) => res.json())
+      .subscribe( data => {
+        this.globalActions.emit({ action: 'toast', params: [`Invitado "${this.guest.first_name}" fue eliminado`, 3000, 'red'] });
+        this.router.navigate(['/admin/lista']);
+      })
   }
 
   isAttributeInvalid(name: string) {

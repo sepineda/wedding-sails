@@ -1,23 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="card-panel" *ngIf="guests">
-      <div *ngIf="guests.length" class="row">
-        <div class="col s12 m6">
-          <span>Numero de invitados: {{guests.length}}</span>
-        </div>
-        <div class="col s12 m6">
-          <span>Numero de espacios: {{getGuestSpaces()}}</span>
-        </div>
-      </div>
-    </div>
+      <ul class="collection" *ngIf="guests && guests.length">
+        <li class="collection-item">
+          Numero de invitados<span class="badge blue white-text">{{guests.length}}</span>
+        </li>
+        <li class="collection-item">
+          Numero de espacios<span class="badge blue white-text">{{getGuestSpaces()}}</span>
+        </li>
+      </ul>
   </div>
 
   <div class="row">
     <div class="collection">
       <a class="collection-item" *ngFor="let guest of guests" [routerLink]="['/admin/editar-invitado', guest.id]">
-        {{guest.first_name + ' ' + guest.last_name}}
-        <span *ngIf="guest.spaces === 1" class="badge light-blue-text" data-badge-caption="espacio">{{guest.spaces}}</span>
-        <span *ngIf="guest.spaces > 1" class="badge light-blue-text" data-badge-caption="espacios">{{guest.spaces}}</span>
+        {{guest.first_name + ' ' + guest?.last_name}}
+
+        <span class="badge light-blue-text" > <i class="material-icons">people</i> {{guest.spaces}}</span>
+        <span *ngIf="guest.email" class="badge light-blue-text" > <i class="material-icons">email</i></span>
+        <span *ngIf="guest.phone" class="badge light-blue-text" > <i class="material-icons">phone</i></span>
       </a>
     </div>
   </div>
