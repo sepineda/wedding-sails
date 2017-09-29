@@ -28,6 +28,7 @@ export class AdminComponent implements OnInit {
     this.categories.push({ name: 'Boda', route: '/admin/boda', icon: 'wc' });
     this.categories.push({ name: 'Nueva Seccion', route: '/admin/nueva-seccion', icon: 'add' });
     this.categories.push({ name: 'Secciones', route: '/admin/secciones', icon: 'view_list' });
+    this.categories.push({ name: 'Galeria', route: '/admin/galeria', icon: 'photo_library'});
     this.categories.push({ name: 'Nuevo Invitado', route: '/admin/invitar', icon: 'person_add' });
     this.categories.push({ name: 'Invitados', route: '/admin/lista', icon: 'list' });
 

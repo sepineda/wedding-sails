@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
 import { MaterializeDirective, MaterializeAction } from "angular2-materialize";
 
-import { Status } from '../../models/status';
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
 import { Section, SectionCategories } from '../../models/section';

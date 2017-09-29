@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="fixed-action-btn">
+    <a [routerLink]="['/admin/invitar']" class="btn btn-large btn-floating waves-effect waves-light"><i class="material-icons">add</i></a>
+  </div>
+
   <div class="row">
       <ul class="collection" *ngIf="guests && guests.length">
         <li class="collection-item">
@@ -21,4 +25,6 @@
       </a>
     </div>
   </div>
+
+
 </div>

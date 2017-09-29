@@ -1,3 +1,20 @@
-<p>
-  admin-gallery works!
-</p>
+<div class="container">
+
+  <div class="row hide-on-med-and-down">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Imagen</span>
+        <input type="file" id="image" (change)="fileChange($event)" />
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+  </div>
+
+  <ul class="collection">
+      <li class="collection-item" *ngFor="let photo of photos">
+        <img materialize="materialbox" class="materialboxed" width="300" [src]="photo.imageUrl" />
+      </li>
+  </ul>
+</div>
