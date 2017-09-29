@@ -35,12 +35,19 @@ export class AdminGalleryComponent implements OnInit {
     this.fetchPhotos();
   }
 
+  deletePhoto(photo:Photo){
+    this.http.delete(`photo/${photo.id}`)
+      .map(res => res.json())
+      .subscribe( result => {
+        this.fetchPhotos();
+      })
+  }
+
   fetchPhotos() {
     this.http.get('photo')
       .map((res: Response) => res.json())
       .subscribe((result: Photo[]) => {
         this.photos = result;
-        console.log(this.photos);
       });
   }
 

@@ -18,10 +18,9 @@
     <div class="collection">
       <a class="collection-item" *ngFor="let guest of guests" [routerLink]="['/admin/editar-invitado', guest.id]">
         {{guest.first_name + ' ' + guest?.last_name}}
-
+        <span class="badge lime-text" > <i class="material-icons">watch_later</i></span>
         <span class="badge light-blue-text" > <i class="material-icons">people</i> {{guest.spaces}}</span>
-        <span *ngIf="guest.email" class="badge light-blue-text" > <i class="material-icons">email</i></span>
-        <span *ngIf="guest.phone" class="badge light-blue-text" > <i class="material-icons">phone</i></span>
+        <span class="badge light-blue-text" > <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i></span>
       </a>
     </div>
   </div>

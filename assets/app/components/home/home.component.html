@@ -6,8 +6,9 @@
 
     <div class="parallax" materialize="parallax">
       <img [src]="section.imageUrl">
-
     </div>
   </div>
   <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content"></story-card>
 </div>
+
+<wedding-gallery></wedding-gallery>

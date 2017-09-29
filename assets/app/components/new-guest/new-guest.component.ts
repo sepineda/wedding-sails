@@ -33,8 +33,8 @@ export class NewGuestComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.form = this.fb.group({
       first_name: ['', Validators.required],
-      last_name: [''],
-      email: [''],
+      last_name: '',
+      email: '',
       spaces: [1, [Validators.required, Validators.min(1)]],
       phone: ''
     });
@@ -80,7 +80,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
 
   resetForm(){
     this.form.reset();
-    this.form.setValue({
+    this.form.patchValue({
       spaces: 1
     });
   }

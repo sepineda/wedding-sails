@@ -34,6 +34,6 @@ module.exports = {
   // log: {
   //   lev
 
-  AppUrl: "https://los-ilusos.herokuapp.com"
+  AppUrl: "https://www.dilayedu.com"
 
 };
