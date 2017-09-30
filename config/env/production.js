@@ -34,6 +34,6 @@ module.exports = {
   // log: {
   //   lev
 
-  AppUrl: "https://www.dilayedu.com"
+  AppUrl: "https://dilayedu.com"
 
 };
