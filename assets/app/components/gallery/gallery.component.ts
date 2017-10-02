@@ -21,10 +21,10 @@ export class GalleryComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.http.get('wedding/' + this.user._wedding)
+    this.http.get('wedding')
       .subscribe(result => {
-        this.wedding = result.json();
+        //For now just take the first
+        this.wedding = result.json()[0];
       });
 
     this.fetchPhotos();

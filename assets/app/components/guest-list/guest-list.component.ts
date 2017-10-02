@@ -17,6 +17,7 @@ export class GuestListComponent implements OnInit {
     this.http.get('Guest')
       .subscribe(result => {
         this.guests = result.json();
+        console.log(this.guests)
       });
   }
 

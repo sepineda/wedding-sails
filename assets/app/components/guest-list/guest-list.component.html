@@ -4,25 +4,28 @@
   </div>
 
   <div class="row">
-      <ul class="collection" *ngIf="guests && guests.length">
-        <li class="collection-item">
-          Numero de invitados<span class="badge blue white-text">{{guests.length}}</span>
-        </li>
-        <li class="collection-item">
-          Numero de espacios<span class="badge blue white-text">{{getGuestSpaces()}}</span>
-        </li>
-      </ul>
+    <ul class="collection" *ngIf="guests && guests.length">
+      <li class="collection-item">
+        Numero de invitados<span class="badge blue white-text">{{guests.length}}</span>
+      </li>
+      <li class="collection-item">
+        Numero de espacios<span class="badge blue white-text">{{getGuestSpaces()}}</span>
+      </li>
+    </ul>
   </div>
 
   <div class="row">
-    <div class="collection">
-      <a class="collection-item" *ngFor="let guest of guests" [routerLink]="['/admin/editar-invitado', guest.id]">
-        {{guest.first_name + ' ' + guest?.last_name}}
-        <span class="badge lime-text" > <i class="material-icons">watch_later</i></span>
-        <span class="badge light-blue-text" > <i class="material-icons">people</i> {{guest.spaces}}</span>
-        <span class="badge light-blue-text" > <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i></span>
-      </a>
-    </div>
+    <ul class="collection">
+      <li class="collection-item" *ngFor="let guest of guests" [routerLink]="['/admin/editar-invitado', guest.id]">
+        <div class="truncate teal-text">{{guest.first_name}} <span *ngIf="guest.last_name">{{' ' + guest.last_name}}</span>
+          <span class="secondary-content light-blue-text">
+            <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i>
+             <i class="material-icons">people</i><span>{{guest.spaces}}</span>
+            <i class="lime-text material-icons">watch_later</i>
+          </span>
+        </div>
+      </li>
+    </ul>
   </div>
 
 
