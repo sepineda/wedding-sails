@@ -10,20 +10,29 @@ import { Guest } from '../../models/guest';
 })
 export class GuestListComponent implements OnInit {
   private guests: Guest[];
+  private guestList: Guest[];
+  private searchValue: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+
+  }
 
   ngOnInit() {
     this.http.get('Guest')
       .subscribe(result => {
         this.guests = result.json();
-        console.log(this.guests)
+        this.guestList = this.guests;
       });
   }
 
-  getGuestSpaces(){
-    return this.guests.map( guest => guest.spaces ).reduce( (total, num) =>{
-        return total + num;
+  search(event:string){
+    this.guestList = this.guests.filter(g => g.first_name.toLowerCase().includes(event.toLowerCase())
+                                          || g.last_name && g.last_name.toLowerCase().includes(event.toLowerCase()) );
+  }
+
+  getGuestSpaces() {
+    return this.guests.map(guest => guest.spaces).reduce((total, num) => {
+      return total + num;
     });
   }
 }

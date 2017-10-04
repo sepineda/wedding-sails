@@ -14,9 +14,14 @@
     </ul>
   </div>
 
+  <div class="input-field">
+    <i class="material-icons prefix">search</i>
+    <input [(ngModel)]="searchValue" (ngModelChange)="search($event)" type="text" placeholder="Nombre o apellido" >
+  </div>
+
   <div class="row">
     <ul class="collection">
-      <li class="collection-item" *ngFor="let guest of guests" [routerLink]="['/admin/editar-invitado', guest.id]">
+      <li class="collection-item" *ngFor="let guest of guestList" [routerLink]="['/admin/editar-invitado', guest.id]">
         <div class="truncate teal-text">{{guest.first_name}} <span *ngIf="guest.last_name">{{' ' + guest.last_name}}</span>
           <span class="secondary-content light-blue-text">
             <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i>
