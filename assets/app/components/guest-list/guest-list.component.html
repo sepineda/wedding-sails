@@ -20,7 +20,7 @@
   </div>
 
   <div class="row">
-    <ul class="collection">
+    <ul class="collection" *ngIf="guests else loading">
       <li class="collection-item" *ngFor="let guest of guestList" [routerLink]="['/admin/editar-invitado', guest.id]">
         <div class="truncate teal-text">{{guest.first_name}} <span *ngIf="guest.last_name">{{' ' + guest.last_name}}</span>
           <span class="secondary-content light-blue-text">
@@ -32,6 +32,6 @@
       </li>
     </ul>
   </div>
-
-
 </div>
+
+<ng-template #loading>Cargando lista...</ng-template>

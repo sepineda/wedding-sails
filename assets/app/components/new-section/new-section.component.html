@@ -55,7 +55,7 @@
 
     <div class="row">
       <button class="btn waves-effect" materialize [materializeActions]="globalActions" type="submit">Guardar</button>
-      <button type="button" *ngIf="section" materialize [materializeActions]="globalActions" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
+      <button type="button" *ngIf="section" class="btn waves-effect red" (click)="deleteSection()">Borrar</button>
     </div>
   </div>
 </form>

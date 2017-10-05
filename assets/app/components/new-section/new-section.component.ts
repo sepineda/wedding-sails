@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
-import { MaterializeDirective, MaterializeAction } from "angular2-materialize";
+import { MaterializeAction } from "angular2-materialize";
 
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
@@ -69,8 +69,8 @@ export class NewSectionComponent implements OnInit {
           this.editMode = true;
 
           this.http.get('section/' + section_id)
-          .map( result => result.json() )
-            .subscribe( result => {
+            .map(result => result.json())
+            .subscribe(result => {
               this.section = result;
 
               this.fillFormWithSection();
@@ -176,13 +176,12 @@ export class NewSectionComponent implements OnInit {
         let bodyString = JSON.stringify(section); // Stringify payload
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers });
+
         this.http.put('section/' + this.section.id, bodyString, options)
-          .map((res: Response) => res.json())
+          .map(( res: Response) => res.json() )
           .subscribe(data => {
-
+            this.globalActions.emit({ action: 'toast', params: ['Actualizado correctamente', 3000, 'green'] });
             this.uploadImage(this.section);
-            this.diplayToast('Actualizado correctamente', 'green');
-
           }, error => {
             this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
           });
