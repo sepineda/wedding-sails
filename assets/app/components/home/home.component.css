@@ -13,3 +13,7 @@
 .overlay{
   width: 100%;
 }
+
+.image-container{
+  min-height: 1050px;
+}
