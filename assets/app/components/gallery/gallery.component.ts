@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { MaterializeAction } from "angular2-materialize"
 
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
@@ -14,11 +15,18 @@ import 'rxjs/add/operator/catch';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
+  @ViewChild('carousel') carouselElement;
   wedding: Wedding;
   user: User;
   photos: Photo[];
+  actions = new EventEmitter<string>();
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    window.setTimeout(() => {
+      this.carouselElement.nativeElement.classList.toggle("initialized")
+      this.actions.emit("carousel");
+    }, 1000);
+  }
 
   ngOnInit() {
     this.http.get('wedding')

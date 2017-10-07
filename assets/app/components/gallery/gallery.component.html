@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col" *ngFor="let photo of photos">
-      <img materialize="materialbox" class="materialboxed" width="150" [src]="photo.imageUrl" />
+    <!-- <div class="col" *ngFor="let photo of photos">
+      <img materialize="materialbox" class="materialboxed hide-on-med-and-down" width="300" [src]="photo.imageUrl" />
+      <img materialize="materialbox" class="materialboxed hide-on-large-only" width="150" [src]="photo.imageUrl" />
+    </div> -->
+    <div #carousel class="carousel" materialize="carousel" [ngClass]="{ 'initialized': showInitialized }" [materializeActions]="actions">
+      <a *ngFor="let photo of photos" class="carousel-item">
+        <img materialize="materialbox" class="materialboxed" [src]="photo.imageUrl" width="300"/>
+      </a>
     </div>
   </div>
 </div>
