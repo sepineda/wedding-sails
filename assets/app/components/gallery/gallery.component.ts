@@ -15,7 +15,7 @@ import 'rxjs/add/operator/catch';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  @ViewChild('carousel') carouselElement;
+  @ViewChild('carousel') carouselElement:any;
   wedding: Wedding;
   user: User;
   photos: Photo[];
