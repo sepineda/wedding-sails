@@ -2,6 +2,10 @@
   min-height: 100vh;
 }
 
+.w100{
+  min-width: 100%;
+}
+
 .card-panel{
   width: 40vh;
 }
