@@ -21,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
+import { GuestService } from './services/guest.service';
 
 import 'materialize-css';
 import { NewSectionComponent } from './components/new-section/new-section.component';
@@ -50,7 +51,8 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    GuestService
   ],
   imports: [
     BrowserModule,
@@ -59,16 +61,6 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
-      // { path: '', redirectTo: 'boda', pathMatch: 'full' },
-      {
-
-        path: '', component: LandingComponent, children: [
-          { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
-          { path: 'nuestra-historia', component: HomeComponent },
-          { path: 'donde-y-cuando', component: WhenWhereComponent },
-          { path: 'confirmar', component: ConfirmComponent },
-        ]
-      },
       {
         path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
@@ -80,6 +72,15 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
           { path: 'editar-invitado/:guest_id', component: NewGuestComponent, canActivate: [AuthGuard] },
           { path: 'editar-seccion/:section_id', component: NewSectionComponent, canActivate: [AuthGuard] },
           { path: 'galeria', component: AdminGalleryComponent, canActivate: [AuthGuard] }
+        ]
+      },
+      {
+        path: '', component: LandingComponent, children: [
+          { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
+          { path: 'nuestra-historia', component: HomeComponent },
+          { path: 'donde-y-cuando', component: WhenWhereComponent },
+          { path: 'confirmar', component: ConfirmComponent },
+          { path: ':guest_id', component: HomeComponent}
         ]
       },
       { path: 'login', component: LoginComponent }
