@@ -5,7 +5,8 @@
     </div> -->
     <div #carousel class="carousel" materialize="carousel" [ngClass]="{ 'initialized': showInitialized }" [materializeActions]="actions">
       <a *ngFor="let photo of photos" class="carousel-item">
-        <img materialize="materialbox" class="materialboxed" [src]="photo.imageUrl" width="300"/>
+        <img materialize="materialbox" class="materialboxed hide-on-med-and-down" width="300" [src]="photo.imageUrl" />
+        <img materialize="materialbox" class="materialboxed hide-on-large-only" width="200" [src]="photo.imageUrl" />
       </a>
     </div>
 </div>

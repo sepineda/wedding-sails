@@ -18,8 +18,16 @@ export class GuestService {
     this.guestUpdated.emit(this.guest);
   }
 
-  getGuest(guest:Guest){
+  getGuest(){
     return this.guest;
+  }
+
+  setAsSeen(guest:Guest){
+
+  }
+
+  setAsConfirmed(guest: Guest, attending: boolean){
+
   }
 
 }
