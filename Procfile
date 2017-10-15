@@ -1,1 +1,1 @@
-web: npm run ngc | sails lift
+web: npm run ngc && sails lift
