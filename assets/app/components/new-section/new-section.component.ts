@@ -72,6 +72,7 @@ export class NewSectionComponent implements OnInit {
             .map(result => result.json())
             .subscribe(result => {
               this.section = result;
+              console.log(this.section);
 
               this.fillFormWithSection();
               Materialize.updateTextFields();

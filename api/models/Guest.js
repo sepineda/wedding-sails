@@ -17,13 +17,11 @@ module.exports = {
 
       phone: { type: 'string' },
 
-      confirmed: { type: 'boolean' },
-
       active: { type: 'boolean' },
 
       spaces: { type: 'integer' },
 
-      status: { type: 'string' },
+      status: { type: 'integer' },
 
       _wedding: {
         model: 'wedding',

@@ -9,13 +9,17 @@ export interface Guest {
 
   phone?: string,
 
-  confirmed?: boolean,
-
   spaces?: number,
 
-  status?: string;
+  status?: number;
 
   active: boolean,
 
   _wedding: string
+}
+
+export enum GuestStates {
+  Seen,
+  Confirmed,
+  Denied
 }

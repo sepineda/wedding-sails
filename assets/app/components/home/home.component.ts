@@ -24,18 +24,24 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.paramsSub = this.route.params
-      .map(params => params['guest_id'])
-      .subscribe(guest_id => {
-        if (guest_id) {
-          this.http.get('guest/' + guest_id)
+    // this.paramsSub = this.route.params
+    //   .map(params => params['guest_id'])
+    //   .subscribe(guest_id => {
+    //     if (guest_id) {
+    //       this.http.get('guest/' + guest_id)
+    //         .subscribe(result => {
+    //           this.guest = result.json();
+    //           this.guestService.setGuest(this.guest);
+    //         });
+    //     }
+    //   });
+    /*Uncomment these lines for testing*/
+    this.http.get('guest')
             .subscribe(result => {
-              this.guest = result.json();
+              this.guest = result.json()[0];
               this.guestService.setGuest(this.guest);
               console.log(this.guest);
             });
-        }
-      });
 
     this.http.get('wedding')
       .subscribe(result => {

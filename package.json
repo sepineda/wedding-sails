@@ -61,8 +61,8 @@
     "ngc": "ngc",
     "debug": "node debug app.js",
     "start": "sails lift",
-    "dev": "ngc | sails lift",
-    "prod": "ngc | sails lift"
+    "dev": "ngc -w | sails lift",
+    "prod": "ngc && sails lift"
   },
   "main": "app.js",
   "repository": {
