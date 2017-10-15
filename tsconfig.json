@@ -1,19 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "es5",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [ "es2015", "dom" ],
+    "lib": ["es2015", "dom"],
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
   },
-  "exclude": [
-      ".tmp",
-      "node_modules",
-      "typings"
+
+  "files": [
+    "assets/app/app.module.ts",
+    "assets/app/main.ts"
   ],
-  "compileOnSave": false
+
+  "angularCompilerOptions": {
+   "genDir": "assets/app/aot",
+   "skipMetadataEmit" : true
+ }
 }

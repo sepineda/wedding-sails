@@ -9,7 +9,7 @@ import { Guest } from '../../models/guest';
   styleUrls: ['./confirm.component.css']
 })
 export class ConfirmComponent implements OnInit {
-  private guest: Guest;
+  guest: Guest;
 
   constructor(private guestService: GuestService) { }
 

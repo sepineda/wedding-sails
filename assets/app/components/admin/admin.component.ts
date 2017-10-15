@@ -15,14 +15,14 @@ import { Category } from '../../models/category';
 })
 export class AdminComponent implements OnInit {
 
-  private wedding: Wedding;
-  private user: User;
+  wedding: Wedding;
+  user: User;
   private paramsSub: Subscription;
-  private category: string = 'Invitados';
+  category: string = 'Invitados';
   private categories: Category[] = [];
 
-  private sidenavActions: EventEmitter<any>;
-  private sidenavParams: any[];
+  sidenavActions: EventEmitter<any>;
+  sidenavParams: any[];
 
   constructor(private http: Http, private router: Router) {
     this.categories.push({ name: 'Boda', route: '/admin/boda', icon: 'wc' });

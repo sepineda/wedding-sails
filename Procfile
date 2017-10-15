@@ -1,1 +1,1 @@
-web: ./node_modules/.bin/tsc && npm start
+web: npm run prod

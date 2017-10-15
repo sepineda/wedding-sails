@@ -9,7 +9,7 @@ import { Section } from '../../models/section';
   styleUrls: ['./section-list.component.css']
 })
 export class SectionListComponent implements OnInit {
-  private sections: Section[];
+  sections: Section[];
 
   constructor(private http: Http) { }
 

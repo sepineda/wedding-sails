@@ -15,7 +15,7 @@ import { GuestService } from '../../services/guest.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private sections: Section[];
+  sections: Section[];
   private wedding: Wedding;
   private guest: Guest;
   paramsSub: Subscription;

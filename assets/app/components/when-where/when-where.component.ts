@@ -10,7 +10,7 @@ import { Wedding } from '../../models/wedding';
   styleUrls: ['./when-where.component.css'],
 })
 export class WhenWhereComponent implements OnInit {
-  private sections: Section[];
+  sections: Section[];
   private wedding: Wedding;
 
   constructor(private http: Http) { }

@@ -21,6 +21,8 @@ export class GalleryComponent implements OnInit {
   photos: Photo[];
   actions = new EventEmitter<string>();
 
+  showInitialized = false;
+
   constructor(private http: Http) {
     window.setTimeout(() => {
       this.carouselElement.nativeElement.classList.toggle("initialized")

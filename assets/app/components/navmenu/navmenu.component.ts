@@ -11,11 +11,11 @@ import { GuestService } from '../../services/guest.service';
 })
 export class NavMenuComponent implements OnInit {
 
-    private menuItems: MenuItem[];
-    private wedding: Wedding;
+    menuItems: MenuItem[];
+    wedding: Wedding;
 
-    private sidenavActions: EventEmitter<any>;
-    private sidenavParams: any[];
+    sidenavActions: EventEmitter<any>;
+    sidenavParams: any[];
 
     constructor(private http: Http, private guestService: GuestService) {
         this.sidenavActions = new EventEmitter<any>();

@@ -9,9 +9,9 @@ import { Guest } from '../../models/guest';
   styleUrls: ['./guest-list.component.css']
 })
 export class GuestListComponent implements OnInit {
-  private guests: Guest[];
+  guests: Guest[];
   private guestList: Guest[];
-  private searchValue: string;
+  searchValue: string;
 
   constructor(private http: Http) {
 
