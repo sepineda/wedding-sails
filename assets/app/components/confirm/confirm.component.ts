@@ -5,7 +5,7 @@ import { MaterializeAction } from "angular2-materialize";
 import { GuestService } from '../../services/guest.service';
 import { Guest, GuestStates } from '../../models/guest';
 import { Wedding } from '../../models/wedding';
-
+import { Section } from '../../models/section';
 
 @Component({
   selector: 'confirm',
@@ -15,6 +15,7 @@ import { Wedding } from '../../models/wedding';
 export class ConfirmComponent implements OnInit {
   guest: Guest;
   wedding: Wedding;
+  sections: Section[];
 
   globalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -30,6 +31,11 @@ export class ConfirmComponent implements OnInit {
       .subscribe(result => {
         //For now just take the first
         this.wedding = result.json()[0];
+
+        this.http.get('Section/confirm')
+          .subscribe(result => {
+            this.sections = result.json();
+          });
       });
 
     this.guestService.guestUpdated.subscribe((guest: Guest) => {
