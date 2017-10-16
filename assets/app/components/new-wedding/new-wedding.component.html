@@ -22,17 +22,17 @@
         <label for="date">Fecha</label>
       </div>
       <div class="input-field col s12">
+        <input materialize="pickatime" [materializeParams]="timeParams" formControlName="time" name="time" type="text" class="validate" required>
+        <label for="time">Hora</label>
+      </div>
+      <div class="input-field col s12">
         <input formControlName="maxGuestNumber" name="maxGuestNumber" type="number" class="validate" required>
         <label for="maxGuestNumber">Numero de invitados (espacios)</label>
       </div>
     </div>
 
     <div class="row">
-      <label [class]="status.color"> {{status.message}}</label>
-    </div>
-
-    <div class="row">
-      <button class="btn waves-effect" type="submit">Guardar</button>
+      <button class="btn waves-effect" materialize [materializeActions]="globalActions" type="submit">Guardar</button>
     </div>
   </div>
 </form>

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { MaterializeAction } from "angular2-materialize";
 
 import { Status } from '../../models/status';
 import { Wedding } from '../../models/wedding';
 import { User } from '../../models/user';
 
-declare var Materialize:any;
+declare var Materialize: any;
 
 @Component({
   selector: 'wedding-new-wedding',
@@ -16,10 +17,12 @@ declare var Materialize:any;
 export class NewWeddingComponent implements OnInit {
   editMode: boolean;
   form: FormGroup;
-  status: Status;
   wedding: Wedding;
   user: User;
   dateParams: any[];
+  timeParams: any[];
+
+  globalActions = new EventEmitter<string | MaterializeAction>();
 
   constructor(private http: Http, private fb: FormBuilder) {
     this.dateParams = [{
@@ -30,8 +33,12 @@ export class NewWeddingComponent implements OnInit {
       weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
       weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
       closeOnSelect: true
-    }]
-   }
+    }];
+
+    this.timeParams = [{
+      twelvehour: 'false'
+    }];
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -40,10 +47,9 @@ export class NewWeddingComponent implements OnInit {
       fiance: ['', Validators.required],
       bridegroom: ['', Validators.required],
       date: ['', Validators.required],
+      time: ['', Validators.required],
       maxGuestNumber: [1, Validators.min(1)]
     });
-
-    this.status = { color: 'white-text', message: '' }
 
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.editMode = !!this.user._wedding;
@@ -59,6 +65,7 @@ export class NewWeddingComponent implements OnInit {
             fiance: this.wedding.fiance,
             bridegroom: this.wedding.bridegroom,
             date: new Date(this.wedding.date).toDateString(),
+            time: this.wedding.time,
             maxGuestNumber: this.wedding.maxGuestNumber
           });
           Materialize.updateTextFields();
@@ -76,8 +83,9 @@ export class NewWeddingComponent implements OnInit {
         fiance: formModel.fiance as string,
         bridegroom: formModel.bridegroom as string,
         date: formModel.date as string,
+        time: formModel.time as string,
         maxGuestNumber: formModel.maxGuestNumber as string
-      }
+      };
 
       if (this.editMode) {
 
@@ -86,14 +94,12 @@ export class NewWeddingComponent implements OnInit {
         let options = new RequestOptions({ headers: headers });
 
         this.http.put('wedding/' + this.wedding.id, bodyString, options)
-            .map( (res:Response) => res.json() )
-            .subscribe( data => {
-                this.status.color = 'green-text';
-                this.status.message = 'Actualizado correctamente';
-            },error => {
-                this.status.color = 'red-text';
-                this.status.message = error;
-            } );
+          .map((res: Response) => res.json())
+          .subscribe(data => {
+            this.globalActions.emit({ action: 'toast', params: ['Actualizado correctamente', 3000, 'green'] });
+          }, error => {
+            this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
+          });
       } else {
         this.http.post('Wedding', wedding)
           .subscribe(result => {
@@ -110,12 +116,9 @@ export class NewWeddingComponent implements OnInit {
               .subscribe(data => {
                 console.log('Nueva boda agrega a usuario ' + this.user.first_name);
               }, error => {
-                this.status.color = 'red-text',
-                  this.status.message = error;
+                this.globalActions.emit({ action: 'toast', params: [error, 3000, 'red'] });
               });
-
-            this.status.color = 'green-text';
-            this.status.message = 'Nueva boda creada exitosamente';
+            this.globalActions.emit({ action: 'toast', params: ['Nueva boda creada exitosamente', 3000, 'green'] });
           });
       }
     }

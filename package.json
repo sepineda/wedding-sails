@@ -61,7 +61,7 @@
     "ngc": "ngc",
     "debug": "node debug app.js",
     "start": "sails lift",
-    "dev": "ngc -w | sails lift",
+    "dev": "tsc -w | sails lift",
     "prod": "ngc && sails lift"
   },
   "main": "app.js",

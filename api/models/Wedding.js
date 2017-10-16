@@ -19,6 +19,8 @@ module.exports = {
 
       date: { type: 'date' },
 
+      time: {type: 'string' },
+
       maxGuestNumber: { type: 'integer' },
 
       sections: {

@@ -12,6 +12,8 @@ export interface Wedding{
 
   date: Date,
 
+  time: string,
+
   maxGuestNumber: number,
 
   sections: any[],
