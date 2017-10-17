@@ -26,7 +26,7 @@
           <span class="secondary-content light-blue-text">
             <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i>
              <i class="material-icons">people</i><span>{{guest.spaces}}</span>
-            <i class="lime-text material-icons">watch_later</i>
+            <i [class]="getGuestStatus(guest).color">{{getGuestStatus(guest).icon}}</i>
           </span>
         </div>
       </li>
