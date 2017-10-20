@@ -61,8 +61,8 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
-      {
-        path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
           { path: 'boda', component: NewWeddingComponent, canActivate: [AuthGuard] },
           { path: 'nueva-seccion', component: NewSectionComponent, canActivate: [AuthGuard] },
@@ -82,8 +82,7 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
           { path: 'confirmar', component: ConfirmComponent },
           { path: ':guest_id', component: HomeComponent}
         ]
-      },
-      { path: 'login', component: LoginComponent }
+      }
     ], {useHash: true})
   ],
   bootstrap: [AppComponent],
