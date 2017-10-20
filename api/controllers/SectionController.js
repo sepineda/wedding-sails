@@ -114,7 +114,7 @@ module.exports = {
         //res.set("Content-disposition", "attachment; filename='" + file.name + "'");
 
         // Stream the file down
-        blobAdapter.read(photo.imageFd, function(error, file) {
+        blobAdapter.read(section.imageFd, function(error, file) {
           if (error) {
             res.json(error)
           } else {
