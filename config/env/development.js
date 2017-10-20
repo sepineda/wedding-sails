@@ -25,5 +25,6 @@ module.exports = {
     level: 'verbose'
   },
 
-  AppUrl: "http://localhost:1337"
+  AppUrl: "http://localhost:1337",
+  MongoUri: 'mongodb://sepineda:DRDpnd61@ds115214.mlab.com:15214/wedding-cr.photo_uploads'
 };

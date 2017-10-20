@@ -5,13 +5,17 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+mongoUri = 'mongodb://sepineda:DRDpnd61@ds115214.mlab.com:15214/wedding-cr.photo_uploads'
+
 module.exports = {
 
   confirm: (req, res) => {
     Section.find({
         category: 1,
         isActive: true
-      }).sort({ index: 1 })
+      }).sort({
+        index: 1
+      })
       .exec(function(err, sections) {
         if (err) {
           return res.serverError(err);
@@ -26,7 +30,9 @@ module.exports = {
     Section.find({
         category: 2,
         isActive: true
-      }).sort({ index: 1 })
+      }).sort({
+        index: 1
+      })
       .exec(function(err, sections) {
         if (err) {
           return res.serverError(err);
@@ -42,7 +48,9 @@ module.exports = {
     Section.find({
         category: 0,
         isActive: true
-      }).sort({ index: 1 })
+      }).sort({
+        index: 1
+      })
       .exec(function(err, sections) {
         if (err) {
           return res.serverError(err);
@@ -57,8 +65,8 @@ module.exports = {
     let section_id = req.param('id')
 
     req.file('image').upload({
-      maxBytes: 10000000,
-      dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')
+      adapter: require('skipper-gridfs'),
+      uri: sails.config.MongoUri
     }, function whenDone(err, uploadedFiles) {
       if (err) {
         return res.negociate(err);
@@ -94,20 +102,22 @@ module.exports = {
         return res.notFound();
       }
 
-      var SkipperDisk = require('skipper-disk');
-      var fileAdapter = SkipperDisk({
-        dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')
+      var blobAdapter = require('skipper-gridfs')({
+        uri: sails.config.MongoUri
       });
 
       // set the filename to the same file as the user uploaded
       //res.set("Content-disposition", "attachment; filename='" + file.name + "'");
 
       // Stream the file down
-      fileAdapter.read(section.imageFd)
-        .on('error', function(err) {
-          return res.serverError(err);
-        })
-        .pipe(res);
+      blobAdapter.read(photo.imageFd, function(error, file) {
+        if (error) {
+          res.json(error)
+        } else {
+          res.contentType('image/png');
+          res.send(new Buffer(file));
+        }
+      });
     });
   }
 }

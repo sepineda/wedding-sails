@@ -11,8 +11,8 @@ module.exports = {
     let photo_id = req.param('id')
 
     req.file('image').upload({
-      maxBytes: 10000000,
-      dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')
+      adapter: require('skipper-gridfs'),
+      uri: sails.config.MongoUri
     }, function whenDone(err, uploadedFiles) {
       if (err) {
         return res.negociate(err);
@@ -48,20 +48,22 @@ module.exports = {
         return res.notFound();
       }
 
-      var SkipperDisk = require('skipper-disk');
-      var fileAdapter = SkipperDisk({
-        dirname: require('path').resolve(sails.config.appPath, 'assets/uploads')
+      var blobAdapter = require('skipper-gridfs')({
+        uri: sails.config.MongoUri
       });
 
       // set the filename to the same file as the user uploaded
       //res.set("Content-disposition", "attachment; filename='" + file.name + "'");
 
       // Stream the file down
-      fileAdapter.read(photo.imageFd)
-        .on('error', function(err) {
-          return res.serverError(err);
-        })
-        .pipe(res);
+      blobAdapter.read(photo.imageFd, function(error, file) {
+        if (error) {
+          res.json(error)
+        } else {
+          res.contentType('image/png');
+          res.send(new Buffer(file));
+        }
+      });
     });
   }
 }
