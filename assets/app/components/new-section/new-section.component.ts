@@ -109,7 +109,7 @@ export class NewSectionComponent implements OnInit {
       let bodyString = JSON.stringify(delSection); // Stringify payload
       let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
       let options = new RequestOptions({ headers: headers });
-      this.http.put('Section/' + this.section.id, bodyString, options)
+      this.http.put(`Section/${this.section.id}`, bodyString, options)
         .map((res: Response) => res.json())
         .subscribe(result => {
 

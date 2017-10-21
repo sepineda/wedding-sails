@@ -21,5 +21,6 @@ export interface Guest {
 export enum GuestStates {
   Seen,
   Confirmed,
-  Denied
+  Denied,
+  Sent
 }
