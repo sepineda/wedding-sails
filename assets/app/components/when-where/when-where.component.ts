@@ -21,7 +21,7 @@ export class WhenWhereComponent implements OnInit {
         //For now just take the first
         this.wedding = result.json()[0];
 
-        this.http.get('Section/confirm')
+        this.http.get('Section/place')
           .subscribe(result => {
             this.sections = result.json();
           });

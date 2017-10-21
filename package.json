@@ -63,7 +63,7 @@
     "debug": "node debug app.js",
     "start": "sails lift",
     "dev": "tsc -w | sails lift",
-    "prod": "ngc && sails lift"
+    "prod": "tsc && sails lift"
   },
   "main": "app.js",
   "repository": {

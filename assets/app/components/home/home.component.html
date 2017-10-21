@@ -1,14 +1,10 @@
-<div *ngIf="sections; else dummy">
-
-</div>
-
 <div *ngFor="let section of sections">
   <div class="parallax-container valign-wrapper">
     <h1 class=" white-text overlay center-align">
         {{section.name | uppercase }}
       </h1>
 
-    <div class="parallax" materialize="parallax">
+    <div class="parallax grey lighten-1" materialize="parallax">
       <img [src]="section.imageUrl">
     </div>
   </div>
@@ -16,9 +12,3 @@
 </div>
 
 <wedding-gallery></wedding-gallery>
-
-<ng-template #dummy>
-  <div class="image-container grey lighten-5">
-
-  </div>
-</ng-template>
