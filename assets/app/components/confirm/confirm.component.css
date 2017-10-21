@@ -39,3 +39,14 @@ p, span {
   font-family: 'Fira Sans', sans-serif;
   font-size: 20px;
 }
+
+.btn{
+  /*border-style: solid;*/
+  /*border-color: black;*/
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+.btn:hover{
+  background-color: black;
+}
