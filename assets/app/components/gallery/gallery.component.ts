@@ -24,10 +24,10 @@ export class GalleryComponent implements OnInit {
   showInitialized = false;
 
   constructor(private http: Http) {
-    window.setTimeout(() => {
-      this.carouselElement.nativeElement.classList.toggle("initialized")
-      this.actions.emit("carousel");
-    }, 1000);
+    // window.setTimeout(() => {
+    //   this.carouselElement.nativeElement.classList.toggle("initialized")
+    //   this.actions.emit("carousel");
+    // }, 1000);
   }
 
   ngOnInit() {
