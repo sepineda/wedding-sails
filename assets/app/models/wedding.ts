@@ -10,7 +10,7 @@ export interface Wedding{
 
   bridegroom: string,
 
-  date: Date,
+  date: string,
 
   time: string,
 

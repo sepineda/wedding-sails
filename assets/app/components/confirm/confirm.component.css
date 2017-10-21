@@ -45,6 +45,7 @@ p, span {
   /*border-color: black;*/
   font-family: 'Lato', sans-serif;
   font-weight: bold;
+  margin: 10px;
 }
 
 .btn:hover{

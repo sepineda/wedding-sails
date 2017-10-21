@@ -19,7 +19,7 @@
     </h2>
     <div class="card" >
       <div class="card-content">
-        <span class="card-title center-align">Por favor reserva la fecha : {{wedding.date | date:'shortDate'}}</span>
+        <span class="card-title center-align">Por favor reserva la fecha : {{getFullDate()}}</span>
         <div class="center-align">
           <p>
             <b>Hemos guardado para ti: {{guest.spaces}} espacios</b>
@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="card-action center-align">
-        <a class="btn btn-large black-text white" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
-        <a class="btn btn-large black-text white" (click)="deny()"><i class="material-icons right">stop</i> No puedo asistir</a>
+        <a class="btn black-text white" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
+        <a class="btn black-text white" (click)="deny()"><i class="material-icons right">stop</i> No puedo asistir</a>
       </div>
       <div class="center-align" *ngIf="guest.status > 0">
         <p>

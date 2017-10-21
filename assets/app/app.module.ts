@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { GuestService } from './services/guest.service';
+import { DateFormatService } from './services/date-format.service';
 
 import 'materialize-css';
 import { NewSectionComponent } from './components/new-section/new-section.component';
@@ -52,7 +53,8 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
   providers: [
     AuthGuard,
     AuthService,
-    GuestService
+    GuestService,
+    DateFormatService
   ],
   imports: [
     BrowserModule,

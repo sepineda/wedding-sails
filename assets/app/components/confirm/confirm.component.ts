@@ -6,6 +6,7 @@ import { GuestService } from '../../services/guest.service';
 import { Guest, GuestStates } from '../../models/guest';
 import { Wedding } from '../../models/wedding';
 import { Section } from '../../models/section';
+import { DateFormatService } from '../../services/date-format.service';
 
 @Component({
   selector: 'confirm',
@@ -19,7 +20,7 @@ export class ConfirmComponent implements OnInit {
 
   globalActions = new EventEmitter<string | MaterializeAction>();
 
-  constructor(private guestService: GuestService, private http: Http) { }
+  constructor(private guestService: GuestService, private http: Http, private dateFormatService: DateFormatService) { }
 
   ngOnInit() {
 
@@ -41,6 +42,10 @@ export class ConfirmComponent implements OnInit {
     this.guestService.guestUpdated.subscribe((guest: Guest) => {
       this.guest = guest;
     });
+  }
+
+  getFullDate(){
+    return this.dateFormatService.format(this.wedding.date);
   }
 
   getStateText() {
