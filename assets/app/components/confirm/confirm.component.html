@@ -6,10 +6,13 @@
 
     <div class="parallax" materialize="parallax">
       <img [src]="section.imageUrl">
-
     </div>
   </div>
-  <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content" [isHtmlContent]="true"></story-card>
+  <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content"></story-card>
+</div>
+
+<div class="divider">
+
 </div>
 
 <div class="container">
@@ -27,7 +30,7 @@
         </div>
       </div>
       <div class="card-action center-align">
-        <a class="btn black-text white" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
+        <a class="btn black-text white pulse" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
         <a class="btn black-text white" (click)="deny()"><i class="material-icons right">cancel</i> No puedo asistir</a>
       </div>
       <div class="center-align" *ngIf="guest.status > 0">
