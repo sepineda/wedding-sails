@@ -32,16 +32,18 @@ export class HomeComponent implements OnInit {
               this.guest = result.json();
               this.guestService.setGuest(this.guest);
 
-              const seenGuest = { ...this.guest, status: GuestStates.Seen };
-              let bodyString = JSON.stringify(seenGuest); // Stringify payload
-              let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-              let options = new RequestOptions({ headers: headers });
+              if (this.guest.status === undefined) {
+                const seenGuest = { ...this.guest, status: GuestStates.Seen, _wedding: this.wedding.id };
+                let bodyString = JSON.stringify(seenGuest); // Stringify payload
+                let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+                let options = new RequestOptions({ headers: headers });
 
-              this.http.put(`guest/${guest_id}`, bodyString, options)
-                .map((res: Response) => res.json())
-                .subscribe(result => {
-                  console.log(result)
-                });
+                this.http.put(`guest/${guest_id}`, bodyString, options)
+                  .map((res: Response) => res.json())
+                  .subscribe(result => {
+                    console.log(result)
+                  });
+              }
             });
         }
       });
