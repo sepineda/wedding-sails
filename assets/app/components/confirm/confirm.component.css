@@ -2,10 +2,14 @@
     height: 500px;
 }
 
-@media (min-width: 993px ) {
-  .parallax-container {
-      height: 900px;
-  }
+p, span {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+}
+
+.card-title{
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
 }
 
 .overlay, .parallax-text {
@@ -29,16 +33,20 @@
       text-rendering: optimizeLegibility;
   }
 
+  p, span {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 20x;
+  }
+
+  .card-title{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+  }
 }
 
 .overlay{
   width: 100%;
 }
-
-/*p, span {
-  font-family: 'Fira Sans', sans-serif;
-  font-size: 20px;
-}*/
 
 .btn{
   /*border-style: solid;*/
