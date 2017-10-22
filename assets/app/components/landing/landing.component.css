@@ -1,8 +1,5 @@
 main {
   min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
 }
