@@ -30,6 +30,7 @@ import { NewWeddingComponent } from './components/new-wedding/new-wedding.compon
 import { SectionListComponent } from './components/section-list/section-list.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.component';
+import { InvitationComponent } from './components/invitation/invitation.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
     NewWeddingComponent,
     SectionListComponent,
     GalleryComponent,
-    AdminGalleryComponent
+    AdminGalleryComponent,
+    InvitationComponent
   ],
   providers: [
     AuthGuard,
@@ -64,7 +66,8 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
     FormsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
-      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+      {
+        path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'lista', pathMatch: 'full' },
           { path: 'boda', component: NewWeddingComponent, canActivate: [AuthGuard] },
           { path: 'nueva-seccion', component: NewSectionComponent, canActivate: [AuthGuard] },
@@ -82,10 +85,10 @@ import { AdminGalleryComponent } from './components/admin-gallery/admin-gallery.
           { path: 'nuestra-historia', component: HomeComponent },
           { path: 'donde-y-cuando', component: WhenWhereComponent },
           { path: 'confirmar', component: ConfirmComponent },
-          { path: ':guest_id', component: HomeComponent}
+          { path: ':guest_id', component: InvitationComponent }
         ]
       }
-    ], {useHash: true})
+    ], { useHash: true })
   ],
   bootstrap: [AppComponent],
 })
