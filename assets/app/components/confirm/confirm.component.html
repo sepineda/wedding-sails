@@ -18,7 +18,7 @@
 <div class="container">
   <div class="col s12 m7" *ngIf="guest && wedding">
     <h2 class="header center-align">
-      {{guest.first_name}}
+      {{guest.first_name + ' ' + guest.last_name}}
     </h2>
     <div class="card">
       <div class="card-content">
@@ -43,14 +43,14 @@
           </div>
         </div>
       </div>
-      <div *ngIf="hasConfirmed()">
+      <div class="center-align" *ngIf="hasConfirmed()">
         <p>
           {{getAknowledgement()}}
         </p>
       </div>
       <div class="center-align" *ngIf="guest.status > 0">
         <p>
-          * Tu confirmacion es: {{getStateText()}}
+          <b>* Tu confirmacion es: {{getStateText()}}</b>
         </p>
       </div>
     </div>

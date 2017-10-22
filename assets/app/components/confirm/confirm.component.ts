@@ -72,10 +72,10 @@ export class ConfirmComponent implements OnInit {
 
     switch (this.guest.status) {
       case GuestStates.Confirmed:
-        message = 'Gracias por acompanarnos en esta celebracion';
+        message = 'Gracias por acompanarnos en esta celebracion.';
         break;
       case GuestStates.Denied:
-        message = 'Saludos, igual no queriamos que vinieras...';
+        message = 'Gracias por tu confirmacion.';
         break;
     }
 
@@ -91,13 +91,12 @@ export class ConfirmComponent implements OnInit {
   }
 
   processConfirmation(confirmation: boolean) {
-    const guestUpdated = { ...this.guest, _wedding: this.wedding.id };
-    console.log(guestUpdated)
 
     const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     const options = new RequestOptions({ headers: headers });
 
     this.guest.status = confirmation ? GuestStates.Confirmed : GuestStates.Denied;
+    const guestUpdated = { ...this.guest, _wedding: this.wedding.id };
 
     this.http.put(`guest/${this.guest.id}`, JSON.stringify(guestUpdated), options)
       .map((res: Response) => res.json())
