@@ -44,7 +44,7 @@ export class ConfirmComponent implements OnInit {
     });
   }
 
-  getFullDate(){
+  getFullDate() {
     return this.dateFormatService.format(this.wedding.date);
   }
 
@@ -61,6 +61,25 @@ export class ConfirmComponent implements OnInit {
       }
     }
     return text;
+  }
+
+  hasConfirmed() {
+    return this.guest.status === GuestStates.Confirmed || this.guest.status === GuestStates.Denied;
+  }
+
+  getAknowledgement() {
+    let message = '';
+
+    switch (this.guest.status) {
+      case GuestStates.Confirmed:
+        message = 'Gracias por acompanarnos en esta celebracion';
+        break;
+      case GuestStates.Denied:
+        message = 'Saludos, igual no queriamos que vinieras...';
+        break;
+    }
+
+    return message;
   }
 
   confirm() {
