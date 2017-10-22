@@ -15,7 +15,7 @@ export interface Guest {
 
   active: boolean,
 
-  _wedding: string
+  _wedding: any
 }
 
 export enum GuestStates {

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
               this.guestService.setGuest(this.guest);
 
               if (this.guest.status === undefined) {
-                const seenGuest = { ...this.guest, status: GuestStates.Seen, _wedding: this.wedding.id };
+                const seenGuest = { ...this.guest, status: GuestStates.Seen, _wedding: this.guest._wedding.id };
                 let bodyString = JSON.stringify(seenGuest); // Stringify payload
                 let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
                 let options = new RequestOptions({ headers: headers });

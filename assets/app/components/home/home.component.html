@@ -11,8 +11,8 @@
   <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content"></story-card>
 </div>
 
-<wedding-gallery></wedding-gallery>
+<wedding-gallery *ngIf="sections"></wedding-gallery>
 
-<div *ngIf="guest" class="hide-on-large-only">
+<div *ngIf="guest && sections" class="hide-on-large-only">
   <confirm></confirm>
 </div>
