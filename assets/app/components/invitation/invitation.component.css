@@ -1,5 +1,9 @@
 .parallax-container {
-    height: 500px;
+    height: 600px;
+}
+
+.img-opa{
+  opacity: 0.5;
 }
 
 p, span {
@@ -16,7 +20,7 @@ p, span {
     /*font-size: 80px;*/
     font-family: 'Lato', sans-serif;
     letter-spacing: .11em;
-    font-size: 2.25em;
+    font-size: 2.5em;
     text-rendering: optimizeLegibility;
 }
 
@@ -35,7 +39,7 @@ p, span {
 
   p, span {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 20x;
+    font-size: 26x;
   }
 
   .card-title{
