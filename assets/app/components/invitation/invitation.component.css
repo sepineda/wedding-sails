@@ -7,18 +7,13 @@
 }
 
 p, span {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'EB Garamond', serif;
   font-size: 16px;
-}
-
-.card-title{
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
 }
 
 .overlay, .parallax-text {
     /*font-size: 80px;*/
-    font-family: 'Lato', sans-serif;
+    font-family: 'EB Garamond', serif;
     letter-spacing: .11em;
     font-size: 2.5em;
     text-rendering: optimizeLegibility;
@@ -30,22 +25,18 @@ p, span {
   }
 
   .overlay, .parallax-text {
-      /*font-size: 80px;*/
-      font-family: 'Lato', sans-serif;
+      font-size: 20px;
+      font-family: 'EB Garamond', serif;
       letter-spacing: .11em;
       font-size: 7em;
       text-rendering: optimizeLegibility;
   }
 
   p, span {
-    font-family: 'Fira Sans', sans-serif;
-    font-size: 26x;
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
   }
 
-  .card-title{
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-  }
 }
 
 .overlay{
