@@ -11,7 +11,7 @@ import { Category } from '../../models/category';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
 
