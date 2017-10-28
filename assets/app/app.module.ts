@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 
+import 'materialize-css';
+import { MaterializeModule } from "angular2-materialize";
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 
-import { MaterializeModule } from "angular2-materialize";
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -24,7 +26,6 @@ import { AuthGuard } from './services/auth.guard';
 import { GuestService } from './services/guest.service';
 import { DateFormatService } from './services/date-format.service';
 
-import 'materialize-css';
 import { NewSectionComponent } from './components/new-section/new-section.component';
 import { NewWeddingComponent } from './components/new-wedding/new-wedding.component';
 import { SectionListComponent } from './components/section-list/section-list.component';
