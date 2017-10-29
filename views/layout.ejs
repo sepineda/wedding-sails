@@ -30,6 +30,8 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
+  <!-- webpack bundles -->
+  <!-- <link href="/dist/app.css" rel="stylesheet"> -->
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
   <!--STYLES END-->
@@ -48,12 +50,10 @@
   <script src="node_modules/core-js/client/shim.min.js"></script>
   <script src="node_modules/reflect-metadata/Reflect.js"></script>
 
-  <!-- webpack bundles -->
-  <script src="/dist/polyfills.js"></script>
-  <script src="/dist/vendor.js"></script>
-  <script src="/dist/app.js"></script>
 
-  <base href="/">
+</head>
+
+<base href="/">
 
 </head>
 
@@ -82,7 +82,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
@@ -112,6 +112,11 @@
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
+
+    <!-- webpack bundles -->
+    <script src="/dist/polyfills.js"></script>
+    <script src="/dist/vendor.js"></script>
+    <script src="/dist/app.js"></script>
 
 </body>
 

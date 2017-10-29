@@ -34,18 +34,23 @@ module.exports = {
         loader: 'file-loader?name=assets/[name].[hash].[ext]'
       },
       {
-        test: /\.css$/,
-        exclude: helpers.root('assets', 'app'),
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?sourceMap'
-        })
-      },
-      {
-        test: /\.css$/,
-        include: helpers.root('assets', 'app'),
-        loader: 'raw-loader'
-      }
+          test: /\.css$/,
+          use: ['to-string-loader', 'css-loader'],
+          exclude: [helpers.root('src', 'styles')]
+        }
+      // {
+      //   test: /\.css$/,
+      //   exclude: helpers.root('assets', 'app'),
+      //   loader: ExtractTextPlugin.extract({
+      //     fallbackLoader: 'style-loader',
+      //     loader: 'css-loader?sourceMap'
+      //   })
+      // },
+      // {
+      //   test: /\.css$/,
+      //   include: helpers.root('assets', 'app'),
+      //   loader: 'raw-loader'
+      // }
     ]
   },
 
@@ -59,8 +64,6 @@ module.exports = {
     ),
 
     new ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
       "window.jQuery": "jquery",
       Hammer: "hammerjs/hammer"
     }),
