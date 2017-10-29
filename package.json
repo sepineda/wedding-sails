@@ -62,8 +62,8 @@
     "debug": "node debug app.js",
     "start": "sails lift",
     "dev": "tsc -w | sails lift",
-    "prod": "tsc && sails lift",
-    "build": "webpack"
+    "prod": "sails lift",
+    "build": "rimraf dist && webpack --config assets/config/webpack.prod.js --bail"
   },
   "main": "app.js",
   "repository": {
@@ -78,6 +78,7 @@
     "extract-text-webpack-plugin": "^2.0.0",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.16.1",
+    "rimraf": "^2.6.2",
     "to-string-loader": "^1.1.5",
     "webpack": "2.2.1",
     "webpack-merge": "^3.0.0"
