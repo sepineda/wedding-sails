@@ -129,4 +129,4 @@ assets/app/**/*.js
 assets/app/**/*.map
 assets/uploads
 assets/app/aot
-assets/dist
+#assets/dist

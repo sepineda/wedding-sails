@@ -1,0 +1,265 @@
+main{
+  min-height: 100vh;
+}
+.parallax-container {
+    height: 500px;
+}
+
+@media (min-width: 993px ) {
+  .parallax-container {
+      height: 900px;
+  }
+}
+
+.overlay, .parallax-text {
+    /*font-size: 80px;*/
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .11em;
+    font-size: 2.25em;
+    text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 993px ) {
+  .parallax-container {
+      height: 900px;
+  }
+
+  .overlay, .parallax-text {
+      /*font-size: 80px;*/
+      font-family: 'Lato', sans-serif;
+      letter-spacing: .11em;
+      font-size: 7em;
+      text-rendering: optimizeLegibility;
+  }
+
+}
+
+.overlay{
+  width: 100%;
+}
+ @media (min-width: 993px ) {
+  .nav-wrapper {
+    padding-left: 6em;
+    padding-right: 6em;
+  }
+}
+
+.page-title{
+  font-size: 17px;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: .11em;
+  line-height: 1em;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  font-family: 'Lato', sans-serif;
+}
+.section {
+    height: 500px;
+}
+
+.header{
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+}
+
+p {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+}
+.parallax-container {
+    height: 500px;
+}
+
+p, span {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+}
+
+.card-title{
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
+
+.overlay, .parallax-text {
+    /*font-size: 80px;*/
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .11em;
+    font-size: 2.25em;
+    text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 993px ) {
+  .parallax-container {
+      height: 900px;
+  }
+
+  .overlay, .parallax-text {
+      /*font-size: 80px;*/
+      font-family: 'Lato', sans-serif;
+      letter-spacing: .11em;
+      font-size: 7em;
+      text-rendering: optimizeLegibility;
+  }
+
+  p, span {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 20x;
+  }
+
+  .card-title{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+  }
+}
+
+.overlay{
+  width: 100%;
+}
+
+.btn{
+  /*border-style: solid;*/
+  /*border-color: black;*/
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.btn:hover{
+  background-color: black;
+}
+/*.side-nav {
+  width: 300px;
+}*/
+
+ @media (min-width: 993px ) {
+    header, main, footer { padding-left: 300px; }
+ }
+
+ .page-title{
+      //  line-height: 48px;
+    font-size: 22px;
+ }
+.parallax-container {
+    height: 500px;
+}
+
+@media (min-width: 993px ) {
+  .parallax-container {
+      height: 900px;
+  }
+}
+
+.overlay, .parallax-text {
+    /*font-size: 80px;*/
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .11em;
+    font-size: 2.25em;
+    text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 993px ) {
+  .parallax-container {
+      height: 900px;
+  }
+
+  .overlay, .parallax-text {
+      /*font-size: 80px;*/
+      font-family: 'Lato', sans-serif;
+      letter-spacing: .11em;
+      font-size: 7em;
+      text-rendering: optimizeLegibility;
+  }
+
+}
+
+.overlay{
+  width: 100%;
+}
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.h100{
+  min-height: 100vh;
+}
+
+.w100{
+  min-width: 100%;
+}
+
+.card-panel{
+  width: 40vh;
+}
+.materialboxed{
+  margin: 10px;
+}
+
+.photo-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.container{
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+.parallax-container {
+    height: 600px;
+}
+
+.img-opa{
+  opacity: 0.5;
+}
+
+p, span {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+}
+
+.overlay, .parallax-text {
+    /*font-size: 80px;*/
+    font-family: 'EB Garamond', serif;
+    letter-spacing: .11em;
+    font-size: 2.5em;
+    text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 993px ) {
+  .parallax-container {
+      height: 900px;
+  }
+
+  .overlay, .parallax-text {
+      font-size: 20px;
+      font-family: 'EB Garamond', serif;
+      letter-spacing: .11em;
+      font-size: 7em;
+      text-rendering: optimizeLegibility;
+  }
+
+  p, span {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+  }
+
+}
+
+.overlay{
+  width: 100%;
+}
+
+.btn{
+  /*border-style: solid;*/
+  /*border-color: black;*/
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.btn:hover{
+  background-color: black;
+}
