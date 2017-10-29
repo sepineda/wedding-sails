@@ -1,49 +1,22 @@
-<!-- <div *ngFor="let section of sections">
+<div *ngFor="let section of sections">
   <div class="parallax-container valign-wrapper">
       <div class="container">
         <h1 class=" white-text center-align overlay">{{guest.first_name + ' ' + guest.last_name}}</h1>
         <div class="overlay center-align container white-text">
-
           <div class="container">
             <div class="divider"></div>
             <p class="flow-text">
               {{section.content}}
-              <br><br>
-              La ceremonia religiosa se realizará el {{getFullDate()}} a las 5 pm en la iglesia de {{wedding.place}}.
             </p>
             <div class="divider"></div>
-          </div>
-
-          <br />
-          <p>
-            <br />
-            <b>Hemos guardado para ti: {{guest.spaces}} {{guest.spaces > 1? 'espacios':'espacio'}}</b>
-          </p>
         </div>
 
         <div class="center-align">
-          <a class="btn white black-text" routerLink='/nuestra-historia'>Confirmar Aqui</a>
+          <a class="btn white black-text" routerLink='/nuestra-historia'>Continuar</a>
         </div>
       </div>
     <div class="parallax grey darken-4" materialize="parallax">
       <img class="img-opa" [src]="section.imageUrl">
     </div>
   </div>
-</div> -->
-
-<div *ngFor="let section of sections">
-  <div class="parallax-container valign-wrapper">
-    <h1 class=" white-text overlay center-align">
-        {{section.name | uppercase }}
-      </h1>
-
-    <div class="parallax grey lighten-1" materialize="parallax">
-      <img [src]="section.imageUrl">
-
-      <div class="center-align">
-        <a class="btn white black-text" routerLink='/nuestra-historia'>Confirmar Aqui</a>
-      </div>
-    </div>
-  </div>
-  <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content" [isHtmlContent]="true"></story-card>
 </div>

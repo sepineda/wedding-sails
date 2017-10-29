@@ -1,13 +1,3 @@
-<div class="hide-on-large-only">
-  <when-where></when-where>
-  <div class="divider"></div>
-  <confirm *ngIf="sections"></confirm>
-</div>
-
-<div class="divider">
-
-</div>
-
 <div *ngFor="let section of sections">
   <div class="parallax-container valign-wrapper">
     <h1 class=" white-text overlay center-align">
@@ -21,3 +11,9 @@
   <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content"></story-card>
 </div>
 <wedding-gallery [hidden]="!sections"></wedding-gallery>
+
+<div class="hide-on-large-only">
+  <when-where></when-where>
+  <div class="divider"></div>
+  <confirm *ngIf="sections"></confirm>
+</div>
