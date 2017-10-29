@@ -38,19 +38,6 @@ module.exports = {
           use: ['to-string-loader', 'css-loader'],
           exclude: [helpers.root('src', 'styles')]
         }
-      // {
-      //   test: /\.css$/,
-      //   exclude: helpers.root('assets', 'app'),
-      //   loader: ExtractTextPlugin.extract({
-      //     fallbackLoader: 'style-loader',
-      //     loader: 'css-loader?sourceMap'
-      //   })
-      // },
-      // {
-      //   test: /\.css$/,
-      //   include: helpers.root('assets', 'app'),
-      //   loader: 'raw-loader'
-      // }
     ]
   },
 
@@ -71,9 +58,5 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: ['app', 'vendor', 'polyfills']
     })
-
-    // new HtmlWebpackPlugin({
-    //   template: 'views/homepage.ejs'
-    // })
   ]
 };

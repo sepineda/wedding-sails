@@ -56,7 +56,7 @@ export class InvitationComponent implements OnInit {
         //For now just take the first
         this.wedding = result.json()[0];
 
-        this.http.get('Section/confirm')
+        this.http.get('Section/invitation')
           .subscribe(result => {
             this.sections = result.json();
           });

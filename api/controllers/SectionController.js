@@ -61,6 +61,23 @@ module.exports = {
       });
   },
 
+  invitation: function(req, res ){
+    Section.find({
+        category: 3,
+        isActive: true
+      }).sort({
+        index: 1
+      })
+      .exec(function(err, sections) {
+        if (err) {
+          return res.serverError(err);
+        }
+
+        return res.json(sections);
+
+      });
+  },
+
   uploadImage: function(req, res) {
     let section_id = req.param('id')
 

@@ -40,6 +40,7 @@ export class NewSectionComponent implements OnInit {
     this.categories.push({ value: SectionCategories.Historia, content: 'Historia' });
     this.categories.push({ value: SectionCategories.LugarFecha, content: 'Lugar y Fecha' });
     this.categories.push({ value: SectionCategories.Confirmar, content: 'Confirmar' });
+    this.categories.push({ value: SectionCategories.Invitacion, content: 'Invitacion' });
   }
 
   ngOnInit() {

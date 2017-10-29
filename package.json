@@ -70,11 +70,11 @@
   },
   "scripts": {
     "ngc": "ngc",
-    "debug": "node debug app.js",
     "start": "sails lift",
-    "dev": "tsc -w | sails lift",
     "prod": "sails lift",
-    "build": "rimraf dist && webpack --config assets/config/webpack.prod.js --bail"
+    "build": "rimraf dist && webpack --config assets/config/webpack.prod.js --bail",
+    "build:dev": "rimraf dist && webpack --config assets/config/webpack.dev.js",
+    "deploy": "git push heroku master"
   },
   "main": "app.js",
   "repository": {
