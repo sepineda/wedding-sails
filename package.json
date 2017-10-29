@@ -55,7 +55,8 @@
     "sails-mongo": "^0.12.2",
     "skipper-gridfs": "^0.5.3",
     "typescript": "^2.5.2",
-    "zone.js": "0.8.17"
+    "zone.js": "0.8.17",
+    "webpack": "2.2.1"
   },
   "scripts": {
     "ngc": "ngc",
@@ -80,7 +81,6 @@
     "html-webpack-plugin": "^2.16.1",
     "rimraf": "^2.6.2",
     "to-string-loader": "^1.1.5",
-    "webpack": "2.2.1",
     "webpack-merge": "^3.0.0"
   },
   "author": "xmaestro",
