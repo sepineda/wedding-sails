@@ -26,5 +26,6 @@ module.exports = {
   },
 
   AppUrl: "http://localhost:1337",
+  appPath: "./",
   MongoUri: 'mongodb://sepineda:DRDpnd61@ds115214.mlab.com:15214/wedding-cr.photo_uploads'
 };

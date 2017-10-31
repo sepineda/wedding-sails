@@ -35,5 +35,6 @@ module.exports = {
   //   lev
 
   AppUrl: "http://www.dilayedu.com",
+  appPath: "./",
   MongoUri: 'mongodb://sepineda:DRDpnd61@ds115214.mlab.com:15214/wedding-cr.photo_uploads'
 };
