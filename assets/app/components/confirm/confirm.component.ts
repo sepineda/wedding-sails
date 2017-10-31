@@ -72,10 +72,10 @@ export class ConfirmComponent implements OnInit {
 
     switch (this.guest.status) {
       case GuestStates.Confirmed:
-        message = 'Gracias por acompanarnos en esta celebracion.';
+        message = 'Gracias por acompañarnos en esta celebración.';
         break;
       case GuestStates.Denied:
-        message = 'Gracias por tu confirmacion.';
+        message = 'Gracias por tu confirmación.';
         break;
     }
 
@@ -91,6 +91,11 @@ export class ConfirmComponent implements OnInit {
   }
 
   processConfirmation(confirmation: boolean) {
+
+    this.http.post('Guest/sendInvitation', {})
+      .subscribe(result => {
+        console.log(result);
+      });
 
     const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     const options = new RequestOptions({ headers: headers });

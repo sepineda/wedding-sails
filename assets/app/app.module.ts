@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { ReactiveFormsModule } from "@angular/forms";
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import 'materialize-css';
 import { MaterializeModule } from "angular2-materialize";
