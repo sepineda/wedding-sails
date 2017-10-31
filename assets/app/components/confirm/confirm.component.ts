@@ -16,7 +16,7 @@ import { DateFormatService } from '../../services/date-format.service';
 export class ConfirmComponent implements OnInit {
   guest: Guest;
   wedding: Wedding;
-  sections: Section[];
+  section: Section;
 
   globalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -35,7 +35,7 @@ export class ConfirmComponent implements OnInit {
 
         this.http.get('Section/confirm')
           .subscribe(result => {
-            this.sections = result.json();
+            this.section = result.json()[0];
           });
       });
 
