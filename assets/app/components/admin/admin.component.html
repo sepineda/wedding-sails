@@ -17,7 +17,7 @@
 
   <ul id="nav-mobile" class="side-nav fixed">
     <li>
-      <div class="user-view">
+      <div class="user-view teal lighten-1 center-align">
         <div class="background">
           <img class="responsive-img" src="../../../images/wedding-sample.jpg">
         </div>
@@ -30,7 +30,7 @@
           <li><a [routerLink]="['/login']"><i class="material-icons tiny">cancel</i> salir</a></li>
         </ul>
       </div>
-
+    </li>
     <li *ngIf="!wedding" routerLinkActive="active light-blue lighten-4">
       <a (click)="changeCategory(cat)" routerLink="/admin/boda"> <i class="material-icons">wc</i>Nueva Boda</a>
     </li>
