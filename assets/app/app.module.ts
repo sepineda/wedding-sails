@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import 'materialize-css';
 import { MaterializeModule } from "angular2-materialize";
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -64,6 +65,7 @@ import { InvitationComponent } from './components/invitation/invitation.componen
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
+    ClipboardModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       {

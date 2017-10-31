@@ -18,6 +18,8 @@ export class ConfirmComponent implements OnInit {
   wedding: Wedding;
   section: Section;
 
+  changeConfirmation: boolean = false;
+
   globalActions = new EventEmitter<string | MaterializeAction>();
 
   constructor(private guestService: GuestService, private http: Http, private dateFormatService: DateFormatService) { }

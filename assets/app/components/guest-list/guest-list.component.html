@@ -21,14 +21,18 @@
 
   <div class="row">
     <ul class="collection" *ngIf="guests else loading">
-      <li class="collection-item" *ngFor="let guest of guestList" [routerLink]="['/admin/editar-invitado', guest.id]">
-        <div class="truncate teal-text">{{guest.first_name}} <span *ngIf="guest.last_name">{{' ' + guest.last_name}}</span>
-          <span class="secondary-content light-blue-text">
-            <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i>
-             <i class="material-icons">people</i><span>{{guest.spaces}}</span>
-            <i [class]="getGuestStatus(guest).color">{{getGuestStatus(guest).icon}}</i>
-          </span>
-        </div>
+      <li class="collection-item" *ngFor="let guest of guestList" >
+        <a [routerLink]="['/admin/editar-invitado', guest.id]">
+          <div class="truncate teal-text">{{guest.first_name}}
+            <span *ngIf="guest.last_name">{{' ' + guest.last_name}}</span>
+            <span class="secondary-content light-blue-text">
+              <i *ngIf="guest.email" class="material-icons tiny">email</i><i *ngIf="guest.phone" class="material-icons tiny">phone</i>
+               <i class="material-icons">people</i><span>{{guest.spaces}}</span>
+              <i [class]="getGuestStatus(guest).color">{{getGuestStatus(guest).icon}}</i>
+            </span>
+          </div>
+        </a>
+
       </li>
     </ul>
   </div>

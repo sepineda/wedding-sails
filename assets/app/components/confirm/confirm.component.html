@@ -48,9 +48,9 @@
           {{getAknowledgement()}}
         </p>
       </div>
-      <div class="center-align" *ngIf="guest.status > 0">
+      <div class="center-align" *ngIf="guest.status > 0 || changeConfirmation">
         <p>
-          <b>* Tu confirmacion es: {{getStateText()}}</b>
+          <b>* Tu confirmacion es: <a (click)="changeConfirmation=true">{{getStateText()}}</a> </b>
         </p>
       </div>
     </div>

@@ -53,6 +53,7 @@
     "jsonwebtoken": "^8.0.1",
     "machinepack-passwords": "^2.3.0",
     "materialize-css": "^0.98.2",
+    "ngx-clipboard": "^8.1.1",
     "rc": "1.2.1",
     "reflect-metadata": "^0.1.2",
     "rimraf": "^2.6.2",

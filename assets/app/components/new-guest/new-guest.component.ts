@@ -32,6 +32,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = this.fb.group({
+      id: '',
       first_name: ['', Validators.required],
       last_name: '',
       email: '',
@@ -67,8 +68,8 @@ export class NewGuestComponent implements OnInit, OnDestroy {
   }
 
   fillFormWithGuest() {
-
     this.form.setValue({
+      id: `www.dilayedu.com/#/${this.guest.id}`,
       first_name: this.guest.first_name,
       last_name: this.guest.last_name,
       email: this.guest.email,
@@ -131,6 +132,10 @@ export class NewGuestComponent implements OnInit, OnDestroy {
         this.globalActions.emit({ action: 'toast', params: [`Invitado "${this.guest.first_name}" fue eliminado`, 3000, 'red'] });
         this.router.navigate(['/admin/lista']);
       })
+  }
+
+  copiedToClipboard(){
+    this.globalActions.emit({ action: 'toast', params: ['Link copiado', 3000, 'green'] });
   }
 
   isAttributeInvalid(name: string) {

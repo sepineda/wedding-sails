@@ -29,12 +29,12 @@
       </div>
     </div>
 
-     <div class="row">
+    <div class="row">
       <div class="input-field col s12">
         <input name="spaces" type="number" class="validate" formControlName="spaces" required>
-         <label for="spaces">Espacios</label>
+        <label for="spaces">Espacios</label>
       </div>
-        <div *ngIf="isAttributeInvalid('spaces')">
+      <div *ngIf="isAttributeInvalid('spaces')">
         <label class="red-text" *ngIf="isRequiredValid('spaces')">La cantidad de espacios es requerida</label>
         <br>
         <label class="red-text" *ngIf="isMinimumSpaceValid()">El numero de espacios debe ser al menos 1</label>
@@ -44,8 +44,22 @@
     <div class="row">
       <div class="input-field col s12">
         <input formControlName="phone" name="phone" type="tel" class="validate">
-        <label for="first_name">Telefono</label>
+        <label for="phone">Telefono</label>
       </div>
+    </div>
+
+    <div class="row" *ngIf="guest">
+      <div class="input-field">
+        <input formControlName="id" type="text" [readonly]="true" #inputTarget/>
+        <span class="input-group-btn">
+          <button name="link" class="btn teal-text white" type="button" [ngxClipboard]="inputTarget" (cbOnSuccess)="copiedToClipboard()">copiar</button>
+        </span>
+        <label for="link">Link de invitacion</label>
+      </div>
+    </div>
+
+    <div class="divider">
+      
     </div>
 
     <div class="row">
