@@ -115,5 +115,7 @@ export class ConfirmComponent implements OnInit {
       }, error => {
         this.globalActions.emit({ action: 'toast', params: ['Lo sentimos, hubo un error recibiendo tu confirmacion', 3000, 'red'] });
       });
+
+    this.changeConfirmation = false;
   }
 }

@@ -86,10 +86,10 @@ import { InvitationComponent } from './components/invitation/invitation.componen
           { path: '', redirectTo: 'nuestra-historia', pathMatch: 'full' },
           { path: 'nuestra-historia', component: HomeComponent },
           { path: 'donde-y-cuando', component: WhenWhereComponent },
-          { path: 'confirmar', component: ConfirmComponent },
-          { path: ':guest_id', component: InvitationComponent }
+          { path: 'confirmar', component: ConfirmComponent }
         ]
-      }
+      },
+      { path: ':guest_id', component: InvitationComponent }
     ], { useHash: true })
   ],
   bootstrap: [AppComponent],

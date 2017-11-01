@@ -21,8 +21,8 @@
       {{guest.first_name + ' ' + guest.last_name}}
     </h2>
     <div >
-      <div class="center-align">
-        <p class="flow-text" [innerHtml]="section.content"></p>
+      <div *ngIf="section" class="center-align">
+        <p  class="flow-text" [innerHtml]="section.content"></p>
         <div class="divider">
 
         </div>
@@ -50,8 +50,10 @@
       </div>
       <div class="center-align" *ngIf="guest.status > 0 || changeConfirmation">
         <p>
-          <b>* Tu confirmacion es: <a (click)="changeConfirmation=true">{{getStateText()}}</a> </b>
+          <b>* Tu confirmacion es Mieda: {{getStateText()}} </b>
         </p>
+        Hola
+        <a *ngIf="guest.status > 0" (click)="changeConfirmation=true">cambiar</a>
       </div>
     </div>
   </div>
