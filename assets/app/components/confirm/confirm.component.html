@@ -33,7 +33,7 @@
           </p>
         </div>
       </div>
-      <div *ngIf="!hasConfirmed()" class="card-action center-align">
+      <div *ngIf="!hasConfirmed() || changeConfirmation" class="card-action center-align">
         <div class="row">
           <div class="col s12 m6">
             <a class="btn black-text white" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
@@ -48,11 +48,10 @@
           {{getAknowledgement()}}
         </p>
       </div>
-      <div class="center-align" *ngIf="guest.status > 0 || changeConfirmation">
+      <div class="center-align" *ngIf="guest.status > 0">
         <p>
-          <b>* Tu confirmacion es Mieda: {{getStateText()}} </b>
+          <b>* Tu confirmacion es: {{getStateText()}} </b>
         </p>
-        Hola
         <a *ngIf="guest.status > 0" (click)="changeConfirmation=true">cambiar</a>
       </div>
     </div>
