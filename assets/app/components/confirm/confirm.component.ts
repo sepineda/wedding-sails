@@ -19,6 +19,7 @@ export class ConfirmComponent implements OnInit {
   section: Section;
 
   changeConfirmation: boolean = false;
+  message: string = '';
 
   globalActions = new EventEmitter<string | MaterializeAction>();
 
@@ -43,6 +44,7 @@ export class ConfirmComponent implements OnInit {
 
     this.guestService.guestUpdated.subscribe((guest: Guest) => {
       this.guest = guest;
+      console.log(this.guest);
     });
   }
 
@@ -94,7 +96,9 @@ export class ConfirmComponent implements OnInit {
 
   processConfirmation(confirmation: boolean) {
 
-    this.http.post('Guest/sendInvitation', {})
+    const confirmationMessage = this.guest.status === GuestStates.Confirmed? 'Confirmado': 'Rechazado';
+
+    this.http.post('Guest/sendInvitation', { guest_id: this.guest.id, confirmation: confirmationMessage, message: this.message })
       .subscribe(result => {
         console.log(result);
       });

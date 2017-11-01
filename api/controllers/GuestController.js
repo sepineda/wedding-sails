@@ -7,14 +7,24 @@
 
 module.exports = {
   sendInvitation: function(req, res) {
-    sails.hooks.email.send('Invitacion', {
-      recipientName: 'Eduardo',
-      senderName: 'Pineda'
-    }, {
-      to: 'sepineda@gmail.com',
-      subject: 'Hi there'
-    }, function(err) {
-      console.log(err || "Invitation sent!");
-    });
+    let guestId = req.param('guest_id');
+    let message = req.param('message') || 'No hay mensaje';
+    let confirmation = req.param('confirmation');
+
+    sails.log(guestId);
+    sails.log(message);
+    sails.log(confirmation);
+
+    Guest.findOne({id: guestId})
+      .exec(function(err, guest){
+        if(err){
+          res.forbidden(err);
+        }
+
+        let guestName = guest.first_name + ' ' + guest.last_name;
+
+        Mailer.sendMail(guestName, 'sepineda@gmail.com', message, confirmation);
+        Mailer.sendMail(guestName, 'dylsog69@gmail.com', message, confirmation);
+      });
   }
 }

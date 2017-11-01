@@ -20,9 +20,9 @@
     <h2 class="header center-align">
       {{guest.first_name + ' ' + guest.last_name}}
     </h2>
-    <div >
+    <div>
       <div *ngIf="section" class="center-align">
-        <p  class="flow-text" [innerHtml]="section.content"></p>
+        <p class="flow-text" [innerHtml]="section.content"></p>
         <div class="divider">
 
         </div>
@@ -34,6 +34,12 @@
         </div>
       </div>
       <div *ngIf="!hasConfirmed() || changeConfirmation" class="card-action center-align">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea [(ngModel)]="message" id="textarea1" class="materialize-textarea" materialize="characterCounter" ></textarea>
+            <label for="textarea1">Mensaje</label>
+          </div>
+        </div>
         <div class="row">
           <div class="col s12 m6">
             <a class="btn black-text white" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
