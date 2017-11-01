@@ -5,7 +5,9 @@ module.exports.email = {
     pass: 'DRDpnd0383'
   },
   // templateDir: “api / emailTemplates”,
-  // from: 'sepineda@gmail.com',
+  host: 'smtp.gmail.com',
   testMode: false,
-  ssl: true
+  port: 465,
+  secure: true
+  // ssl: true
 }
