@@ -9,5 +9,5 @@ module.exports.email = {
   testMode: false,
   port: 465,
   secure: true
-  // ssl: true
+  ssl: true
 }
