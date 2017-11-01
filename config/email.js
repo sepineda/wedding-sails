@@ -8,6 +8,6 @@ module.exports.email = {
   host: 'smtp.gmail.com',
   testMode: false,
   port: 465,
-  secure: true
+  secure: true,
   ssl: true
 }
