@@ -7,5 +7,5 @@ module.exports.email = {
   // templateDir: “api / emailTemplates”,
   // from: 'sepineda@gmail.com',
   testMode: false,
-  // ssl: true
+  ssl: true
 }
