@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  sendInvitation: function(req, res) {
+  sendConfirmation: function(req, res) {
     let guestId = req.param('guest_id');
     let message = req.param('message') || 'No hay mensaje';
     let confirmation = req.param('confirmation');

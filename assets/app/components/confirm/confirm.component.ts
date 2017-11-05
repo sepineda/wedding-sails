@@ -96,13 +96,6 @@ export class ConfirmComponent implements OnInit {
 
   processConfirmation(confirmation: boolean) {
 
-    const confirmationMessage = this.guest.status === GuestStates.Confirmed? 'Confirmado': 'Rechazado';
-
-    this.http.post('Guest/sendInvitation', { guest_id: this.guest.id, confirmation: confirmationMessage, message: this.message })
-      .subscribe(result => {
-        console.log(result);
-      });
-
     const headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     const options = new RequestOptions({ headers: headers });
 
@@ -116,6 +109,13 @@ export class ConfirmComponent implements OnInit {
           this.globalActions.emit({ action: 'toast', params: ['Muchas gracias, has confirmado tu invitacion!.', 3000, 'green'] });
         else
           this.globalActions.emit({ action: 'toast', params: ['Lamentamos no contar con tu presencia, pero gracias por hacernos saber.', 3000, 'green'] });
+
+        const confirmationMessage = this.guest.status === GuestStates.Confirmed ? 'Confirmado' : 'Rechazado';
+
+        this.http.post('Guest/sendConfirmation', { guest_id: this.guest.id, confirmation: confirmationMessage, message: this.message })
+          .subscribe(result => {
+            console.log(result);
+          });
       }, error => {
         this.globalActions.emit({ action: 'toast', params: ['Lo sentimos, hubo un error recibiendo tu confirmacion', 3000, 'red'] });
       });

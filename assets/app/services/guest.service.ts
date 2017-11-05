@@ -10,15 +10,18 @@ export class GuestService {
   private guest: Guest;
 
   hasGuest(){
-    return !!this.guest;
+    return !!this.guest || !!sessionStorage.getItem('guest');
   }
 
   setGuest(guest:Guest){
     this.guest = guest;
+    sessionStorage.setItem('guest', JSON.stringify(this.guest));
     this.guestUpdated.emit(this.guest);
   }
 
   getGuest(){
+    const storedGuest = JSON.parse(sessionStorage.getItem('guest'));
+    this.guest = storedGuest?storedGuest:this.guest;
     return this.guest;
   }
 

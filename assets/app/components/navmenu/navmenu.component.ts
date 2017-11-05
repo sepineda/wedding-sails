@@ -32,7 +32,6 @@ export class NavMenuComponent implements OnInit {
           { name: "Donde y cuando", route: "/donde-y-cuando" }
           //{ name: "RSVP", route: "/confirmar" },
       ];
-
       if(this.guestService.hasGuest()){
         this.menuItems.push({ name: "Confirmar", route: "/confirmar" });
       }
