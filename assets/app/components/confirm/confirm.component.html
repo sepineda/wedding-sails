@@ -42,10 +42,10 @@
         </div>
         <div class="row">
           <div class="col s12 m6">
-            <a class="btn black-text white" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</a>
+            <button class="btn black-text white" type="button" materialize [materializeActions]="globalActions" (click)="confirm()"><i class="material-icons left">check_box</i> Confirmar</button>
           </div>
           <div class="col s12 m6">
-            <a class="btn black-text white" (click)="deny()"><i class="material-icons left">cancel</i> No puedo asistir</a>
+            <button class="btn black-text white" type="button" (click)="deny()"><i class="material-icons left">cancel</i> No puedo asistir</button>
           </div>
         </div>
       </div>

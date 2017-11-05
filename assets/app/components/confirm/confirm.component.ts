@@ -106,9 +106,9 @@ export class ConfirmComponent implements OnInit {
       .map((res: Response) => res.json())
       .subscribe(data => {
         if (confirmation)
-          this.globalActions.emit({ action: 'toast', params: ['Muchas gracias, has confirmado tu invitacion!.', 3000, 'green'] });
+          this.globalActions.emit({ action: 'toast', params: ['Muchas gracias, has confirmado tu invitacion!.', 3000, 'green lighten-1'] });
         else
-          this.globalActions.emit({ action: 'toast', params: ['Lamentamos no contar con tu presencia, pero gracias por hacernos saber.', 3000, 'green'] });
+          this.globalActions.emit({ action: 'toast', params: ['Lamentamos no contar con tu presencia, pero gracias por hacernos saber.', 3000, 'green lighten-1'] });
 
         const confirmationMessage = this.guest.status === GuestStates.Confirmed ? 'Confirmado' : 'Rechazado';
 
