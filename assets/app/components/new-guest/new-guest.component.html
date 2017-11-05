@@ -53,15 +53,17 @@
         <input formControlName="id" type="text" [readonly]="true" #inputTarget/>
         <span class="input-group-btn">
           <button name="link" class="btn teal-text white" type="button" [ngxClipboard]="inputTarget" (cbOnSuccess)="copiedToClipboard()">copiar</button>
+          <a class="btn " type="button" [href]="'whatsapp://send?text=' + form.value.id" data-action="share/whatsapp/share">
+           <i class="material-icons">local_phone</i> Whatsapp</a>
         </span>
         <label for="link">Link de invitacion</label>
       </div>
     </div>
 
     <div class="divider">
-      
-    </div>
 
+    </div>
+    <br />
     <div class="row">
       <button class="btn waves-effect" type="submit" materialize [materializeActions]="globalActions">Guardar</button>
       <button class="btn waves-effect red" type="button" (click)="deleteGuest()">Borrar</button>
