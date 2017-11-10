@@ -1,14 +1,19 @@
 <div *ngFor="let section of sections; index as i">
-  <div class="parallax-container valign-wrapper">
-    <h1 class=" white-text overlay center-align">
-        {{section.name | uppercase }}
-      </h1>
+  <div class="parallax-container">
+    <p class="white-text right-align header">
+      {{section.header}}
+    </p>
+    <div class="valign-wrapper h100">
+      <h1 class=" white-text overlay center-align">
+          {{section.name | uppercase }}
+        </h1>
 
-    <div class="parallax grey lighten-1" materialize="parallax">
-      <img [src]="section.imageUrl">
+      <div class="parallax grey lighten-1" materialize="parallax">
+        <img [src]="section.imageUrl">
+      </div>
     </div>
   </div>
-  <story-card *ngIf="section.header || section.content" story-card [header]="section.header" [story]="section.content"></story-card>
+  <story-card *ngIf="section.content" story-card [story]="section.content"></story-card>
 
   <wedding-gallery *ngIf="i === 1" [hidden]="!sections"></wedding-gallery>
 </div>
