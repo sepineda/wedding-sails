@@ -1,9 +1,13 @@
 .parallax-container {
-    height: 600px;
+    height: 700px;
 }
 
 .img-opa{
   opacity: 0.5;
+}
+
+.header{
+  font-size: 12px;
 }
 
 p, span {
