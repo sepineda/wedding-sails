@@ -37,6 +37,22 @@ export class GuestListComponent implements OnInit {
     });
   }
 
+  getNumberOfConfirmed() {
+    const confirmed = this.guests.filter(g => g.status === GuestStates.Confirmed)
+      .map(guest => guest.spaces);
+    return confirmed.length ? confirmed.reduce((total, num) => {
+        return total + num;
+      }) : 0;
+  }
+
+  getNumberOfDenied() {
+    const confirmed = this.guests.filter(g => g.status === GuestStates.Denied)
+      .map(guest => guest.spaces);
+    return confirmed.length ? confirmed.reduce((total, num) => {
+        return total + num;
+      }) : 0;
+  }
+
   getGuestStatus(guest: Guest) {
     let status: Status = { icon: '', message: '', color: 'material-icons' };
 

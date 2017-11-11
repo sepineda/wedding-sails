@@ -5,6 +5,17 @@
   }
 }
 
+.show-for-rotate{
+  margin: 5px;
+}
+
+@media (min-width: 500px ) {
+  .show-for-rotate{
+    margin: 5px;
+    display: none;
+  }
+}
+
 .page-title{
   font-size: 17px;
   font-family: 'Lato', sans-serif;

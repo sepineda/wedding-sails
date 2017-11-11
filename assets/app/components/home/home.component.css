@@ -2,12 +2,6 @@
     height: 500px;
 }
 
-@media (min-width: 993px ) {
-  .parallax-container {
-      height: 900px;
-  }
-}
-
 .h100{
   height: 100%;
 }
