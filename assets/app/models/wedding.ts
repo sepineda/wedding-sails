@@ -16,6 +16,8 @@ export interface Wedding{
 
   maxGuestNumber: number,
 
+  invitationMessage: string,
+
   sections: any[],
 
   users: any[],

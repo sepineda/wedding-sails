@@ -23,6 +23,8 @@ module.exports = {
 
       maxGuestNumber: { type: 'integer' },
 
+      invitationMessage: {type: 'string' },
+
       sections: {
         collection: 'section',
         via: '_wedding'
