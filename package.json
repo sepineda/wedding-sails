@@ -74,9 +74,9 @@
     "ngc": "ngc",
     "start": "sails lift --dev",
     "prod": "sails lift --prod",
-    "build": "rimraf dist && webpack --config assets/config/webpack.prod.js --bail",
-    "build:dev": "rimraf dist && webpack --config assets/config/webpack.dev.js",
-    "deploy": "git push heroku master"
+    "build": "rimraf assets/dist && webpack --config assets/config/webpack.prod.js --bail",
+    "build:dev": "rimraf assets/dist && webpack --config assets/config/webpack.dev.js",
+    "deploy": "npm run build && git push heroku master"
   },
   "main": "app.js",
   "repository": {
