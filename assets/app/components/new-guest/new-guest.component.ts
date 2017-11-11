@@ -69,7 +69,7 @@ export class NewGuestComponent implements OnInit, OnDestroy {
 
   fillFormWithGuest() {
     this.form.setValue({
-      id: `www.dilayedu.com/#/${this.guest.id}`,
+      id: `www.dilayedu.com/%23/${this.guest.id}`,
       first_name: this.guest.first_name,
       last_name: this.guest.last_name,
       email: this.guest.email,
